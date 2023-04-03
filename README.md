@@ -18,8 +18,10 @@ Desenvolver o front-end de um sistema web de vitrine virtual para a exibição d
 - Baixe e instale a versão LTS do Node.js em https://nodejs.org/en
 - Clone o repositório na sua máquina de trabalho
 - Abra o prompt de comando:
+  -  Digite o comando <code style="margin-left:40px">npm install --global yarn</code> para instalar o yarn
   -  Entre na pasta do projeto via prompt de comando 
-  -  Digite o comando <code style="margin-left:40px">npm install</code> para instalar as dependencias do projeto
+  -  Digite o comando <code style="margin-left:40px">yarn install</code> para instalar as dependencias do projeto
+  -  Digite o comando <code style="margin-left:40px">yarn start</code> para rodar o projeto
   
 ## Status
 Em desenvolvimento para conclusão do Projeto Integrador I da Univesp
