@@ -10,7 +10,7 @@ Desenvolver o front-end de um sistema web de vitrine virtual para a exibição d
 <div style="display: inline_block"><br>
   <img align="center" title="HTML" alt="HTML" height="45" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg">
   <img align="center" title="CSS" alt="CSS" height="45" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain-wordmark.svg">
-  <img align="center" title="JavaScript" alt="JavaScript" height="45" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+  <img align="center" title="TypeScript" alt="JavaScript" height="45" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg">
   <img align="center" title="ReactJS" alt="ReactJS" height="45" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
 </div>
  
