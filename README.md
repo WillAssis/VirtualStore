@@ -21,6 +21,10 @@ Desenvolver o front-end de um sistema web de vitrine virtual para a exibição d
   -  Digite o comando <code style="margin-left:40px">npm install --global yarn</code> para instalar o yarn
   -  Entre na pasta do projeto via prompt de comando 
   -  Digite o comando <code style="margin-left:40px">yarn install</code> para instalar as dependencias do projeto
+  
+## Rodando o projeto
+- Abra a pasta do projeto pelo VSCode:
+  -  Selecione a opção de abrir o terminal
   -  Digite o comando <code style="margin-left:40px">yarn start</code> para rodar o projeto
   
 ## Status
