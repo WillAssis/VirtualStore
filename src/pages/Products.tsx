@@ -23,23 +23,27 @@ function Products() {
   };
 
   return (
-    <Container>
-      <h4 className="mt-3">Mostrando Produtos:</h4>
-      <ProductSearch products={products} setFilteredProducts={setFilteredProducts} />
-      <Row>
-        {currentProducts.map((product) => (
-          <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
-            <ProductCard product={product} />
-          </Col>
-        ))}
-      </Row>
-      <Pagination
-        currentPage={currentPage}
-        productsPerPage={productsPerPage}
-        totalProducts={filteredProducts.length}
-        paginate={paginate}
-      />
-    </Container>
+    <>
+      <h3 style={{ backgroundColor: "#D9D9D9" }} className="mt-3 mb-3 text-center p-2">
+        Mostrando Produtos
+      </h3>
+      <Container>
+        <ProductSearch products={products} setFilteredProducts={setFilteredProducts} />
+        <Row>
+          {currentProducts.map((product) => (
+            <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
+              <ProductCard product={product} />
+            </Col>
+          ))}
+        </Row>
+        <Pagination
+          currentPage={currentPage}
+          productsPerPage={productsPerPage}
+          totalProducts={filteredProducts.length}
+          paginate={paginate}
+        />
+      </Container>
+    </>
   );
 }
 
