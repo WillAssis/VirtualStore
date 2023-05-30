@@ -1,15 +1,5 @@
 import { useState } from "react";
-
-interface Product {
-  id: number;
-  title: string;
-  slug: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  destaque: boolean;
-}
+import { Product } from "../../types";
 
 interface ProductSearchProps {
   products: Product[];
