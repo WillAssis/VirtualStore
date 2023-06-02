@@ -13,7 +13,7 @@ function ProductCard({ product }: ProductCardProps) {
         <Card.Img variant="top" src={product.images[0]} />
       </Link>
       <Card.Body>
-        <Card.Title>{product.title}</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
         <Card.Text className="fs-5 fw-semibold" style={{ color: "#873143" }}>
           Preço: R$ {product.price.toFixed(2)}
         </Card.Text>

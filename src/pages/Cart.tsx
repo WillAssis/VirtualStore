@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Button, Card, Row, Col } from "react-bootstrap";
-import products from "../data";
+import { Product } from "../types";
 
 interface CartItem {
   id: number;
@@ -11,6 +11,19 @@ interface CartItem {
 }
 
 function Cart() {
+  const [products, setProducts] = useState<Product[]>([]); // Correção 1: Adiciona o estado 'products' e seu setter 'setProducts'
+
+  useEffect(() => {
+    fetch("http://localhost:3333/produtos")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data.products);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []);
+
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const handleClearCart = () => {
@@ -96,13 +109,13 @@ function Cart() {
                                 <Card.Img
                                   src={product.images[0]}
                                   className="img-fluid rounded-start"
-                                  alt={product.title}
+                                  alt={product.name}
                                 />
                               </Col>
                               <Col md={7}>
                                 <Card.Body>
                                   <Card.Title>
-                                    <span style={{ color: "#873143" }}>{item.quantity}</span> x {product.title}
+                                    <span style={{ color: "#873143" }}>{item.quantity}</span> x {product.name}
                                   </Card.Title>
                                   <Card.Text>{product.description}</Card.Text>
                                   <Card.Text className="fw-bolder fs-4" style={{ color: "#873143" }}>

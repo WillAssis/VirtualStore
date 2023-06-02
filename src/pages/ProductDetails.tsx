@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import products from "../data";
 import { Product } from "../types";
 import "../App.css";
 
@@ -13,12 +12,17 @@ function ProductDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const foundProduct = products.find((product) => product.slug === slug);
-    if (foundProduct) {
-      setProduct(foundProduct);
-      setMainImage(foundProduct.images[0]);
-    }
+    fetch(`http://localhost:3333/produto/${slug}`)
+      .then((response) => response.json())
+      .then((data) => setProduct(data))
+      .catch((error) => console.log(error));
   }, [slug]);
+
+  useEffect(() => {
+    if (product) {
+      setMainImage(product.images[0]);
+    }
+  }, [product]);
 
   const handleThumbnailClick = (image: string) => {
     setMainImage(image);
@@ -35,36 +39,34 @@ function ProductDetails() {
   };
 
   const handleAddToCart = (redirectToCart = true) => {
-    // Verificar se o carrinho já existe no localStorage
     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
-
-    // Verificar se o produto já está no carrinho
-    const existingItem = cartItems.find((item: Product) => item.id === product?.id);
+    const existingItem = cartItems.find((item: Product) => item.slug === product?.slug);
 
     if (existingItem) {
-      // Se o produto já está no carrinho, incrementar a quantidade
-      existingItem.quantity += selectedQuantity; // Somar a quantidade selecionada
+      existingItem.quantity += selectedQuantity;
     } else {
-      // Se o produto não está no carrinho, adicionar ao carrinho com a quantidade selecionada
       cartItems.push({ ...product, quantity: selectedQuantity });
     }
 
-    // Atualizar o carrinho no localStorage
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-    // Redirecionar o usuário para a página "Cart" se necessário
     if (redirectToCart) {
       navigate("/cart", { state: { price: getTotalPrice() } });
     }
+  };
+
+  const getTotalPrice = () => {
+    if (product) {
+      return (product.price * selectedQuantity).toFixed(2);
+    }
+    return "0.00";
   };
 
   if (!product) {
     return <div>Loading...</div>;
   }
 
-  const getTotalPrice = () => {
-    return (product.price * selectedQuantity).toFixed(2);
-  };
+  const { name, description, images } = product;
 
   return (
     <>
@@ -76,7 +78,7 @@ function ProductDetails() {
         <Row>
           <Col lg={1} mt={3}>
             <Row className="row-cols-5 row-cols-lg-1">
-              {product.images.map((image, index) => (
+              {images.map((image, index) => (
                 <Col key={index}>
                   <div className="thumbnail-wrapper mb-4">
                     <Image
@@ -92,15 +94,15 @@ function ProductDetails() {
           </Col>
           <Col md={5}>
             <div className="main-image-wrapper">
-              <Image src={mainImage} alt={product.title} className="main-image" />
+              <Image src={mainImage} alt={name} className="main-image" />
             </div>
           </Col>
           <Col md={6}>
-            <h3>{product.title}</h3>
+            <h3>{name}</h3>
             <p className="fs-3 fw-semibold" style={{ color: "#873143" }}>
               Preço: R$ {getTotalPrice()}
             </p>
-            <p>{product.description}</p>
+            <p>{description}</p>
             <div>
               <span className="fw-semibold">Quantidade:</span>
               <Button
