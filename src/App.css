@@ -1,3 +1,7 @@
+:root {
+  --logo-color: black;
+}
+
 /* Estilos ProductDetails */
 
 .thumbnail-wrapper {
