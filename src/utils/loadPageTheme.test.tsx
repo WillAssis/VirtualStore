@@ -1,4 +1,4 @@
-import setPageTheme from './setPageTheme';
+import loadPageTheme from './loadPageTheme';
 
 const setSystemColor = (color: String) => {
   window.matchMedia = (query) => ({
@@ -16,14 +16,14 @@ const setSystemColor = (color: String) => {
 test('System theme is light', () => {
   const root = document.documentElement;
   setSystemColor('light');
-  setPageTheme();
+  loadPageTheme();
   expect(root.className).toBe('light');
 });
 
 test('System theme is dark', () => {
   const root = document.documentElement;
   setSystemColor('dark');
-  setPageTheme();
+  loadPageTheme();
   expect(root.className).toBe('dark');
 });
 
@@ -31,7 +31,7 @@ test('System is light and user had light theme before', () => {
   const root = document.documentElement;
   window.localStorage.setItem('theme', 'light');
   setSystemColor('light');
-  setPageTheme();
+  loadPageTheme();
   expect(root.className).toBe('light');
 });
 
@@ -39,7 +39,7 @@ test('System is dark and user had dark theme before', () => {
   const root = document.documentElement;
   window.localStorage.setItem('theme', 'dark');
   setSystemColor('dark');
-  setPageTheme();
+  loadPageTheme();
   expect(root.className).toBe('dark');
 });
 
@@ -47,7 +47,7 @@ test('System is light but user had dark theme before', () => {
   const root = document.documentElement;
   window.localStorage.setItem('theme', 'dark');
   setSystemColor('light');
-  setPageTheme();
+  loadPageTheme();
   expect(root.className).toBe('dark');
 });
 
@@ -55,6 +55,6 @@ test('System is dark but user had light theme before', () => {
   const root = document.documentElement;
   window.localStorage.setItem('theme', 'light');
   setSystemColor('dark');
-  setPageTheme();
+  loadPageTheme();
   expect(root.className).toBe('light');
 });
