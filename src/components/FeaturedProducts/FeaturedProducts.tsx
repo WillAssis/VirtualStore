@@ -1,6 +1,6 @@
-import { Card, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Product } from "../../types";
+import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Product } from '../../types';
 
 interface FeaturedProductsProps {
   products: Product[];
@@ -11,7 +11,9 @@ function FeaturedProducts({ products }: FeaturedProductsProps) {
     return null; // ou tratamento de erro adequado
   }
 
-  const featuredProducts = products.filter((product) => product.featured).slice(0, 4);
+  const featuredProducts = products
+    .filter((product) => product.featured)
+    .slice(0, 4);
 
   return (
     <Container>
@@ -19,17 +21,24 @@ function FeaturedProducts({ products }: FeaturedProductsProps) {
       <Row>
         {featuredProducts.map((product) => (
           <Col key={product.slug} md={3}>
-            <Card className="mb-4" style={{ boxShadow: "3px 3px 10px #ccc" }}>
+            <Card className="mb-4" style={{ boxShadow: '3px 3px 10px #ccc' }}>
               <Card.Text
                 className="fs-5 m-0 p-2 text-dark fw-semibold align-items-center text-center"
-                style={{ height: "75px", backgroundColor: "#ededed" }}
+                style={{ height: '75px', backgroundColor: '#ededed' }}
               >
                 {product.name}
               </Card.Text>
               <Link to={`/produtos/${product.slug}`}>
-                <Card.Img variant="top" src={product.images[0]} alt={product.name} />
+                <Card.Img
+                  variant="top"
+                  src={product.images[0]}
+                  alt={product.name}
+                />
               </Link>
-              <Card.Text className="fs-5 p-1 fw-semibold p-2" style={{ color: "#873143", backgroundColor: "#ededed" }}>
+              <Card.Text
+                className="fs-5 p-1 fw-semibold p-2"
+                style={{ color: '#873143', backgroundColor: '#ededed' }}
+              >
                 Preço: R$ {product.price.toFixed(2)}
               </Card.Text>
             </Card>

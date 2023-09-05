@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
 
 interface PaginationProps {
   currentPage: number;
@@ -8,7 +8,13 @@ interface PaginationProps {
   onNextPage: () => void;
 }
 
-function Pagination({ currentPage, pages, onPageChange, onPreviousPage, onNextPage }: PaginationProps) {
+function Pagination({
+  currentPage,
+  pages,
+  onPageChange,
+  onPreviousPage,
+  onNextPage,
+}: PaginationProps) {
   const goToPreviousPage = () => {
     if (currentPage > 1) {
       onPreviousPage();
@@ -26,7 +32,11 @@ function Pagination({ currentPage, pages, onPageChange, onPreviousPage, onNextPa
       <Button
         variant="link"
         onClick={goToPreviousPage}
-        className={`btn btn-sm ${currentPage === 1 ? "btn-light disabled" : "page-link text-dark fw-semibold"}`}
+        className={`btn btn-sm ${
+          currentPage === 1
+            ? 'btn-light disabled'
+            : 'page-link text-dark fw-semibold'
+        }`}
         disabled={currentPage === 1}
       >
         Anterior
@@ -35,7 +45,9 @@ function Pagination({ currentPage, pages, onPageChange, onPreviousPage, onNextPa
         <Button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`btn btn-sm ${currentPage === page ? "btn-primary" : "btn-light"}`}
+          className={`btn btn-sm ${
+            currentPage === page ? 'btn-primary' : 'btn-light'
+          }`}
         >
           {page}
         </Button>
@@ -43,7 +55,11 @@ function Pagination({ currentPage, pages, onPageChange, onPreviousPage, onNextPa
       <Button
         variant="link"
         onClick={goToNextPage}
-        className={`btn btn-sm ${currentPage === pages ? "btn-light disabled" : "page-link text-dark fw-semibold"}`}
+        className={`btn btn-sm ${
+          currentPage === pages
+            ? 'btn-light disabled'
+            : 'page-link text-dark fw-semibold'
+        }`}
         disabled={currentPage === pages}
       >
         Próximo

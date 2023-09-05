@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import { Product } from "../types";
-import "../App.css";
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { Product } from '../types';
+import '../App.css';
 
 function ProductDetails() {
   const { slug } = useParams<{ slug: string }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [mainImage, setMainImage] = useState<string>("");
+  const [mainImage, setMainImage] = useState<string>('');
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
   const navigate = useNavigate();
 
@@ -39,8 +39,10 @@ function ProductDetails() {
   };
 
   const handleAddToCart = (redirectToCart = true) => {
-    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
-    const existingItem = cartItems.find((item: Product) => item.slug === product?.slug);
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    const existingItem = cartItems.find(
+      (item: Product) => item.slug === product?.slug
+    );
 
     if (existingItem) {
       existingItem.quantity += selectedQuantity;
@@ -48,10 +50,10 @@ function ProductDetails() {
       cartItems.push({ ...product, quantity: selectedQuantity });
     }
 
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
     if (redirectToCart) {
-      navigate("/cart", { state: { price: getTotalPrice() } });
+      navigate('/cart', { state: { price: getTotalPrice() } });
     }
   };
 
@@ -59,7 +61,7 @@ function ProductDetails() {
     if (product) {
       return (product.price * selectedQuantity).toFixed(2);
     }
-    return "0.00";
+    return '0.00';
   };
 
   if (!product) {
@@ -70,8 +72,16 @@ function ProductDetails() {
 
   return (
     <>
-      <h3 className="mt-3 mb-3 text-center p-2" style={{ backgroundColor: "#D9D9D9" }}>
-        <img src="/icons/sacola.svg" className="mb-2" alt="Carrinho" style={{ width: "25px", marginRight: "10px" }} />
+      <h3
+        className="mt-3 mb-3 text-center p-2"
+        style={{ backgroundColor: '#D9D9D9' }}
+      >
+        <img
+          src="/icons/sacola.svg"
+          className="mb-2"
+          alt="Carrinho"
+          style={{ width: '25px', marginRight: '10px' }}
+        />
         Comprar Produto
       </h3>
       <Container>
@@ -99,7 +109,7 @@ function ProductDetails() {
           </Col>
           <Col md={6}>
             <h3>{name}</h3>
-            <p className="fs-3 fw-semibold" style={{ color: "#873143" }}>
+            <p className="fs-3 fw-semibold" style={{ color: '#873143' }}>
               Preço: R$ {getTotalPrice()}
             </p>
             <p>{description}</p>
@@ -108,7 +118,7 @@ function ProductDetails() {
               <Button
                 variant="secondary"
                 className="ms-3 border-0 fw-semibold text-dark"
-                style={{ backgroundColor: "#E1C35D" }}
+                style={{ backgroundColor: '#E1C35D' }}
                 onClick={decreaseQuantity}
               >
                 -
@@ -116,7 +126,7 @@ function ProductDetails() {
               <span className="ms-2 me-2">{selectedQuantity}</span>
               <Button
                 variant="secondary"
-                style={{ backgroundColor: "#873143" }}
+                style={{ backgroundColor: '#873143' }}
                 className="border-0 fw-semibold"
                 onClick={increaseQuantity}
               >
@@ -125,7 +135,7 @@ function ProductDetails() {
             </div>
             <Button
               variant="primary"
-              style={{ backgroundColor: "#E1C35D" }}
+              style={{ backgroundColor: '#E1C35D' }}
               className="w-100 mt-4 border-0 text-dark"
               onClick={() => handleAddToCart()}
             >
@@ -134,7 +144,7 @@ function ProductDetails() {
             <Button
               variant="secondary"
               className="w-100 mt-3 mb-3 border-0"
-              style={{ backgroundColor: "#873143" }}
+              style={{ backgroundColor: '#873143' }}
               onClick={() => handleAddToCart(false)}
             >
               Adicionar ao Carrinho
