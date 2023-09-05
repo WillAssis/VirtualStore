@@ -3,10 +3,11 @@
 Grupo - OSASCOUAB-PJI110-SALA-001GRUPO-001
 
 ## Sobre o projeto
-Desenvolver o front-end de um sistema web de vitrine virtual para a exibição dos produtos de uma loja. 
+
+Desenvolver o front-end de um sistema web de vitrine virtual para a exibição dos produtos de uma loja.
 
 ## Tecnologias
- 
+
 <div style="display: inline_block"><br>
   <img align="center" title="HTML" alt="HTML" height="45" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg">
   <img align="center" title="CSS" alt="CSS" height="45" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain-wordmark.svg">
@@ -31,6 +32,7 @@ Desenvolver o front-end de um sistema web de vitrine virtual para a exibição d
 Em desenvolvimento para conclusão do Projeto Integrador I da Univesp
 
 ## Desenvolvedores
+
 - <a href="https://github.com/arturcirino"> Artur Cirino </a>
 - <a href=""> Davi Secomandi </a>
 - <a href="https://github.com/eliabev"> Eliabe Oliveira </a>

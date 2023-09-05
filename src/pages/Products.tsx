@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import ProductCard from "../components/ProductCard/ProductCard";
-import Pagination from "../components/Pagination/Pagination";
-import { Product } from "../types";
+import { useState, useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import ProductCard from '../components/ProductCard/ProductCard';
+import Pagination from '../components/Pagination/Pagination';
+import { Product } from '../types';
 
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [pages, setPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     fetch(`http://localhost:3333/produtos?page=${currentPage}`)
@@ -20,12 +20,14 @@ function Products() {
         setPages(data.pages);
       })
       .catch((error) => {
-        console.log("Ocorreu um erro ao obter os produtos:", error);
+        console.log('Ocorreu um erro ao obter os produtos:', error);
       });
   }, [currentPage]);
 
   useEffect(() => {
-    const filteredProducts = products.filter((product) => (product.name ?? "").toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredProducts = products.filter((product) =>
+      (product.name ?? '').toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     setFilteredProducts(filteredProducts);
   }, [products, searchTerm]);
@@ -51,16 +53,19 @@ function Products() {
   };
 
   useEffect(() => {
-    if (filteredProducts.length === 0 && searchTerm !== "") {
+    if (filteredProducts.length === 0 && searchTerm !== '') {
       setError(`Nenhum produto encontrado com o nome ${searchTerm}`);
     } else {
-      setError("");
+      setError('');
     }
   }, [filteredProducts, searchTerm]);
 
   return (
     <>
-      <h3 style={{ backgroundColor: "#D9D9D9" }} className="mt-3 mb-3 text-center p-2">
+      <h3
+        style={{ backgroundColor: '#D9D9D9' }}
+        className="mt-3 mb-3 text-center p-2"
+      >
         Mostrando Produtos
       </h3>
       <Container>

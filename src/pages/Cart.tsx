@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Container, Button, Card, Row, Col } from "react-bootstrap";
-import { Product } from "../types";
+import { useEffect, useState } from 'react';
+import { Container, Button, Card, Row, Col } from 'react-bootstrap';
+import { Product } from '../types';
 
 interface CartItem {
   id: number;
@@ -14,25 +14,27 @@ function Cart() {
   const [products, setProducts] = useState<Product[]>([]); // Correção 1: Adiciona o estado 'products' e seu setter 'setProducts'
 
   useEffect(() => {
-    fetch("http://localhost:3333/produtos")
+    fetch('http://localhost:3333/produtos')
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.products);
       })
       .catch((error) => {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       });
   }, []);
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const handleClearCart = () => {
-    localStorage.removeItem("cartItems");
+    localStorage.removeItem('cartItems');
     window.location.reload();
   };
 
   useEffect(() => {
-    const storedCartItems: CartItem[] = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    const storedCartItems: CartItem[] = JSON.parse(
+      localStorage.getItem('cartItems') || '[]'
+    );
     setCartItems(storedCartItems);
   }, []);
 
@@ -44,7 +46,7 @@ function Cart() {
       return item;
     });
     setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
   const increaseQuantity = (itemId: number) => {
@@ -66,7 +68,7 @@ function Cart() {
   const removeItem = (itemId: number) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
   const getTotalItemPrice = (item: CartItem) => {
@@ -82,9 +84,17 @@ function Cart() {
 
   return (
     <>
-      <h3 className="mt-3 mb-3 text-center p-2" style={{ backgroundColor: "#D9D9D9" }}>
-        <img src="/icons/carrinho.svg" className="mb-1" style={{ width: "35px" }} alt="Comprar Produto" /> Produtos no
-        Carrinho
+      <h3
+        className="mt-3 mb-3 text-center p-2"
+        style={{ backgroundColor: '#D9D9D9' }}
+      >
+        <img
+          src="/icons/carrinho.svg"
+          className="mb-1"
+          style={{ width: '35px' }}
+          alt="Comprar Produto"
+        />{' '}
+        Produtos no Carrinho
       </h3>
       <Container>
         <Row>
@@ -115,10 +125,16 @@ function Cart() {
                               <Col md={7}>
                                 <Card.Body>
                                   <Card.Title>
-                                    <span style={{ color: "#873143" }}>{item.quantity}</span> x {product.name}
+                                    <span style={{ color: '#873143' }}>
+                                      {item.quantity}
+                                    </span>{' '}
+                                    x {product.name}
                                   </Card.Title>
                                   <Card.Text>{product.description}</Card.Text>
-                                  <Card.Text className="fw-bolder fs-4" style={{ color: "#873143" }}>
+                                  <Card.Text
+                                    className="fw-bolder fs-4"
+                                    style={{ color: '#873143' }}
+                                  >
                                     R$ {getTotalItemPrice(item)}
                                   </Card.Text>
                                 </Card.Body>
@@ -126,7 +142,7 @@ function Cart() {
                               <Col
                                 md={1}
                                 className="d-flex flex-row align-items-center justify-content-center flex-md-column"
-                                style={{ backgroundColor: "#ccc" }}
+                                style={{ backgroundColor: '#ccc' }}
                               >
                                 <span className="d-inline-block p-2">
                                   <img
@@ -161,12 +177,16 @@ function Cart() {
                   </Row>
                 </ul>
                 <p className="fs-4">
-                  Total a pagar: R${" "}
-                  <span className="fw-bolder" style={{ color: "#873143" }}>
+                  Total a pagar: R${' '}
+                  <span className="fw-bolder" style={{ color: '#873143' }}>
                     {getTotalCartPrice()}
                   </span>
                 </p>
-                <Button variant="danger" className="mb-2" onClick={handleClearCart}>
+                <Button
+                  variant="danger"
+                  className="mb-2"
+                  onClick={handleClearCart}
+                >
                   Limpar Carrinho
                 </Button>
               </>
