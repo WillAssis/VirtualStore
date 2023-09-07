@@ -5,7 +5,10 @@ import Products from './pages/Products';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart';
+import loadPageTheme from './utils/loadPageTheme';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+loadPageTheme();
 
 function App() {
   return (
