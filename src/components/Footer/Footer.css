@@ -34,13 +34,15 @@ footer h3 {
 .links ul {
   padding-left: 0;
   text-align: center;
+  line-height: 2;
 }
 
 .links ul a {
   text-decoration: none;
   color: var(--font);
-  padding: 0.1rem 0.2rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
+  margin-top: 0.5rem;
   transition:
     color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
@@ -52,7 +54,7 @@ footer h3 {
 }
 
 .links ul a:focus {
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   color: var(--accent);
 }
 
