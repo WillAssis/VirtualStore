@@ -1,6 +1,6 @@
 footer {
-  background-color: #121212;
-  color: white;
+  background-color: var(--background-primary);
+  color: var(--font);
   padding: 1rem 2rem;
 }
 
@@ -38,7 +38,7 @@ footer h3 {
 
 .links ul a {
   text-decoration: none;
-  color: white;
+  color: var(--font);
   padding: 0.1rem 0.2rem;
   border-radius: 0.5rem;
   transition:
@@ -48,19 +48,19 @@ footer h3 {
 
 .links ul a:hover {
   text-decoration: underline;
-  color: blue;
+  color: var(--accent);
 }
 
 .links ul a:focus {
-  border: 1px solid blue;
-  color: blue;
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
 
 .legal-informations {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-top: 1px solid white;
+  border-top: 1px solid var(--font);
   padding-top: 0.5rem;
 }
 
