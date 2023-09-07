@@ -23,6 +23,10 @@ footer h3 {
   align-items: center;
 }
 
+.about > p {
+  text-align: center;
+}
+
 .links {
   display: flex;
   flex: 1 0 50%;
