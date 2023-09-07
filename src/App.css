@@ -1,5 +1,21 @@
-:root {
-  --logo-color: black;
+:root.light {
+  --font: #121212;
+  --special: #e1c35d;
+  --accent: #873143;
+  --logo-color: #000;
+  --background-primary: #d9d9d9;
+  --background-secondary: #fff;
+  --background-opaque: rgba(217, 217, 217, 0.7);
+}
+
+:root.dark {
+  --font: #fff;
+  --special: #e1c35d;
+  --accent: #77a5cd;
+  --logo-color: #fff;
+  --bg-color-primary: #0a0b0d;
+  --bg-color-secondary: #121212;
+  --bg-color-opaque: rgba(10, 11, 13, 0.7);
 }
 
 /* Estilos ProductDetails */
