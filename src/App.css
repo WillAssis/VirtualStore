@@ -22,6 +22,15 @@
   --home-dashboard: url('./assets/images/dashboard-background-dark.jpg');
 }
 
+* {
+  box-sizing: border-box;
+  list-style: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* Estilos ProductDetails */
 
 .thumbnail-wrapper {
