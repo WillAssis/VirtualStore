@@ -1,6 +1,6 @@
 import loadPageTheme from './loadPageTheme';
 
-const setSystemColor = (color: String) => {
+const setSystemColor = (color: string) => {
   window.matchMedia = (query) => ({
     media: query,
     matches: query === `(prefers-color-scheme: ${color})`,
