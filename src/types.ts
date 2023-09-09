@@ -7,3 +7,8 @@ export interface Product {
   images: string[];
   featured: boolean;
 }
+
+export interface User {
+  username: string;
+  isAdmin: boolean;
+}
