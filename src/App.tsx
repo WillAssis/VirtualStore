@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import { User } from './types';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Products from './pages/Products';
@@ -11,9 +13,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 loadPageTheme();
 
 function App() {
+  const [user, setUser] = useState<User | null>({
+    username: 'Username123',
+    isAdmin: true,
+  });
+
   return (
     <>
-      <Header />
+      <Header
+        user={user}
+        logout={() => {
+          setUser(null);
+        }}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/produtos" element={<Products />} />
