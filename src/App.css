@@ -31,6 +31,16 @@
   margin: 0;
 }
 
+#root {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+body {
+  width: 100vw;
+  background-color: var(--background-primary);
+}
+
 /* Estilos ProductDetails */
 
 .thumbnail-wrapper {
