@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Dropdown.css';
 
 interface Params {
@@ -10,11 +10,18 @@ function Dropdown({ username, logout }: Params) {
   const [open, setOpen] = useState(false);
   const menu = useRef<HTMLDivElement | null>(null);
 
-  document.body.addEventListener('click', (e: MouseEvent) => {
+  function closeMenu(e: MouseEvent) {
     const target = e.target as HTMLElement;
     if (menu.current && open && !menu.current.contains(target)) {
       setOpen(!open);
     }
+  }
+
+  useEffect(() => {
+    document.body.addEventListener('click', closeMenu);
+    return () => {
+      document.body.removeEventListener('click', closeMenu);
+    };
   });
 
   return (
