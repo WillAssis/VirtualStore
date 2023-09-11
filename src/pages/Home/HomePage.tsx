@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Banner from '../components/Banner/Banner';
-import Information from '../components/Information/Information';
-import FeaturedProducts from '../components/FeaturedProducts/FeaturedProducts';
+import Banner from '../../components/Banner/Banner';
+import Information from '../../components/Information/Information';
+import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import { Container } from 'react-bootstrap';
 
 function Home() {
