@@ -1,0 +1,38 @@
+.homepage-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 2rem 0;
+  background-image: var(--home-image);
+  background-size: cover;
+  color: var(--font);
+}
+
+.homepage-main > h1 {
+  width: min(40rem, 70vw);
+}
+
+.homepage-main > p {
+  font-size: 1.4rem;
+}
+
+.homepage-main > p:last-child {
+  font-size: 1rem;
+}
+
+.homepage-main .accent-text {
+  color: var(--accent);
+}
+
+.homepage-main ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.homepage-main ul > li {
+  width: min(15rem, 25vw);
+}
