@@ -1,0 +1,27 @@
+.homepage-about {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 2rem min(20%, 20vw) 5rem;
+  background-color: var(--background-primary);
+  color: var(--font);
+}
+
+.homepage-about > h2 {
+  font-size: 1.8rem;
+}
+
+.homepage-about > h2,
+.homepage-about > p {
+  text-align: center;
+}
+
+.homepage-about .accent-text {
+  color: var(--accent);
+}
+
+.homepage-about > img {
+  width: min(20rem, 70vw);
+  box-shadow: 1rem 1rem 0 var(--font);
+}
