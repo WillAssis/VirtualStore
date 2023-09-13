@@ -36,3 +36,20 @@
 .homepage-main ul > li {
   width: min(15rem, 25vw);
 }
+
+@media screen and (max-width: 580px) {
+  .homepage-main .link-button:hover,
+  .homepage-main .link-button:focus {
+    border: 2px solid var(--font);
+  }
+
+  .homepage-main .link-button > span {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
