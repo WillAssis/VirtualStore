@@ -1,51 +1,53 @@
-import { Card, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Loading from '../Loading/Loading';
+import ProductCard from '../Cards/ProductCard';
 import { Product } from '../../types';
+import './FeaturedProducts.css';
 
-interface FeaturedProductsProps {
-  products: Product[];
-}
+function FeaturedProducts() {
+  const [error, setError] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [failedFetchChecker, setFailedFetchChecker] = useState(false);
 
-function FeaturedProducts({ products }: FeaturedProductsProps) {
-  if (!Array.isArray(products)) {
-    return null; // ou tratamento de erro adequado
-  }
+  // Em caso de falha, a requisição é feita novamente após 10 segundos
+  useEffect(() => {
+    fetch('http://localhost:3333/destaques')
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data.products.slice(0, 4));
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
 
-  const featuredProducts = products
-    .filter((product) => product.featured)
-    .slice(0, 4);
+        setTimeout(() => {
+          setFailedFetchChecker(!failedFetchChecker);
+        }, 10000);
+
+        if (failedFetchChecker) {
+          setError('Erro: verifique sua conexão');
+        }
+      });
+  }, [failedFetchChecker]);
 
   return (
-    <Container>
-      <h3 className="text-center mt-4 mb-4">Produtos em Destaque</h3>
-      <Row>
-        {featuredProducts.map((product) => (
-          <Col key={product.slug} md={3}>
-            <Card className="mb-4" style={{ boxShadow: '3px 3px 10px #ccc' }}>
-              <Card.Text
-                className="fs-5 m-0 p-2 text-dark fw-semibold align-items-center text-center"
-                style={{ height: '75px', backgroundColor: '#ededed' }}
-              >
-                {product.name}
-              </Card.Text>
-              <Link to={`/produtos/${product.slug}`}>
-                <Card.Img
-                  variant="top"
-                  src={product.images[0]}
-                  alt={product.name}
-                />
-              </Link>
-              <Card.Text
-                className="fs-5 p-1 fw-semibold p-2"
-                style={{ color: '#873143', backgroundColor: '#ededed' }}
-              >
-                Preço: R$ {product.price.toFixed(2)}
-              </Card.Text>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <section aria-label="Produtos em destaque" className="featured-products">
+      {isLoading ? (
+        <Loading error={error} />
+      ) : (
+        <>
+          <h2>Produtos em Destaque</h2>
+          <ul className="products-container">
+            {products.map((product) => (
+              <li key={product.id}>
+                <ProductCard product={product} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
   );
 }
 
