@@ -1,0 +1,39 @@
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-screen > .spinner {
+  width: 5rem;
+  height: 5rem;
+  border: 0.7rem solid transparent;
+  border-top: 0.7rem solid var(--special);
+  border-right: 0.7rem solid var(--special);
+  border-bottom: 0.7rem solid var(--special);
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
+}
+
+.loading-screen > p {
+  font-weight: bold;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
