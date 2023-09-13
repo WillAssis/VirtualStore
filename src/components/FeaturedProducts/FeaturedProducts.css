@@ -1,0 +1,29 @@
+.featured-products {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  padding: 2rem;
+}
+
+.featured-products > h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.featured-products > ul {
+  padding: 0 2rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 70rem;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+  .featured-products > ul {
+    padding: 0 3rem;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
