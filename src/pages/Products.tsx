@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import ProductCard from '../components/ProductCard/ProductCard';
+import ProductCard from '../components/Cards/ProductCard';
 import Pagination from '../components/Pagination/Pagination';
 import { Product } from '../types';
 

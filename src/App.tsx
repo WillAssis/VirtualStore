@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import { User } from './types';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import ProductDetails from './pages/ProductDetails';
 import Products from './pages/Products';
 import Header from './components/Header/Header';
