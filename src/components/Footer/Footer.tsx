@@ -1,74 +1,68 @@
-import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './Footer.css';
 
 function Footer() {
   return (
-    <footer style={{ backgroundColor: '#D9D9D9', padding: '1.2rem' }}>
-      <Container className="fw-semibold">
-        <Row className="d-flex" style={{ fontSize: '0.75rem' }}>
-          <Col md={9}>
-            <div className="d-flex">
-              <p className="me-3">Termos e Condições</p>
-              <p className="me-3">Acessibilidade</p>
-              <p className="me-3">Segurança</p>
-              <p>Portfólio</p>
-            </div>
-            <div style={{ fontSize: '0.75rem' }}>
-              <p>Copyright © 2023</p>
-              <p>
-                CNPJ nº 66.666.666/6666-66 / Av. AAAAAAA nº 666, aaaaa, AAAA/SP
-                - CEP 66666-666 - Empresa AAAAAAAAAA
-              </p>
-            </div>
-          </Col>
-          <Col md={3}>
-            <p className="fs-6">Contatos: </p>
-            <div className="d-flex">
-              <Link
-                target="_blank"
-                to="https://www.facebook.com/Solus2018/?locale=pt_BR"
-              >
-                <img
-                  src="/icons/facebook-icon.svg"
-                  className="me-3"
-                  width={'30px'}
-                  alt="Facebook"
-                />
-              </Link>
-              <Link
-                target="_blank"
-                to="https://www.instagram.com/soluscasamentos/"
-              >
-                <img
-                  src="/icons/instagram-icon.svg"
-                  className="me-3"
-                  width={'30px'}
-                  alt="Instagram"
-                />
-              </Link>
-              <Link to="/">
-                <img
-                  src="/icons/twitter-icon.svg"
-                  className="me-3"
-                  width={'30px'}
-                  alt="Twitter"
-                />
-              </Link>
-              <Link
-                target="_blank"
-                to="https://shopee.com.br/soluspersonalizados"
-              >
-                <img
-                  src="/icons/shopee-icon.svg"
-                  className="me-3"
-                  width={'30px'}
-                  alt="Shopee"
-                />
-              </Link>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+    <footer>
+      <div className="informations">
+        <div className="about">
+          <h3>Sobre nós</h3>
+          <p>Oferecemos artigos personalizados para bodas e casamentos</p>
+        </div>
+        <div className="links">
+          <div>
+            <h3>Conteúdo</h3>
+            <nav aria-label="Conteúdo">
+              <ul>
+                <li>
+                  <Link to="/">Início</Link>
+                </li>
+                <li>
+                  <Link to="/produtos">Produtos</Link>
+                </li>
+                <li>
+                  <Link to="/">Cadastro</Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div>
+            <h3>Contatos</h3>
+            <nav aria-label="Redes sociais">
+              <ul>
+                <li>
+                  <Link
+                    target="_blank"
+                    to="https://www.facebook.com/Solus2018/?locale=pt_BR"
+                  >
+                    Facebook
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
+                    to="https://www.instagram.com/soluscasamentos/"
+                  >
+                    Instagram
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
+                    to="https://shopee.com.br/soluspersonalizados"
+                  >
+                    Shopee
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div className="legal-informations">
+        <p>Copyright © 2023 SOLUS Personalizados</p>
+        <p>CNPJ nº 55.555.555/5555-55</p>
+      </div>
     </footer>
   );
 }
