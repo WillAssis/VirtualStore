@@ -1,0 +1,79 @@
+.theme-button {
+  background-color: transparent;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  padding: 1.5rem;
+  transition: transform 0.5s ease-in-out;
+}
+
+.theme-button:focus,
+.theme-button:hover {
+  transform: scale(1.2);
+}
+
+:root.dark .theme-button:focus > svg:first-child + svg,
+:root.dark .theme-button:hover > svg:first-child + svg {
+  animation: sunRotate 15s infinite 0s linear;
+}
+
+:root.light .theme-button:focus > svg:first-child,
+:root.light .theme-button:hover > svg:first-child {
+  animation: moonRotate 5s infinite 0s linear;
+}
+
+.theme-button > svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out 0.5s;
+}
+
+.theme-button > svg > path {
+  fill: var(--font);
+  transition: fill 0.5s ease-in-out;
+}
+
+.theme-button:focus > svg > path,
+.theme-button:hover > svg > path {
+  fill: var(--accent);
+}
+
+:root.dark .theme-button > svg:first-child,
+:root.light .theme-button > svg:first-child + svg {
+  opacity: 0;
+}
+
+@keyframes moonRotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(25deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes sunRotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

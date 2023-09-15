@@ -15,11 +15,30 @@
   --special: #e1c35d;
   --accent: #77a5cd;
   --logo-color: #fff;
-  --bg-color-primary: #0a0b0d;
-  --bg-color-secondary: #121212;
-  --bg-color-opaque: rgba(10, 11, 13, 0.7);
+  --background-primary: #0a0b0d;
+  --background-secondary: #121212;
+  --background-opaque: rgba(10, 11, 13, 0.7);
   --home-image: url('./assets/images/home-background-dark.jpg');
   --home-dashboard: url('./assets/images/dashboard-background-dark.jpg');
+}
+
+* {
+  box-sizing: border-box;
+  list-style: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+body {
+  width: 100vw;
+  background-color: var(--background-primary);
 }
 
 /* Estilos ProductDetails */
