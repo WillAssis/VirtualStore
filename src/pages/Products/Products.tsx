@@ -45,18 +45,21 @@ function Products() {
       });
   }, [currentPage, searchTerm, failedFetchChecker]);
 
-  const handlePageChange = (page: number) => {
+  const jumpToPage = (page: number) => {
+    setIsLoading(true);
     setCurrentPage(page);
   };
 
-  const goToPreviousPage = () => {
+  const previousPage = () => {
     if (currentPage > 1) {
+      setIsLoading(true);
       setCurrentPage(currentPage - 1);
     }
   };
 
-  const goToNextPage = () => {
+  const nextPage = () => {
     if (currentPage < pages) {
+      setIsLoading(true);
       setCurrentPage(currentPage + 1);
     }
   };
@@ -81,9 +84,9 @@ function Products() {
           <Pagination
             currentPage={currentPage}
             pages={pages}
-            onPageChange={handlePageChange}
-            onPreviousPage={goToPreviousPage}
-            onNextPage={goToNextPage}
+            jumpToPage={jumpToPage}
+            nextPage={nextPage}
+            previousPage={previousPage}
           />
         </>
       )}
