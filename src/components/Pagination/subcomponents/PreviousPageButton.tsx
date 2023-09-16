@@ -6,6 +6,7 @@ interface Params {
 function PreviousPageButton({ previousPage, disabled }: Params) {
   return (
     <button
+      className="pagination-previous"
       onClick={previousPage}
       aria-label="Página anterior"
       disabled={disabled}

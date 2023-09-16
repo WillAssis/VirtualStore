@@ -5,7 +5,12 @@ interface Params {
 
 function NextPageButton({ nextPage, disabled }: Params) {
   return (
-    <button onClick={nextPage} aria-label="Próxima página" disabled={disabled}>
+    <button
+      className={'pagination-next'}
+      onClick={nextPage}
+      aria-label="Próxima página"
+      disabled={disabled}
+    >
       <svg
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"

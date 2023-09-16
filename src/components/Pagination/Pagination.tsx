@@ -1,6 +1,7 @@
 import NextPageButton from './subcomponents/NextPageButton';
 import PageNumberButton from './subcomponents/PageNumberButton';
 import PreviousPageButton from './subcomponents/PreviousPageButton';
+import './Pagination.css';
 
 interface Params {
   currentPage: number;
