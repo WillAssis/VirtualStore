@@ -1,4 +1,4 @@
-import productImg from '../../assets/images/mini-calendario-de-mesa-personalizado.jpg';
+import productImg from '../../../assets/images/mini-calendario-de-mesa-personalizado.jpg';
 import './About.css';
 
 function About() {
