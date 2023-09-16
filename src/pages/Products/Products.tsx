@@ -71,6 +71,7 @@ function Products() {
     event.preventDefault();
     const input = document.getElementById('search') as HTMLInputElement;
     setSearchTerm(input.value);
+    setCurrentPage(1);
     input.value = '';
   };
 
