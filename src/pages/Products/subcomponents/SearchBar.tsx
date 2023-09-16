@@ -11,12 +11,12 @@ function SearchBar({ search }: Params) {
       onSubmit={search}
       aria-label="Pesquisar produto"
     >
-      <label htmlFor="search">Pesquisar produto</label>
+      <label htmlFor="search">Pesquisar: </label>
       <input
         id="search"
         name="search"
         type="search"
-        placeholder="Pesquisar..."
+        placeholder="Pesquisar produto"
       ></input>
       <button>Buscar</button>
     </form>
