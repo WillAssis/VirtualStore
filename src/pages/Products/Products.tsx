@@ -46,8 +46,10 @@ function Products() {
   }, [currentPage, searchTerm, failedFetchChecker]);
 
   const jumpToPage = (page: number) => {
-    setIsLoading(true);
-    setCurrentPage(page);
+    if (page !== currentPage) {
+      setIsLoading(true);
+      setCurrentPage(page);
+    }
   };
 
   const previousPage = () => {
