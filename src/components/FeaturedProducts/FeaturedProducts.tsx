@@ -16,7 +16,10 @@ function FeaturedProducts() {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.products.slice(0, 4));
-        setIsLoading(false);
+        // Tempo mínimo de 0.5s para carregar
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       })
       .catch((error) => {
         console.error('Error fetching products:', error);
