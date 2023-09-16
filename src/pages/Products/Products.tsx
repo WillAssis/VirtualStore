@@ -3,6 +3,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import SearchBar from './subcomponents/SearchBar';
 import ProductList from './subcomponents/ProductList';
 import { Product } from '../../types';
+import './Products.css';
 
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
