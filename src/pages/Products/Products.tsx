@@ -77,7 +77,7 @@ function Products() {
         <>
           <Title />
           <SearchBar search={handleSearch} />
-          <ProductList products={products} />
+          <ProductList products={products} searchTerm={searchTerm} />
           <Pagination
             currentPage={currentPage}
             pages={pages}
