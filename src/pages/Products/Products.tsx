@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import generateSearchURL from '../../utils/generateSearchURL';
 import Pagination from '../../components/Pagination/Pagination';
+import Title from './subcomponents/Title';
 import SearchBar from './subcomponents/SearchBar';
 import ProductList from './subcomponents/ProductList';
 import { Product } from '../../types';
@@ -52,16 +53,7 @@ function Products() {
 
   return (
     <main className="product-page">
-      <h2>
-        <svg
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
-          <path d="M12,18H6V14H12M21,14V12L20,7H4L3,12V14H4V20H14V14H18V20H20V14M20,4H4V6H20V4Z" />
-        </svg>
-        Mostrando Produtos
-      </h2>
+      <Title />
       <SearchBar search={handleSearch} />
       <ProductList products={products} />
       <Pagination
