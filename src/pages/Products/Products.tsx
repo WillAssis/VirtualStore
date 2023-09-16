@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Pagination from '../../components/Pagination/Pagination';
+import SearchBar from './subcomponents/SearchBar';
 import ProductList from './subcomponents/ProductList';
 import { Product } from '../../types';
 
@@ -9,7 +10,7 @@ function Products() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [pages, setPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -25,11 +26,13 @@ function Products() {
   }, [currentPage]);
 
   useEffect(() => {
-    const filteredProducts = products.filter((product) =>
-      (product.name ?? '').toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    if (searchTerm) {
+      const filteredProducts = products.filter((product) =>
+        (product.name ?? '').toLowerCase().includes(searchTerm.toLowerCase())
+      );
 
-    setFilteredProducts(filteredProducts);
+      setFilteredProducts(filteredProducts);
+    }
   }, [products, searchTerm]);
 
   const handlePageChange = (page: number) => {
@@ -48,8 +51,11 @@ function Products() {
     }
   };
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const input = document.getElementById('search') as HTMLInputElement;
+    setSearchTerm(input.value);
+    input.value = '';
   };
 
   useEffect(() => {
@@ -61,7 +67,7 @@ function Products() {
   }, [filteredProducts, searchTerm]);
 
   return (
-    <>
+    <main className="product-page">
       <h3
         style={{ backgroundColor: '#D9D9D9' }}
         className="mt-3 mb-3 text-center p-2"
@@ -69,19 +75,7 @@ function Products() {
         Mostrando Produtos
       </h3>
       <Container>
-        <Row>
-          <Col xs={12}>
-            <div className="shadow-sm">
-              <input
-                type="text"
-                className="w-100 p-1 border-dark border-opacity-10"
-                placeholder="Pesquisar produtos"
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-            </div>
-          </Col>
-        </Row>
+        <SearchBar search={handleSearch} />
         <ProductList products={products} />
         <Pagination
           currentPage={currentPage}
@@ -91,7 +85,7 @@ function Products() {
           onNextPage={goToNextPage}
         />
       </Container>
-    </>
+    </main>
   );
 }
 
