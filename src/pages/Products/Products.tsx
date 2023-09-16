@@ -4,17 +4,20 @@ import Pagination from '../../components/Pagination/Pagination';
 import Title from './subcomponents/Title';
 import SearchBar from './subcomponents/SearchBar';
 import ProductList from './subcomponents/ProductList';
+import Loading from '../../components/Loading/Loading';
 import { Product } from '../../types';
 import './Products.css';
 
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [pages, setPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [failedFetchChecker, setFailedFetchChecker] = useState(false);
   const [error, setError] = useState('');
 
+  // Em caso de falha, a requisição é feita novamente após 10 segundos
   useEffect(() => {
     const url = generateSearchURL(currentPage, searchTerm);
     fetch(url)
@@ -22,11 +25,25 @@ function Products() {
       .then((data) => {
         setProducts(data.products);
         setPages(data.pages);
+        // Tempo mínimo de 0.5s para carregar a página
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       })
       .catch((error) => {
         console.log('Ocorreu um erro ao obter os produtos:', error);
+
+        setTimeout(() => {
+          setFailedFetchChecker(!failedFetchChecker);
+        }, 10000);
+
+        if (failedFetchChecker) {
+          setError(
+            'Não foi possível carregar os produtos, verifique sua conexão'
+          );
+        }
       });
-  }, [currentPage, searchTerm]);
+  }, [currentPage, searchTerm, failedFetchChecker]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -45,6 +62,7 @@ function Products() {
   };
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     event.preventDefault();
     const input = document.getElementById('search') as HTMLInputElement;
     setSearchTerm(input.value);
@@ -53,16 +71,22 @@ function Products() {
 
   return (
     <main className="product-page">
-      <Title />
-      <SearchBar search={handleSearch} />
-      <ProductList products={products} />
-      <Pagination
-        currentPage={currentPage}
-        pages={pages}
-        onPageChange={handlePageChange}
-        onPreviousPage={goToPreviousPage}
-        onNextPage={goToNextPage}
-      />
+      {isLoading ? (
+        <Loading error={error} />
+      ) : (
+        <>
+          <Title />
+          <SearchBar search={handleSearch} />
+          <ProductList products={products} />
+          <Pagination
+            currentPage={currentPage}
+            pages={pages}
+            onPageChange={handlePageChange}
+            onPreviousPage={goToPreviousPage}
+            onNextPage={goToNextPage}
+          />
+        </>
+      )}
     </main>
   );
 }
