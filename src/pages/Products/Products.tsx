@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import ProductCard from '../../components/Cards/ProductCard';
 import Pagination from '../../components/Pagination/Pagination';
+import ProductList from './subcomponents/ProductList';
 import { Product } from '../../types';
 
 function Products() {
@@ -82,19 +82,7 @@ function Products() {
             </div>
           </Col>
         </Row>
-        <Row>
-          {error ? (
-            <Col xs={12} className="text-center">
-              <p>{error}</p>
-            </Col>
-          ) : (
-            (searchTerm ? filteredProducts : products).map((product) => (
-              <Col xs={12} sm={6} md={4} lg={3}>
-                <ProductCard product={product} />
-              </Col>
-            ))
-          )}
-        </Row>
+        <ProductList products={products} />
         <Pagination
           currentPage={currentPage}
           pages={pages}
