@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import generateSearchURL from '../../utils/generateSearchURL';
 import Pagination from '../../components/Pagination/Pagination';
 import SearchBar from './subcomponents/SearchBar';
 import ProductList from './subcomponents/ProductList';
@@ -14,7 +15,8 @@ function Products() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3333/produtos?page=${currentPage}`)
+    const url = generateSearchURL(currentPage, searchTerm);
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.products);
@@ -23,17 +25,7 @@ function Products() {
       .catch((error) => {
         console.log('Ocorreu um erro ao obter os produtos:', error);
       });
-  }, [currentPage]);
-
-  useEffect(() => {
-    if (searchTerm) {
-      const filteredProducts = products.filter((product) =>
-        (product.name ?? '').toLowerCase().includes(searchTerm.toLowerCase())
-      );
-
-      setFilteredProducts(filteredProducts);
-    }
-  }, [products, searchTerm]);
+  }, [currentPage, searchTerm]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -57,14 +49,6 @@ function Products() {
     setSearchTerm(input.value);
     input.value = '';
   };
-
-  useEffect(() => {
-    if (filteredProducts.length === 0 && searchTerm !== '') {
-      setError(`Nenhum produto encontrado com o nome ${searchTerm}`);
-    } else {
-      setError('');
-    }
-  }, [filteredProducts, searchTerm]);
 
   return (
     <main className="product-page">
