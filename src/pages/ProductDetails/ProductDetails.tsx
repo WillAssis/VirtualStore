@@ -4,7 +4,6 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import Title from './subcomponents/Title';
 import { Product } from '../../types';
 import './ProductDetails.css';
-import '../../App.css';
 
 function ProductDetails() {
   const { slug } = useParams<{ slug: string }>();

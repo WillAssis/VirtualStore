@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart';
 import loadPageTheme from './utils/loadPageTheme';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 loadPageTheme();
 
