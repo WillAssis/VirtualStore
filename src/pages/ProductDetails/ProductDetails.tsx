@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import Title from './subcomponents/Title';
 import { Product } from '../../types';
+import './ProductDetails.css';
 import '../../App.css';
 
 function ProductDetails() {
@@ -71,19 +73,8 @@ function ProductDetails() {
   const { name, description, images } = product;
 
   return (
-    <>
-      <h3
-        className="mt-3 mb-3 text-center p-2"
-        style={{ backgroundColor: '#D9D9D9' }}
-      >
-        <img
-          src="/icons/sacola.svg"
-          className="mb-2"
-          alt="Carrinho"
-          style={{ width: '25px', marginRight: '10px' }}
-        />
-        Comprar Produto
-      </h3>
+    <main className="product-details-page">
+      <Title />
       <Container>
         <Row>
           <Col lg={1} mt={3}>
@@ -152,7 +143,7 @@ function ProductDetails() {
           </Col>
         </Row>
       </Container>
-    </>
+    </main>
   );
 }
 
