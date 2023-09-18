@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import { Product } from '../types';
-import '../App.css';
+import { Product } from '../../types';
+import '../../App.css';
 
 function ProductDetails() {
   const { slug } = useParams<{ slug: string }>();
