@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import Title from './subcomponents/Title';
+import ImageSlider from './subcomponents/ImageSlider';
 import { Product } from '../../types';
 import './ProductDetails.css';
 
 function ProductDetails() {
   const { slug } = useParams<{ slug: string }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [mainImage, setMainImage] = useState<string>('');
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
   const navigate = useNavigate();
 
@@ -18,16 +18,6 @@ function ProductDetails() {
       .then((data) => setProduct(data))
       .catch((error) => console.log(error));
   }, [slug]);
-
-  useEffect(() => {
-    if (product) {
-      setMainImage(product.images[0]);
-    }
-  }, [product]);
-
-  const handleThumbnailClick = (image: string) => {
-    setMainImage(image);
-  };
 
   const increaseQuantity = () => {
     setSelectedQuantity((prevQuantity) => prevQuantity + 1);
@@ -74,29 +64,9 @@ function ProductDetails() {
   return (
     <main className="product-details-page">
       <Title />
+      <ImageSlider images={images} />
       <Container>
         <Row>
-          <Col lg={1} mt={3}>
-            <Row className="row-cols-5 row-cols-lg-1">
-              {images.map((image, index) => (
-                <Col key={index}>
-                  <div className="thumbnail-wrapper mb-4">
-                    <Image
-                      className="mb-4 thumbnail-image"
-                      src={image}
-                      alt=""
-                      onClick={() => handleThumbnailClick(image)}
-                    />
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-          <Col md={5}>
-            <div className="main-image-wrapper">
-              <Image src={mainImage} alt={name} className="main-image" />
-            </div>
-          </Col>
           <Col md={6}>
             <h3>{name}</h3>
             <p className="fs-3 fw-semibold" style={{ color: '#873143' }}>
