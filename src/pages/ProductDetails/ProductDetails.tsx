@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import Title from './subcomponents/Title';
 import ImageSlider from './subcomponents/ImageSlider';
+import QuantityInput from '../../components/QuantityInput/QuantityInput';
 import { Product } from '../../types';
 import './ProductDetails.css';
 
@@ -65,53 +66,34 @@ function ProductDetails() {
     <main className="product-details-page">
       <Title />
       <ImageSlider images={images} />
-      <Container>
-        <Row>
-          <Col md={6}>
-            <h3>{name}</h3>
-            <p className="fs-3 fw-semibold" style={{ color: '#873143' }}>
-              Preço: R$ {getTotalPrice()}
-            </p>
-            <p>{description}</p>
-            <div>
-              <span className="fw-semibold">Quantidade:</span>
-              <Button
-                variant="secondary"
-                className="ms-3 border-0 fw-semibold text-dark"
-                style={{ backgroundColor: '#E1C35D' }}
-                onClick={decreaseQuantity}
-              >
-                -
-              </Button>
-              <span className="ms-2 me-2">{selectedQuantity}</span>
-              <Button
-                variant="secondary"
-                style={{ backgroundColor: '#873143' }}
-                className="border-0 fw-semibold"
-                onClick={increaseQuantity}
-              >
-                +
-              </Button>
-            </div>
-            <Button
-              variant="primary"
-              style={{ backgroundColor: '#E1C35D' }}
-              className="w-100 mt-4 border-0 text-dark"
-              onClick={() => handleAddToCart()}
-            >
-              Comprar
-            </Button>
-            <Button
-              variant="secondary"
-              className="w-100 mt-3 mb-3 border-0"
-              style={{ backgroundColor: '#873143' }}
-              onClick={() => handleAddToCart(false)}
-            >
-              Adicionar ao Carrinho
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+      <h3>{name}</h3>
+      <p className="fs-3 fw-semibold" style={{ color: '#873143' }}>
+        Preço: R$ {getTotalPrice()}
+      </p>
+      <p>{description}</p>
+      <div>
+        <span className="fw-semibold">Quantidade:</span>
+        <QuantityInput
+          quantity={selectedQuantity}
+          changeQuantity={setSelectedQuantity}
+        />
+      </div>
+      <Button
+        variant="primary"
+        style={{ backgroundColor: '#E1C35D' }}
+        className="w-100 mt-4 border-0 text-dark"
+        onClick={() => handleAddToCart()}
+      >
+        Comprar
+      </Button>
+      <Button
+        variant="secondary"
+        className="w-100 mt-3 mb-3 border-0"
+        style={{ backgroundColor: '#873143' }}
+        onClick={() => handleAddToCart(false)}
+      >
+        Adicionar ao Carrinho
+      </Button>
     </main>
   );
 }
