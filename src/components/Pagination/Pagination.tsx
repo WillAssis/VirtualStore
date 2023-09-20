@@ -1,70 +1,48 @@
-import { Button } from 'react-bootstrap';
+import NextPageButton from './subcomponents/NextPageButton';
+import PageNumberButton from './subcomponents/PageNumberButton';
+import PreviousPageButton from './subcomponents/PreviousPageButton';
+import './Pagination.css';
 
-interface PaginationProps {
+interface Params {
   currentPage: number;
   pages: number;
-  onPageChange: (page: number) => void;
-  onPreviousPage: () => void;
-  onNextPage: () => void;
+  jumpToPage: (page: number) => void;
+  nextPage: () => void;
+  previousPage: () => void;
 }
 
 function Pagination({
   currentPage,
   pages,
-  onPageChange,
-  onPreviousPage,
-  onNextPage,
-}: PaginationProps) {
-  const goToPreviousPage = () => {
-    if (currentPage > 1) {
-      onPreviousPage();
-    }
-  };
-
-  const goToNextPage = () => {
-    if (currentPage < pages) {
-      onNextPage();
-    }
-  };
-
+  jumpToPage,
+  nextPage,
+  previousPage,
+}: Params) {
   return (
-    <div className="pagination d-flex justify-content-center mt-3 mb-3">
-      <Button
-        variant="link"
-        onClick={goToPreviousPage}
-        className={`btn btn-sm ${
-          currentPage === 1
-            ? 'btn-light disabled'
-            : 'page-link text-dark fw-semibold'
-        }`}
-        disabled={currentPage === 1}
-      >
-        Anterior
-      </Button>
-      {Array.from({ length: pages }, (_, index) => index + 1).map((page) => (
-        <Button
-          key={page}
-          onClick={() => onPageChange(page)}
-          className={`btn btn-sm ${
-            currentPage === page ? 'btn-primary' : 'btn-light'
-          }`}
-        >
-          {page}
-        </Button>
-      ))}
-      <Button
-        variant="link"
-        onClick={goToNextPage}
-        className={`btn btn-sm ${
-          currentPage === pages
-            ? 'btn-light disabled'
-            : 'page-link text-dark fw-semibold'
-        }`}
-        disabled={currentPage === pages}
-      >
-        Próximo
-      </Button>
-    </div>
+    <nav className="pagination" aria-label="Páginas">
+      <ul>
+        <li>
+          <PreviousPageButton
+            previousPage={previousPage}
+            disabled={currentPage <= 1}
+          />
+        </li>
+        {Array(pages)
+          .fill(null)
+          .map((value, page) => (
+            <li key={page + 1}>
+              <PageNumberButton
+                jumpTo={jumpToPage}
+                page={page + 1}
+                active={currentPage === page + 1}
+              />
+            </li>
+          ))}
+        <li>
+          <NextPageButton nextPage={nextPage} disabled={currentPage >= pages} />
+        </li>
+      </ul>
+    </nav>
   );
 }
 

@@ -1,0 +1,23 @@
+.product-page {
+  background-color: var(--background-secondary);
+  padding: 2rem 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.product-page > h2 {
+  color: var(--font);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-page > h2 > svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.product-page > h2 path {
+  fill: var(--font);
+}

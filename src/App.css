@@ -16,7 +16,7 @@
   --accent: #77a5cd;
   --logo-color: #fff;
   --background-primary: #0a0b0d;
-  --background-secondary: #121212;
+  --background-secondary: #242424;
   --background-opaque: rgba(10, 11, 13, 0.7);
   --home-image: url('./assets/images/home-background-dark.jpg');
   --home-dashboard: url('./assets/images/dashboard-background-dark.jpg');
@@ -33,7 +33,10 @@
 
 #root {
   max-width: 1920px;
+  min-height: 100vh;
   margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 body {

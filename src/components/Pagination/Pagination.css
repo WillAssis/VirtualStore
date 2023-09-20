@@ -1,0 +1,55 @@
+.pagination > ul {
+  width: 100%;
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagination button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+}
+
+.pagination-button {
+  color: var(--font);
+  background-color: var(--background-primary);
+  font-weight: bold;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.pagination .pagination-button:hover,
+.pagination .pagination-button:focus {
+  background-color: var(--accent);
+  color: var(--background-primary);
+}
+
+.pagination-button.active {
+  background-color: var(--special);
+  color: black;
+}
+
+.pagination-next,
+.pagination-previous {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination path {
+  fill: var(--font);
+  transition: fill 0.5s ease-in-out;
+}
+
+.pagination-next:hover path,
+.pagination-next:focus path,
+.pagination-previous:hover path,
+.pagination-previous:focus path {
+  fill: var(--accent);
+}
+
+.pagination-next:disabled path,
+.pagination-previous:disabled path {
+  opacity: 0.3;
+}
