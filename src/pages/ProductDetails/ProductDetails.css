@@ -7,6 +7,11 @@
   color: var(--font);
 }
 
+.product-details-page .accent-text {
+  color: var(--accent);
+  font-weight: bold;
+}
+
 .product-details-page > h2 {
   display: flex;
   align-items: center;
@@ -20,4 +25,46 @@
 
 .product-details-page > h2 path {
   fill: var(--font);
+}
+
+.product-details {
+  display: flex;
+  gap: 2rem;
+}
+
+.product-details > .image-slider {
+  flex-basis: 50%;
+  height: fit-content;
+}
+
+.product-details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.25rem;
+}
+
+.product-details > div > label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.product-details > div > button {
+  background-color: var(--special);
+  color: black;
+  border: none;
+  width: fit-content;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  transition:
+    background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.product-details > div > button:hover,
+.product-details > div > button:focus {
+  background-color: var(--accent);
+  color: var(--background-secondary);
+  transform: scale(1.05);
 }

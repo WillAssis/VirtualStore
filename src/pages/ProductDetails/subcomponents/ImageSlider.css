@@ -1,8 +1,7 @@
 .image-slider {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  gap: 2rem;
-  aspect-ratio: 6 / 5;
+  gap: 1rem;
 }
 
 .image-slider-controls > ul {
@@ -10,7 +9,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
-  gap: 2rem;
+  gap: 1rem;
   padding: 0;
 }
 
