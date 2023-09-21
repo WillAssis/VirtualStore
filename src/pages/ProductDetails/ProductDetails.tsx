@@ -40,7 +40,7 @@ function ProductDetails() {
           <h3 id="product-name">{product.name}</h3>
           <p>{product.description}</p>
           <p>Preço: R$ {product.price.toFixed(2)}</p>
-          <label>
+          <label htmlFor="quantity">
             Quantidade:
             <QuantityInput
               quantity={selectedQuantity}

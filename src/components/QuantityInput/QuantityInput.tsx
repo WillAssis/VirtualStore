@@ -42,6 +42,7 @@ function QuantityInput({ quantity = 1, changeQuantity }: Params) {
         onChange={changeValue}
         type="number"
         name="quantidade"
+        id="quantity"
         value={value}
       ></input>
       <button aria-label="Aumentar" onClick={increase}>
