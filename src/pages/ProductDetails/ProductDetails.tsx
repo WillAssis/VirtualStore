@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import Title from './subcomponents/Title';
 import ImageSlider from './subcomponents/ImageSlider';
 import QuantityInput from '../../components/QuantityInput/QuantityInput';
@@ -24,55 +23,39 @@ function ProductDetails() {
   const handleAddToCart = () => {
     if (product) {
       updateProductToCart(product, selectedQuantity);
-      navigate('/cart', { state: { price: getTotalPrice() } });
+      navigate('/cart');
     }
-  };
-
-  const getTotalPrice = () => {
-    if (product) {
-      return (product.price * selectedQuantity).toFixed(2);
-    }
-    return '0.00';
   };
 
   if (!product) {
     return <div>Loading...</div>;
   }
 
-  const { name, description, images } = product;
-
   return (
     <main className="product-details-page">
       <Title />
-      <ImageSlider images={images} />
-      <h3>{name}</h3>
-      <p className="fs-3 fw-semibold" style={{ color: '#873143' }}>
-        Preço: R$ {getTotalPrice()}
-      </p>
-      <p>{description}</p>
-      <div>
-        <span className="fw-semibold">Quantidade:</span>
-        <QuantityInput
-          quantity={selectedQuantity}
-          changeQuantity={setSelectedQuantity}
-        />
-      </div>
-      <Button
-        variant="primary"
-        style={{ backgroundColor: '#E1C35D' }}
-        className="w-100 mt-4 border-0 text-dark"
-        onClick={handleAddToCart}
-      >
-        Comprar
-      </Button>
-      <Button
-        variant="secondary"
-        className="w-100 mt-3 mb-3 border-0"
-        style={{ backgroundColor: '#873143' }}
-        onClick={handleAddToCart}
-      >
-        Adicionar ao Carrinho
-      </Button>
+      <section className="product-details" aria-labelledby="product-name">
+        <ImageSlider images={product.images} />
+        <div>
+          <h3 id="product-name">{product.name}</h3>
+          <p>{product.description}</p>
+          <p>Preço: R$ {product.price.toFixed(2)}</p>
+          <label>
+            Quantidade:
+            <QuantityInput
+              quantity={selectedQuantity}
+              changeQuantity={setSelectedQuantity}
+            />
+          </label>
+          <p>
+            Valor total:{' '}
+            <span className="accent-text">
+              R$ {(product.price * selectedQuantity).toFixed(2)}
+            </span>
+          </p>
+          <button onClick={handleAddToCart}>Adicionar ao Carrinho</button>
+        </div>
+      </section>
     </main>
   );
 }
