@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import Title from './subcomponents/Title';
 import ImageSlider from './subcomponents/ImageSlider';
 import QuantityInput from '../../components/QuantityInput/QuantityInput';
@@ -19,16 +19,6 @@ function ProductDetails() {
       .then((data) => setProduct(data))
       .catch((error) => console.log(error));
   }, [slug]);
-
-  const increaseQuantity = () => {
-    setSelectedQuantity((prevQuantity) => prevQuantity + 1);
-  };
-
-  const decreaseQuantity = () => {
-    if (selectedQuantity > 1) {
-      setSelectedQuantity((prevQuantity) => prevQuantity - 1);
-    }
-  };
 
   const handleAddToCart = (redirectToCart = true) => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
