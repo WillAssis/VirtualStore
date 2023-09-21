@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import Title from './subcomponents/Title';
 import ImageSlider from './subcomponents/ImageSlider';
 import QuantityInput from '../../components/QuantityInput/QuantityInput';
+import updateProductToCart from '../../utils/updateProductToCart';
 import { Product } from '../../types';
 import './ProductDetails.css';
 
@@ -20,21 +21,9 @@ function ProductDetails() {
       .catch((error) => console.log(error));
   }, [slug]);
 
-  const handleAddToCart = (redirectToCart = true) => {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    const existingItem = cartItems.find(
-      (item: Product) => item.slug === product?.slug
-    );
-
-    if (existingItem) {
-      existingItem.quantity += selectedQuantity;
-    } else {
-      cartItems.push({ ...product, quantity: selectedQuantity });
-    }
-
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-    if (redirectToCart) {
+  const handleAddToCart = () => {
+    if (product) {
+      updateProductToCart(product, selectedQuantity);
       navigate('/cart', { state: { price: getTotalPrice() } });
     }
   };
@@ -72,7 +61,7 @@ function ProductDetails() {
         variant="primary"
         style={{ backgroundColor: '#E1C35D' }}
         className="w-100 mt-4 border-0 text-dark"
-        onClick={() => handleAddToCart()}
+        onClick={handleAddToCart}
       >
         Comprar
       </Button>
@@ -80,7 +69,7 @@ function ProductDetails() {
         variant="secondary"
         className="w-100 mt-3 mb-3 border-0"
         style={{ backgroundColor: '#873143' }}
-        onClick={() => handleAddToCart(false)}
+        onClick={handleAddToCart}
       >
         Adicionar ao Carrinho
       </Button>
