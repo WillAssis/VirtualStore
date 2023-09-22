@@ -52,34 +52,36 @@ function ProductDetails() {
   };
 
   return (
-    <main className="product-details-page">
+    <main aria-label="Carregando produto">
       {isLoading || !product ? (
         <Loading error={error} />
       ) : (
         <>
-          <Title />
-          <section className="product-details" aria-labelledby="product-name">
-            <ImageSlider images={product.images} />
-            <div>
-              <h3 id="product-name">{product.name}</h3>
-              <p>{product.description}</p>
-              <p>Preço: R$ {product.price.toFixed(2)}</p>
-              <label htmlFor="quantity">
-                Quantidade:
-                <QuantityInput
-                  quantity={selectedQuantity}
-                  changeQuantity={setSelectedQuantity}
-                />
-              </label>
-              <p>
-                Valor total:{' '}
-                <span className="accent-text">
-                  R$ {(product.price * selectedQuantity).toFixed(2)}
-                </span>
-              </p>
-              <button onClick={handleAddToCart}>Adicionar ao Carrinho</button>
-            </div>
-          </section>
+          <main className="product-details-page">
+            <Title />
+            <section className="product-details" aria-labelledby="product-name">
+              <ImageSlider images={product.images} />
+              <div>
+                <h3 id="product-name">{product.name}</h3>
+                <p>{product.description}</p>
+                <p>Preço: R$ {product.price.toFixed(2)}</p>
+                <label htmlFor="quantity">
+                  Quantidade:
+                  <QuantityInput
+                    quantity={selectedQuantity}
+                    changeQuantity={setSelectedQuantity}
+                  />
+                </label>
+                <p>
+                  Valor total:{' '}
+                  <span className="accent-text">
+                    R$ {(product.price * selectedQuantity).toFixed(2)}
+                  </span>
+                </p>
+                <button onClick={handleAddToCart}>Adicionar ao Carrinho</button>
+              </div>
+            </section>
+          </main>
           <FeaturedProducts title="Mais produtos" />
         </>
       )}

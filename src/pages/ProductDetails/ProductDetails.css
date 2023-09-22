@@ -29,12 +29,9 @@
 
 .product-details {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
-}
-
-.product-details > .image-slider {
-  flex-basis: 50%;
-  height: fit-content;
 }
 
 .product-details > div {
@@ -42,6 +39,7 @@
   flex-direction: column;
   gap: 1rem;
   font-size: 1.25rem;
+  width: min(35rem, 70vw);
 }
 
 .product-details > div > label {

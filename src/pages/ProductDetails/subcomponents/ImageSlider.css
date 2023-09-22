@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
   gap: 1rem;
+  width: min(35rem, 70vw);
 }
 
 .image-slider-controls > ul {
@@ -43,7 +44,7 @@
 }
 
 .image-slider-controls > ul button.selected::after {
-  border: 4px solid var(--font);
+  border: 2px solid var(--font);
 }
 
 .image-slider-controls > ul button.selected::before,
