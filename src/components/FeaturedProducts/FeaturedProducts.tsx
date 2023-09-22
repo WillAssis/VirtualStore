@@ -4,7 +4,11 @@ import ProductCard from '../Cards/ProductCard';
 import { Product } from '../../types';
 import './FeaturedProducts.css';
 
-function FeaturedProducts() {
+interface Params {
+  title: string;
+}
+
+function FeaturedProducts({ title }: Params) {
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,12 +39,12 @@ function FeaturedProducts() {
   }, [failedFetchChecker]);
 
   return (
-    <section aria-label="Produtos em destaque" className="featured-products">
+    <section aria-labelledby="featured-products" className="featured-products">
       {isLoading ? (
         <Loading error={error} />
       ) : (
         <>
-          <h2>Produtos em Destaque</h2>
+          <h2 id="featured-products">{title}</h2>
           <ul className="products-container">
             {products.map((product) => (
               <li key={product.id}>
