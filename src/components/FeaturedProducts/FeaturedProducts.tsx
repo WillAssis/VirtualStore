@@ -3,12 +3,14 @@ import Loading from '../Loading/Loading';
 import ProductCard from '../Cards/ProductCard';
 import { Product } from '../../types';
 import './FeaturedProducts.css';
+import { Link } from 'react-router-dom';
 
 interface Params {
   title: string;
+  link?: string;
 }
 
-function FeaturedProducts({ title }: Params) {
+function FeaturedProducts({ title, link }: Params) {
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +54,7 @@ function FeaturedProducts({ title }: Params) {
               </li>
             ))}
           </ul>
+          {link ? <Link to={link}>Ver mais</Link> : null}
         </>
       )}
     </section>

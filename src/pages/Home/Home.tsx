@@ -7,7 +7,7 @@ function Home() {
     <>
       <Main />
       <About />
-      <FeaturedProducts title="Produtos em destaque" />
+      <FeaturedProducts title="Produtos em destaque" link="/produtos" />
     </>
   );
 }
