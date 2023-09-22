@@ -69,7 +69,7 @@ function ProductDetails() {
                   Quantidade:
                   <QuantityInput
                     quantity={selectedQuantity}
-                    changeQuantity={setSelectedQuantity}
+                    setQuantity={setSelectedQuantity}
                   />
                 </label>
                 <p>

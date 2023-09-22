@@ -1,35 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './QuantityInput.css';
 
 interface Params {
-  quantity?: number;
-  changeQuantity: (value: number) => void;
+  quantity: number;
+  setQuantity: (quantity: number) => void;
 }
 
-function QuantityInput({ quantity = 1, changeQuantity }: Params) {
-  const [value, setValue] = useState(quantity);
-
-  const increase = () => {
-    changeQuantity(value + 1);
-    setValue(value + 1);
-  };
-
-  const decrease = () => {
-    if (value > 1) {
-      changeQuantity(value - 1);
-      setValue(value - 1);
-    }
-  };
-
-  const changeValue = (event: React.FormEvent<HTMLInputElement>) => {
-    const newValue = Number(event.currentTarget.value);
-    changeQuantity(newValue);
-    setValue(newValue);
-  };
-
+// quantity e setQuantity são hooks externos
+function QuantityInput({ quantity, setQuantity }: Params) {
   return (
     <div className="quantity-input">
-      <button aria-label="Diminuir" onClick={decrease} disabled={value <= 1}>
+      <button
+        aria-label="Diminuir"
+        onClick={() => setQuantity(quantity - 1)}
+        disabled={quantity <= 1}
+      >
         <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
@@ -39,13 +24,15 @@ function QuantityInput({ quantity = 1, changeQuantity }: Params) {
         </svg>
       </button>
       <input
-        onChange={changeValue}
+        onChange={(event: React.FormEvent<HTMLInputElement>) =>
+          setQuantity(Number(event.currentTarget.value))
+        }
         type="number"
         name="quantidade"
         id="quantity"
-        value={value}
+        value={quantity}
       ></input>
-      <button aria-label="Aumentar" onClick={increase}>
+      <button aria-label="Aumentar" onClick={() => setQuantity(quantity + 1)}>
         <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
