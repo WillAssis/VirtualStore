@@ -4,6 +4,7 @@ import Title from './subcomponents/Title';
 import ImageSlider from './subcomponents/ImageSlider';
 import QuantityInput from '../../components/QuantityInput/QuantityInput';
 import Loading from '../../components/Loading/Loading';
+import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import updateProductToCart from '../../utils/updateProductToCart';
 import { Product } from '../../types';
 import './ProductDetails.css';
@@ -79,6 +80,7 @@ function ProductDetails() {
               <button onClick={handleAddToCart}>Adicionar ao Carrinho</button>
             </div>
           </section>
+          <FeaturedProducts title="Mais produtos" />
         </>
       )}
     </main>
