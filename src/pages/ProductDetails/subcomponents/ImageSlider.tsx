@@ -18,6 +18,9 @@ function ImageSlider({ images }: Params) {
 
   return (
     <section className="image-slider" aria-label="Imagens do produto">
+      <section className="image-slider-main" aria-label="Imagem selecionada">
+        <img alt={mainImageAlt} src={images[mainImageIndex]} />
+      </section>
       <nav className="image-slider-controls" aria-label="Selecionar imagem">
         <ul>
           {images.map((img, index) => (
@@ -34,9 +37,6 @@ function ImageSlider({ images }: Params) {
           ))}
         </ul>
       </nav>
-      <section className="image-slider-main" aria-label="Imagem selecionada">
-        <img alt={mainImageAlt} src={images[mainImageIndex]} />
-      </section>
     </section>
   );
 }

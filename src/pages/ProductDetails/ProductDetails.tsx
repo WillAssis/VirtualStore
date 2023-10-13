@@ -61,7 +61,7 @@ function ProductDetails() {
             <Title />
             <section className="product-details" aria-labelledby="product-name">
               <ImageSlider images={product.images} />
-              <div>
+              <div className="product-informations">
                 <h3 id="product-name">{product.name}</h3>
                 <p>{product.description}</p>
                 <p>Preço: R$ {product.price.toFixed(2)}</p>
