@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Container, Button, Card, Row, Col } from 'react-bootstrap';
-import { Product } from '../types';
+import { Product } from '../../types';
 
 interface CartItem {
   id: number;
