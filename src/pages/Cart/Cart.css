@@ -1,0 +1,59 @@
+.cart-page {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-page > h2 {
+  padding: 2rem 5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-page > h2 > svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.cart-page > h2 path {
+  fill: var(--font);
+}
+
+.cart-page > .cart-items {
+  flex: 1;
+}
+
+.cart-page > .empty-cart-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+:root.light .empty-cart-container > a {
+  box-shadow: 4px 4px 4px gray;
+}
+
+.empty-cart-container > p {
+  font-size: 1.4rem;
+}
+
+.empty-cart-container > a {
+  text-decoration: none;
+  font-weight: bold;
+  background-color: var(--special);
+  color: black;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.empty-cart-container > a:hover,
+.empty-cart-container > a:focus {
+  background-color: var(--accent);
+  color: var(--background-primary);
+}
