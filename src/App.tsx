@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { User } from './types';
 import Home from './pages/Home/Home';
 import ProductDetails from './pages/ProductDetails';
@@ -15,10 +15,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 loadPageTheme();
 
 function App() {
-  const [user, setUser] = useState<User | null>({
-    username: 'Username123',
-    isAdmin: true,
-  });
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    fetch('http://localhost:3333/profile', { credentials: 'include' })
+      .then((response) => response.json())
+      .then((data) => setUser(data.user));
+  }, []);
 
   return (
     <>
