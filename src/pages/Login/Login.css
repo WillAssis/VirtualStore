@@ -1,0 +1,88 @@
+.login-page {
+  color: var(--font);
+  background-image: var(--dashboard-image);
+  background-origin: center;
+  background-size: cover;
+  padding: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page > section {
+  background-color: var(--background-opaque);
+}
+
+.login-page .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2.5rem;
+}
+
+.login-page .login-page-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0 3.5rem 1rem;
+}
+
+.login-page-links > a {
+  color: var(--font);
+  text-decoration: underline;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.login-page-links > a:first-child {
+  text-align: center;
+}
+
+.login-page-links > a:hover,
+.login-page-links > a:focus {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.login-page-links > a:focus {
+  outline: 1px solid var(--accent);
+}
+
+.login-form > .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login-form input {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.login-form input:focus {
+  outline: 2px solid var(--font);
+}
+
+.login-form input:not(:focus)[aria-invalid='true'] {
+  outline: 2px solid var(--invalid-input);
+}
+
+.login-form .input-error {
+  color: var(--invalid-input);
+  min-height: 1.5rem;
+}
+
+.login-form > button {
+  background-color: var(--special);
+  color: black;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login-form > button:hover,
+.login-form > button:focus {
+  background-color: var(--accent);
+}
