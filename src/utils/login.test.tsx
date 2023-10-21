@@ -6,8 +6,8 @@ test('Empty name and password', async () => {
 
   expect(success).toBe(false);
   expect(user).toBe(null);
-  expect(errors.usernameError).toBe('Preencha este campo');
-  expect(errors.passwordError).toBe('Preencha este campo');
+  expect(errors.usernameError).toBe('Nome de usuário é requerido');
+  expect(errors.passwordError).toBe('Senha é requerida');
 });
 
 test('Empty password only', async () => {
@@ -17,7 +17,7 @@ test('Empty password only', async () => {
   expect(success).toBe(false);
   expect(user).toBe(null);
   expect(errors.usernameError).toBe('');
-  expect(errors.passwordError).toBe('Preencha este campo');
+  expect(errors.passwordError).toBe('Senha é requerida');
 });
 
 test('Empty name only', async () => {
@@ -26,7 +26,7 @@ test('Empty name only', async () => {
 
   expect(success).toBe(false);
   expect(user).toBe(null);
-  expect(errors.usernameError).toBe('Preencha este campo');
+  expect(errors.usernameError).toBe('Nome de usuário é requerido');
   expect(errors.passwordError).toBe('');
 });
 

@@ -1,10 +1,14 @@
-function validateInput(input: string) {
-  return input.length === 0 ? 'Preencha este campo' : '';
+function validateUsernameValue(inputValue: string) {
+  return inputValue.length === 0 ? 'Nome de usuário é requerido' : '';
+}
+
+function validatePasswordValue(inputValue: string) {
+  return inputValue.length === 0 ? 'Senha é requerida' : '';
 }
 
 async function login(username: string, password: string) {
-  const usernameError = validateInput(username);
-  const passwordError = validateInput(password);
+  const usernameError = validateUsernameValue(username);
+  const passwordError = validatePasswordValue(password);
   const isInputValid = usernameError === '' && passwordError === '';
 
   if (isInputValid) {

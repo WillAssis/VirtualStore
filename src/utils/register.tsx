@@ -1,13 +1,17 @@
-function validateInput(input: string) {
-  return input.length === 0 ? 'Preencha este campo' : '';
+function validateUsernameValue(inputValue: string) {
+  return inputValue.length === 0 ? 'Nome de usuário é requerido' : '';
 }
 
-function validateEmail(email: string) {
-  const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-  const isValid = pattern.test(email);
+function validatePasswordValue(inputValue: string) {
+  return inputValue.length === 0 ? 'Senha é requerida' : '';
+}
 
-  if (email.length === 0) {
-    return 'Preencha este campo';
+function validateEmailValue(inputValue: string) {
+  const pattern = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  const isValid = pattern.test(inputValue);
+
+  if (inputValue.length === 0) {
+    return 'Email é requerido';
   } else if (!isValid) {
     return 'Email inválido. exemplo de email válido: sujeito@gmail.com';
   }
@@ -16,9 +20,9 @@ function validateEmail(email: string) {
 }
 
 async function register(username: string, email: string, password: string) {
-  const usernameError = validateInput(username);
-  const emailError = validateEmail(email);
-  const passwordError = validateInput(password);
+  const usernameError = validateUsernameValue(username);
+  const emailError = validateEmailValue(email);
+  const passwordError = validatePasswordValue(password);
   const isInputValid =
     usernameError === '' && emailError === '' && passwordError === '';
 

@@ -7,9 +7,9 @@ describe('Empty inputs', () => {
 
     expect(success).toBe(false);
     expect(user).toBe(null);
-    expect(errors.usernameError).toBe('Preencha este campo');
-    expect(errors.emailError).toBe('Preencha este campo');
-    expect(errors.passwordError).toBe('Preencha este campo');
+    expect(errors.usernameError).toBe('Nome de usuário é requerido');
+    expect(errors.emailError).toBe('Email é requerido');
+    expect(errors.passwordError).toBe('Senha é requerida');
   });
 
   test('Username empty', async () => {
@@ -18,7 +18,7 @@ describe('Empty inputs', () => {
 
     expect(success).toBe(false);
     expect(user).toBe(null);
-    expect(errors.usernameError).toBe('Preencha este campo');
+    expect(errors.usernameError).toBe('Nome de usuário é requerido');
     expect(errors.emailError).toBe('');
     expect(errors.passwordError).toBe('');
   });
@@ -30,7 +30,7 @@ describe('Empty inputs', () => {
     expect(success).toBe(false);
     expect(user).toBe(null);
     expect(errors.usernameError).toBe('');
-    expect(errors.emailError).toBe('Preencha este campo');
+    expect(errors.emailError).toBe('Email é requerido');
     expect(errors.passwordError).toBe('');
   });
 
@@ -42,7 +42,7 @@ describe('Empty inputs', () => {
     expect(user).toBe(null);
     expect(errors.usernameError).toBe('');
     expect(errors.emailError).toBe('');
-    expect(errors.passwordError).toBe('Preencha este campo');
+    expect(errors.passwordError).toBe('Senha é requerida');
   });
 });
 
