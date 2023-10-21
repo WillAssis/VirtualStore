@@ -13,7 +13,7 @@ function Content() {
             <Link to="/produtos">Produtos</Link>
           </li>
           <li>
-            <Link to="/">Cadastro</Link>
+            <Link to="/cadastro">Cadastro</Link>
           </li>
         </ul>
       </nav>
