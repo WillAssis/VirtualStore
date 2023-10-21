@@ -5,13 +5,12 @@ interface Params {
   setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
+// TODO: incluir mais validações
 function validateEmailValue(inputValue: string) {
   const pattern = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const isValid = pattern.test(inputValue);
 
-  if (inputValue.length === 0) {
-    return 'Email é requerido';
-  } else if (!isValid) {
+  if (!isValid && inputValue.length !== 0) {
     return 'Email inválido. exemplo de email válido: sujeito@gmail.com';
   }
 

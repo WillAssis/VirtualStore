@@ -5,8 +5,9 @@ interface Params {
   setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
+// TODO: incluir mais validações
 function validatePasswordValue(inputValue: string) {
-  return inputValue.length === 0 ? 'Senha é requerida' : '';
+  return '';
 }
 
 function PasswordInput({ value, setValue, error, setError }: Params) {

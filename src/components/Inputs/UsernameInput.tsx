@@ -5,8 +5,9 @@ interface Params {
   setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
+// TODO: incluir mais validações
 function validateUsernameValue(inputValue: string) {
-  return inputValue.length === 0 ? 'Nome de usuário é requerido' : '';
+  return '';
 }
 
 function UsernameInput({ value, setValue, error, setError }: Params) {
