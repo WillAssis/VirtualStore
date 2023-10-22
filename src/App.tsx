@@ -39,7 +39,7 @@ function App() {
         <Route path="/produtos/:slug" element={<ProductDetails />} />
         <Route path="/carrinho" element={<Cart />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/cadastro" element={<Register />} />
+        <Route path="/cadastro" element={<Register setUser={setUser} />} />
       </Routes>
       <Footer />
     </>
