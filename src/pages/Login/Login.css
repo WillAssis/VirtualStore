@@ -1,16 +1,22 @@
 .login-page {
+  position: relative;
   color: var(--font);
   background-image: var(--dashboard-image);
   background-origin: center;
   background-size: cover;
-  padding: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.login-page > .loading-screen {
+  position: absolute;
+  background-color: var(--background-opaque);
+}
+
 .login-page > section {
   background-color: var(--background-opaque);
+  margin: 5rem;
 }
 
 .login-page .login-form {
