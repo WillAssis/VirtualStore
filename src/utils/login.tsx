@@ -19,9 +19,9 @@ async function login(username: string, password: string) {
     const data = await response.json();
 
     return {
-      success: true,
+      success: response.status === 201,
       user: data.user,
-      errors: { usernameError, passwordError },
+      errors: data.errors ?? { usernameError, passwordError },
     };
   }
 
