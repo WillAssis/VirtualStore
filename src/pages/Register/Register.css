@@ -1,0 +1,58 @@
+.register-page {
+  color: var(--font);
+  background-image: var(--dashboard-image);
+  background-origin: center;
+  background-size: cover;
+  padding: 5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-page > .register-form {
+  background-color: var(--background-opaque);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2.5rem;
+  width: min(35rem, 80vw);
+}
+
+.register-form > .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register-form input {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.register-form input:focus {
+  outline: 2px solid var(--font);
+}
+
+.register-form input:not(:focus)[aria-invalid='true'] {
+  outline: 2px solid var(--invalid-input);
+}
+
+.register-form .input-error {
+  color: var(--invalid-input);
+  min-height: 1.5rem;
+}
+
+.register-form > button {
+  background-color: var(--special);
+  color: black;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.register-form > button:hover,
+.register-form > button:focus {
+  background-color: var(--accent);
+}
