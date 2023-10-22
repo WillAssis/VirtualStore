@@ -18,9 +18,11 @@ function App() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    // O catch é temporário até a funcionalidade ser implementada no backend
     fetch('http://localhost:3333/profile', { credentials: 'include' })
       .then((response) => response.json())
-      .then((data) => setUser(data.user));
+      .then((data) => setUser(data.user))
+      .catch(() => setUser({ username: 'Temp_user', isAdmin: true }));
   }, []);
 
   return (
