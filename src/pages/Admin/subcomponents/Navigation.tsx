@@ -3,8 +3,7 @@ import './Navigation.css';
 
 function Navigation() {
   return (
-    <nav className="dashboard-nav" aria-label="">
-      <h2>Dashboard</h2>
+    <nav className="dashboard-nav" aria-label="Navegação do Dashboard">
       <ul>
         <li>
           <NavLink to="/admin" end>
