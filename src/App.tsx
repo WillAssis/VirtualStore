@@ -42,7 +42,7 @@ function App() {
         <Route path="/carrinho" element={<Cart />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/cadastro" element={<Register setUser={setUser} />} />
-        <Route path="/admin/*" element={<Admin />} />
+        <Route path="/admin/*" element={<Admin user={user} />} />
       </Routes>
       <Footer />
     </>

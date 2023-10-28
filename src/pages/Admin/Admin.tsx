@@ -1,11 +1,22 @@
-import { Routes, Route } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 import Navigation from './subcomponents/Navigation';
 import AdminHome from './subcomponents/AdminHome';
 import AdminProducts from './subcomponents/AdminProducts';
 import ProductForm from './subcomponents/ProductForm';
+import { User } from '../../types';
 import './Admin.css';
 
-function Admin() {
+interface Params {
+  user: User | null;
+}
+
+function Admin({ user }: Params) {
+  const navigate = useNavigate();
+
+  if (!user || !user.isAdmin) {
+    navigate('/');
+  }
+
   return (
     <div className="admin-page">
       <Navigation />
