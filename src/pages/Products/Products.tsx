@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import generateSearchURL from '../../utils/generateSearchURL';
 import Pagination from '../../components/Pagination/Pagination';
 import Title from './subcomponents/Title';
-import SearchBar from './subcomponents/SearchBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import ProductList from './subcomponents/ProductList';
 import Loading from '../../components/Loading/Loading';
 import { Product } from '../../types';
