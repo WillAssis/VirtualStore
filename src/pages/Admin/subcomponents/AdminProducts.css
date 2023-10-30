@@ -1,0 +1,57 @@
+.admin-products {
+  color: var(--font);
+  background-image: var(--home-dashboard);
+  background-size: cover;
+}
+
+.admin-products > .loading-screen,
+:root.dark .admin-products > .product-list-wrapper {
+  background-color: var(--background-opaque);
+}
+
+.product-list-wrapper {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+.product-list-controls {
+  display: flex;
+  gap: 2rem;
+}
+
+.product-list-controls > .search-bar {
+  flex: 1;
+}
+
+.product-list-controls > a {
+  text-decoration: none;
+  opacity: 0.7;
+  background-color: var(--special);
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  transition:
+    opacity 0.3s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+.product-list-controls > a:hover,
+.product-list-controls > a:focus {
+  opacity: 1;
+  background-color: var(--accent);
+  color: var(--background-primary);
+}
+
+.admin-products .product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 2rem;
+  padding: 0;
+}
+
+.admin-products .product-list .admin-product-card {
+  height: 100%;
+}
