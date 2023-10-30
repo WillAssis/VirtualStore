@@ -1,0 +1,82 @@
+.admin-product-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--background-primary);
+}
+
+.admin-product-card > .product-images {
+  flex: 2;
+}
+
+.admin-product-card > .product-info {
+  flex: 3;
+}
+
+.admin-product-card > .product-images img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.admin-product-card .image-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+}
+
+.admin-product-card h3 {
+  font-size: 1.4rem;
+}
+
+.admin-product-card .product-image-selector {
+  height: 1rem;
+  width: 2rem;
+  background-color: var(--font);
+  border: none;
+  border-radius: 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.admin-product-card .product-image-selector.active {
+  background-color: var(--special);
+}
+
+.admin-product-card .product-image-selector:not(.active):hover,
+.admin-product-card .product-image-selector:not(.active):focus {
+  background-color: var(--accent);
+}
+
+.admin-product-card > .product-info {
+  display: grid;
+  grid-template-rows: 1fr 1fr auto auto;
+}
+
+.admin-product-card .product-controls {
+  display: flex;
+  justify-content: right;
+  gap: 0.5rem;
+}
+
+.product-controls svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.product-controls path {
+  fill: var(--font);
+  transition: fill 0.3s ease-in-out;
+}
+
+.product-controls > button,
+.product-controls > a {
+  background-color: transparent;
+  border: none;
+}
+
+.product-controls > button:hover path,
+.product-controls > button:focus path,
+.product-controls > a:hover path,
+.product-controls > a:focus path {
+  fill: var(--accent);
+}
