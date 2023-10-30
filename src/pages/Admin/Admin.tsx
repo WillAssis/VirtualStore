@@ -23,7 +23,8 @@ function Admin({ user }: Params) {
       <Routes>
         <Route path="/" element={<AdminHome />} />
         <Route path="/produtos" element={<AdminProducts />} />
-        <Route path="/produtos/:slug" element={<ProductForm />} />
+        <Route path="/produtos/criar" element={<ProductForm />} />
+        <Route path="/produtos/editar/:slug" element={<ProductForm />} />
       </Routes>
     </div>
   );
