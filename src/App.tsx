@@ -2,15 +2,16 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { User } from './types';
 import Home from './pages/Home/Home';
-import ProductDetails from './pages/ProductDetails';
 import Products from './pages/Products/Products';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart';
 import loadPageTheme from './utils/loadPageTheme';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 loadPageTheme();
 

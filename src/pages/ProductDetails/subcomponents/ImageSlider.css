@@ -1,0 +1,59 @@
+.image-slider {
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  gap: 1rem;
+  width: min(35rem, 70vw);
+}
+
+.image-slider-main > img {
+  width: 100%;
+  height: 100%;
+}
+
+.image-slider-controls > ul {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  padding: 0;
+}
+
+.image-slider-controls > ul button {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-slider-controls > ul button:not(.selected):hover,
+.image-slider-controls > ul button:focus {
+  transform: scale(1.05);
+}
+
+.image-slider-controls > ul button::after,
+.image-slider-controls > ul button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-slider-controls > ul button::before {
+  background-color: var(--background-opaque);
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-slider-controls > ul button.selected::after {
+  border: 2px solid var(--font);
+}
+
+.image-slider-controls > ul button.selected::before,
+.image-slider-controls > ul button:hover::before,
+.image-slider-controls > ul button:focus::before {
+  opacity: 0;
+}
