@@ -46,6 +46,11 @@ body {
   background-color: var(--background-primary);
 }
 
+.sr-only {
+  position: absolute;
+  left: -9999px;
+}
+
 /* Estilos ProductDetails */
 
 .thumbnail-wrapper {

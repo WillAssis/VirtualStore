@@ -8,7 +8,7 @@ import Register from './pages/Register/Register';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Cart from './pages/Cart';
+import Cart from './pages/Cart/Cart';
 import loadPageTheme from './utils/loadPageTheme';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';

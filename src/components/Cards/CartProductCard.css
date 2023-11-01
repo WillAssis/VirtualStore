@@ -1,0 +1,69 @@
+:root.light .cart-product-card {
+  box-shadow: 4px 4px 4px gray;
+}
+
+.cart-product-card {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  background-color: var(--background-primary);
+  color: var(--font);
+  height: 100%;
+}
+
+.cart-product-card > img {
+  width: 100%;
+  height: 100%;
+}
+
+.cart-product-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cart-product-content > h3 {
+  margin-bottom: auto;
+}
+
+.cart-product-content span.accent-text {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.cart-product-content > p,
+.cart-product-content > .cart-product-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-product-content > p > span:first-child {
+  font-weight: bold;
+}
+
+.cart-product-controls .delete-product-button {
+  background-color: transparent;
+  border: none;
+}
+
+.delete-product-button svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.delete-product-button path {
+  fill: var(--accent);
+  transition:
+    opacity 0.2s ease-in-out,
+    fill 0.2s ease-in-out;
+}
+
+.delete-product-button:focus path,
+.delete-product-button:hover path {
+  fill: var(--special);
+}
+
+.delete-product-button:active path {
+  opacity: 0.5;
+  fill: var(--font);
+}
