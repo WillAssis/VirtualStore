@@ -29,8 +29,8 @@ function Header({ user, logout }: Params) {
         ) : (
           <nav className="settings" aria-label="Configurações e conta">
             <ul>
-              <NavLink to="/">Login</NavLink>
-              <NavLink to="/">Cadastro</NavLink>
+              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/cadastro">Cadastro</NavLink>
               <ThemeButton />
             </ul>
           </nav>
@@ -45,11 +45,11 @@ function Header({ user, logout }: Params) {
             <NavLink to="/produtos">Produtos</NavLink>
           </li>
           <li>
-            <NavLink to="/cart">Carrinho</NavLink>
+            <NavLink to="/carrinho">Carrinho</NavLink>
           </li>
           {user && user.isAdmin ? (
             <li>
-              <NavLink to="/">Admin</NavLink>
+              <NavLink to="/dashboard">Admin</NavLink>
             </li>
           ) : null}
         </ul>
