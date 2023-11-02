@@ -56,9 +56,9 @@ function ProductForm() {
     let request;
 
     if (slug) {
-      request = await createProduct(formData);
-    } else {
       request = await editProduct(formData, slug);
+    } else {
+      request = await createProduct(formData);
     }
 
     if (request.success) {
