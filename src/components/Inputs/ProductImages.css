@@ -1,0 +1,68 @@
+.image-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.image-input-container label {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: 100%;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.image-input-container label:hover,
+.image-input-container label:focus,
+.image-input-container input:focus ~ label {
+  opacity: 1;
+  outline: 4px solid var(--special);
+}
+
+.image-input-selector > ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 5%;
+  padding: 0;
+}
+
+.image-input-selector > ul > li {
+  flex: 1;
+}
+
+.image-input-selector button {
+  width: 100%;
+  background-size: cover;
+  aspect-ratio: 1 / 1;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-input-selector button.selected {
+  outline: 4px solid var(--special);
+  opacity: 1;
+}
+
+.image-input-selector button:hover,
+.image-input-selector button:focus {
+  opacity: 1;
+  outline: 4px solid var(--accent);
+}
+
+.image-input-container > button {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: auto;
+  background-color: transparent;
+}
+
+.image-input-container > button path {
+  fill: var(--font);
+}
+
+.image-input-container > button:hover path,
+.image-input-container > button:focus path {
+  fill: var(--accent);
+}
