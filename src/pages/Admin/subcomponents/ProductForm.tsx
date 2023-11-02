@@ -4,6 +4,7 @@ import ProductName from '../../../components/Inputs/ProductName';
 import ProductDescription from '../../../components/Inputs/ProductDescription';
 import ProductPrice from '../../../components/Inputs/ProductPrice';
 import ProductImages from '../../../components/Inputs/ProductImages';
+import Loading from '../../../components/Loading/Loading';
 import createProduct from '../../../utils/createProduct';
 import editProduct from '../../../utils/editProduct';
 import './ProductForm.css';
@@ -19,6 +20,8 @@ function ProductForm() {
   const [nameError, setNameError] = useState('');
   const [descriptionError, setDescriptionError] = useState('');
   const [priceError, setPriceError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState('');
 
   // Guarda as urls das imagens para serem mostradas como preview no image input
   const [images, setImages] = useState<string[]>(
@@ -41,11 +44,13 @@ function ProductForm() {
           });
         });
     }
+    setTimeout(() => setIsLoading(false), 500); // delay
   }, [slug]);
 
   const goBack = () => navigate('/admin/produtos');
 
   const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     let request;
@@ -53,54 +58,67 @@ function ProductForm() {
     if (slug) {
       request = await createProduct(formData);
     } else {
-      request = await editProduct(formData);
+      request = await editProduct(formData, slug);
     }
 
     if (request.success) {
+      setLoadingMessage(
+        `Produto ${
+          slug ? 'editado' : 'cadastrado'
+        } com sucesso. Redirecionando para a página dos produtos`
+      );
+      await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       goBack();
     } else {
       setNameError(request.errors.nameError);
       setPriceError(request.errors.priceError);
       setDescriptionError(request.errors.descriptionError);
+      setIsLoading(false);
     }
   };
 
   return (
     <main className="admin-product-form">
-      <h2>{slug ? 'Editar produto' : 'Criar produto'}</h2>
-      <form onSubmit={sendData} noValidate>
-        <div className="form-content-wrapper">
-          <div>
-            <ProductName
-              value={name}
-              setValue={setName}
-              error={nameError}
-              setError={setNameError}
-            />
-            <ProductDescription
-              value={description}
-              setValue={setDescription}
-              error={descriptionError}
-              setError={setDescriptionError}
-            />
-            <ProductPrice
-              value={price}
-              setValue={setPrice}
-              error={priceError}
-              setError={setPriceError}
-            />
-          </div>
-          <div>
-            <ProductImages images={images} setImages={setImages} />
-          </div>
-        </div>
-        <div className="form-controls-wrapper">
-          <button>Salvar</button>
-          <button type="button" onClick={goBack}>
-            Cancelar
-          </button>
-        </div>
-      </form>
+      {isLoading ? (
+        <Loading error={loadingMessage} />
+      ) : (
+        <>
+          <h2>{slug ? 'Editar produto' : 'Criar produto'}</h2>
+          <form onSubmit={sendData} noValidate>
+            <div className="form-content-wrapper">
+              <div>
+                <ProductName
+                  value={name}
+                  setValue={setName}
+                  error={nameError}
+                  setError={setNameError}
+                />
+                <ProductDescription
+                  value={description}
+                  setValue={setDescription}
+                  error={descriptionError}
+                  setError={setDescriptionError}
+                />
+                <ProductPrice
+                  value={price}
+                  setValue={setPrice}
+                  error={priceError}
+                  setError={setPriceError}
+                />
+              </div>
+              <div>
+                <ProductImages images={images} setImages={setImages} />
+              </div>
+            </div>
+            <div className="form-controls-wrapper">
+              <button>Salvar</button>
+              <button type="button" onClick={goBack}>
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </>
+      )}
     </main>
   );
 }

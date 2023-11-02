@@ -2,7 +2,6 @@
   color: var(--font);
   background-image: var(--home-dashboard);
   background-size: cover;
-  padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -12,6 +11,7 @@
 .admin-product-form > h2 {
   font-size: 1.7rem;
   text-align: center;
+  margin-top: 2rem;
 }
 
 .admin-product-form > form {
@@ -21,6 +21,7 @@
   flex-direction: column;
   margin: 0 auto;
   max-width: 70rem;
+  margin-bottom: 3rem;
 }
 
 .admin-product-form > form > .form-content-wrapper {
@@ -88,4 +89,8 @@
 .admin-product-form .form-controls-wrapper > button:hover,
 .admin-product-form .form-controls-wrapper > button:focus {
   background-color: var(--accent);
+}
+
+.admin-product-form > .loading-screen {
+  background-color: var(--background-opaque);
 }

@@ -23,7 +23,7 @@ function validateDescriptionValue(inputValue: string | null) {
   return '';
 }
 
-async function editProduct(formData: FormData) {
+async function editProduct(formData: FormData, slug: string | undefined) {
   const name = formData.get('name') as string;
   const price = formData.get('price') as string;
   const description = formData.get('description') as string;
@@ -35,7 +35,8 @@ async function editProduct(formData: FormData) {
     nameError === '' && priceError === '' && descriptionError === '';
 
   if (isInputValid) {
-    const response = await fetch('http://localhost:3333/editar-produto', {
+    const url = `http://localhost:3333/editar-produto/${slug}`;
+    const response = await fetch(url, {
       method: 'PUT',
       body: formData,
     });
