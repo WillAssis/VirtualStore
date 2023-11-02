@@ -51,6 +51,7 @@ function ProductImages({ images, setImages }: Params) {
         type="file"
         name="images"
         id="image0"
+        accept="image/*"
         onInput={onInput}
         style={{ display: `${currentInput === 0 ? 'block' : 'none'}` }}
       />
@@ -59,6 +60,7 @@ function ProductImages({ images, setImages }: Params) {
         type="file"
         name="images"
         id="image1"
+        accept="image/*"
         onInput={onInput}
         style={{ display: `${currentInput === 1 ? 'block' : 'none'}` }}
       />
@@ -67,6 +69,7 @@ function ProductImages({ images, setImages }: Params) {
         type="file"
         name="images"
         id="image2"
+        accept="image/*"
         onInput={onInput}
         style={{ display: `${currentInput === 2 ? 'block' : 'none'}` }}
       />
@@ -75,6 +78,7 @@ function ProductImages({ images, setImages }: Params) {
         type="file"
         name="images"
         id="image3"
+        accept="image/*"
         onInput={onInput}
         style={{ display: `${currentInput === 3 ? 'block' : 'none'}` }}
       />
@@ -83,6 +87,7 @@ function ProductImages({ images, setImages }: Params) {
         type="file"
         name="images"
         id="image4"
+        accept="image/*"
         onInput={onInput}
         style={{ display: `${currentInput === 4 ? 'block' : 'none'}` }}
       />
