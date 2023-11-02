@@ -1,0 +1,96 @@
+.admin-product-form {
+  color: var(--font);
+  background-image: var(--dashboard-image);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+.admin-product-form > h2 {
+  font-size: 1.7rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.admin-product-form > form {
+  background-color: var(--background-opaque);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 70rem;
+  margin-bottom: 3rem;
+}
+
+.admin-product-form > form > .form-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.admin-product-form .form-content-wrapper > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1;
+  min-width: 20rem;
+}
+
+.admin-product-form .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-product-form .input-container > label {
+  font-size: 1.25rem;
+}
+
+.admin-product-form .input-container > input,
+.admin-product-form .input-container > textarea {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.admin-product-form input:focus,
+.admin-product-form textarea:focus {
+  outline: 2px solid var(--font);
+}
+
+.admin-product-form input:not(:focus)[aria-invalid='true'],
+.admin-product-form textarea:not(:focus)[aria-invalid='true'] {
+  outline: 2px solid var(--invalid-input);
+}
+
+.admin-product-form .input-error {
+  color: var(--invalid-input);
+  min-height: 1.5rem;
+}
+
+.admin-product-form > form > .form-controls-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.admin-product-form .form-controls-wrapper > button {
+  background-color: var(--special);
+  color: black;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.admin-product-form .form-controls-wrapper > button:hover,
+.admin-product-form .form-controls-wrapper > button:focus {
+  background-color: var(--accent);
+}
+
+.admin-product-form > .loading-screen {
+  background-color: var(--background-opaque);
+}

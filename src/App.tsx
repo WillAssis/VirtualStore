@@ -6,6 +6,7 @@ import Products from './pages/Products/Products';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Admin from './pages/Admin/Admin';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart/Cart';
@@ -41,6 +42,7 @@ function App() {
         <Route path="/carrinho" element={<Cart />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/cadastro" element={<Register setUser={setUser} />} />
+        <Route path="/admin/*" element={<Admin user={user} />} />
       </Routes>
       <Footer />
     </>
