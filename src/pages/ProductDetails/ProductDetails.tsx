@@ -47,7 +47,7 @@ function ProductDetails() {
   const handleAddToCart = () => {
     if (product) {
       updateProductToCart(product, selectedQuantity);
-      navigate('/cart');
+      navigate('/carrinho');
     }
   };
 
