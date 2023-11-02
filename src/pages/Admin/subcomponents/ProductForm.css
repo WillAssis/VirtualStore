@@ -1,6 +1,6 @@
 .admin-product-form {
   color: var(--font);
-  background-image: var(--home-dashboard);
+  background-image: var(--dashboard-image);
   background-size: cover;
   display: flex;
   flex-direction: column;

@@ -1,6 +1,6 @@
 .admin-products {
   color: var(--font);
-  background-image: var(--home-dashboard);
+  background-image: var(--dashboard-image);
   background-size: cover;
 }
 
