@@ -37,6 +37,7 @@ async function editProduct(formData: FormData, slug: string | undefined) {
   if (isInputValid) {
     const url = `http://localhost:3333/editar-produto/${slug}`;
     const response = await fetch(url, {
+      credentials: 'include',
       method: 'PUT',
       body: formData,
     });

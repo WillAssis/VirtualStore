@@ -36,6 +36,7 @@ async function createProduct(formData: FormData) {
 
   if (isInputValid) {
     const response = await fetch('http://localhost:3333/novo-produto', {
+      credentials: 'include',
       method: 'POST',
       body: formData,
     });
