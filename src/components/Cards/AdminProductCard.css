@@ -42,8 +42,8 @@
   background-color: var(--special);
 }
 
-.admin-product-card .product-image-selector:not(.active):hover,
-.admin-product-card .product-image-selector:not(.active):focus {
+.admin-product-card > .product-images .product-image-selector:hover,
+.admin-product-card > .product-images .product-image-selector:focus {
   background-color: var(--accent);
 }
 
