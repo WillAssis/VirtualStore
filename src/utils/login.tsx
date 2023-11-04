@@ -13,6 +13,7 @@ async function login(username: string, password: string) {
 
   if (isInputValid) {
     const response = await fetch('http://localhost:3333/login', {
+      credentials: 'include',
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
