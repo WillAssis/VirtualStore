@@ -35,7 +35,7 @@ async function register(username: string, email: string, password: string) {
     const data = await response.json();
 
     return {
-      success: response.status === 201,
+      success: response.ok,
       user: data.user,
       errors: data.errors ?? { usernameError, emailError, passwordError },
     };
