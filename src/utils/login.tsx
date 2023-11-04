@@ -20,7 +20,7 @@ async function login(username: string, password: string) {
     const data = await response.json();
 
     return {
-      success: response.status === 201,
+      success: response.ok,
       user: data.user,
       errors: data.errors ?? { usernameError, passwordError },
     };
