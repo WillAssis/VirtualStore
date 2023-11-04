@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart/Cart';
 import loadPageTheme from './utils/loadPageTheme';
+import Order from './pages/Order/Order';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/carrinho" element={<Cart />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/cadastro" element={<Register setUser={setUser} />} />
+        <Route path="/pedido" element={<Order />} />
       </Routes>
       <Footer />
     </>

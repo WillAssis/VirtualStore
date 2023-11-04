@@ -1,4 +1,5 @@
 import './Summary.css';
+import { useNavigate } from 'react-router-dom';
 
 interface Params {
   totalPrice: string;
@@ -6,6 +7,12 @@ interface Params {
 }
 
 function Summary({ totalPrice, clearCart }: Params) {
+  const navigate = useNavigate();
+
+  const finishOrder = () => {
+    navigate('/pedido')
+  }
+
   return (
     <section aria-label="Sumário" className="cart-page-summary">
       <p className="cart-total-price">
@@ -13,7 +20,7 @@ function Summary({ totalPrice, clearCart }: Params) {
       </p>
       <div className="cart-controls">
         <button onClick={clearCart}>Limpar Carrinho</button>
-        <button>Finalizar compra</button>
+        <button onClick={finishOrder}>Finalizar compra</button>
       </div>
     </section>
   );
