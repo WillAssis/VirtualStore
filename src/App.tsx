@@ -19,22 +19,28 @@ loadPageTheme();
 function App() {
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    // O catch é temporário até a funcionalidade ser implementada no backend
+  const auth = () => {
     fetch('http://localhost:3333/profile', { credentials: 'include' })
       .then((response) => response.json())
       .then((data) => setUser(data.user))
-      .catch(() => setUser({ username: 'Temp_user', isAdmin: true }));
+      .catch(() => setUser(null));
+  };
+
+  const logout = () => {
+    fetch('http://localhost:3333/logout', {
+      credentials: 'include',
+      method: 'POST',
+    });
+    setUser(null);
+  };
+
+  useEffect(() => {
+    auth();
   }, []);
 
   return (
     <>
-      <Header
-        user={user}
-        logout={() => {
-          setUser(null);
-        }}
-      />
+      <Header user={user} logout={logout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/produtos" element={<Products />} />
