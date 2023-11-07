@@ -28,13 +28,15 @@ async function register(username: string, email: string, password: string) {
 
   if (isInputValid) {
     const response = await fetch('http://localhost:3333/cadastro', {
+      credentials: 'include',
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
+      headers: { 'Content-Type': 'application/json' },
     });
     const data = await response.json();
 
     return {
-      success: response.status === 201,
+      success: response.ok,
       user: data.user,
       errors: data.errors ?? { usernameError, emailError, passwordError },
     };
