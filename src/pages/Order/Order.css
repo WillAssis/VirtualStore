@@ -1,9 +1,22 @@
 .order-page {
-  background-color: var(--background-secondary);
-  padding: 2rem 5rem 1rem;
+  position: relative;
+  color: var(--font);
+  background-image: var(--dashboard-image);
+  background-origin: center;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 5rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.order-description {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
 }
 
 .order-page > h2 {

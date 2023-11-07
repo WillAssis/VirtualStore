@@ -1,10 +1,10 @@
-import deliveryTruck from '../../../delivery-truck.svg'
+import { OrderPageTitle } from "../../../types";
 
-function Title() {
+function Title( props: OrderPageTitle ) {
   return (
     <h2>
-      <img src={deliveryTruck} alt="Caminhão de Entrega" />
-      Pedido Finalizado
+      <img src={ props.icon } alt={ props.alt } />
+      { props.message }
     </h2>
   );
 }

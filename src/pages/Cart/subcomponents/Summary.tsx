@@ -1,3 +1,4 @@
+import orderCreate from '../../../utils/orderCreate';
 import './Summary.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +10,11 @@ interface Params {
 function Summary({ totalPrice, clearCart }: Params) {
   const navigate = useNavigate();
 
-  const finishOrder = () => {
+  const finishOrder = async () => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    const orderResult = await orderCreate({ cartItems, clientId: '1'}); // @TODO: remove mocked clientId and retrieve it after login
+    sessionStorage.setItem('orderResult', JSON.stringify(orderResult));
+    console.log(orderResult)
     navigate('/pedido')
   }
 
