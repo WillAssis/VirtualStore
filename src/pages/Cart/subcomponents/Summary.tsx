@@ -14,7 +14,9 @@ function Summary({ totalPrice, clearCart }: Params) {
     const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
     const orderResult = await orderCreate({ cartItems, clientId: '1'}); // @TODO: remove mocked clientId and retrieve it after login
     sessionStorage.setItem('orderResult', JSON.stringify(orderResult));
-    console.log(orderResult)
+    if (orderResult) {
+      localStorage.removeItem('cartItems');
+    }
     navigate('/pedido')
   }
 
