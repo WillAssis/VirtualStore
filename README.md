@@ -1,10 +1,10 @@
-# Projeto Integrador I - Univesp
+# Projeto Integrador II - Univesp
 
-Grupo - OSASCOUAB-PJI110-SALA-001GRUPO-001
+Grupo - DRP01-PJI240-SALA-002GRUPO-006
 
 ## Sobre o projeto
 
-Desenvolver o front-end de um sistema web de vitrine virtual para a exibição dos produtos de uma loja.
+Desenvolver o front-end de um sistema web de loja virtual para a comercialização dos produtos de uma loja.
 
 ## Tecnologias
 
@@ -29,12 +29,12 @@ Desenvolver o front-end de um sistema web de vitrine virtual para a exibição d
   -  Digite o comando <code style="margin-left:40px">yarn start</code> para rodar o projeto
   
 ## Status
-Em desenvolvimento para conclusão do Projeto Integrador I da Univesp
+Em desenvolvimento para conclusão do Projeto Integrador II da Univesp
 
 ## Desenvolvedores
 
-- <a href=""> Carlos Henrique </a>
-- <a href=""> Davi Secomandi </a>
+- <a href="https://github.com/carlosthrasher"> Carlos Henrique </a>
+- <a href="https://github.com/davi-secomandi"> Davi Secomandi </a>
 - <a href="https://github.com/eliabev"> Eliabe Oliveira </a>
 - <a href="https://github.com/jmacedo91"> Jonathan Macedo </a>
 - <a href=""> Luis Franco </a>
