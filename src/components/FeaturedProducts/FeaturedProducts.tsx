@@ -21,7 +21,7 @@ function FeaturedProducts({ title, link }: Params) {
     fetch('http://localhost:3333/destaques')
       .then((response) => response.json())
       .then((data) => {
-        setProducts(data.products.slice(0, 4));
+        setProducts(data.products?.slice(0, 4) || []);
         // Tempo mínimo de 0.5s para carregar
         setTimeout(() => {
           setIsLoading(false);

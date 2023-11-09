@@ -23,3 +23,9 @@ export interface User {
   username: string;
   isAdmin: boolean;
 }
+
+export interface OrderPageTitle {
+  icon: string,
+  alt: string,
+  message: string,
+}

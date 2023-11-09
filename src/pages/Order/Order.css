@@ -1,0 +1,33 @@
+.order-page {
+  position: relative;
+  color: var(--font);
+  background-image: var(--dashboard-image);
+  background-origin: center;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.order-description {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+.order-page > h2 {
+  color: var(--font);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.order-page > h2 > img {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: invert(99%) sepia(82%) saturate(2%) hue-rotate(178deg) brightness(111%) contrast(101%);
+}
