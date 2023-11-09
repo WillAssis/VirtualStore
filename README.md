@@ -33,11 +33,11 @@ Em desenvolvimento para conclusão do Projeto Integrador I da Univesp
 
 ## Desenvolvedores
 
-- <a href="https://github.com/arturcirino"> Artur Cirino </a>
+- <a href=""> Carlos Henrique </a>
 - <a href=""> Davi Secomandi </a>
 - <a href="https://github.com/eliabev"> Eliabe Oliveira </a>
 - <a href="https://github.com/jmacedo91"> Jonathan Macedo </a>
 - <a href=""> Luis Franco </a>
-- <a href=""> Matheus Brito </a>
+- <a href="https://github.com/ranovais"> Rafael Novais </a>
 - <a href="https://github.com/wsfer"> Wesley Fernandes </a>
 - <a href="https://github.com/WillAssis"> Willian Assis </a>
