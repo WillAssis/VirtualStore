@@ -1,0 +1,56 @@
+.dashboard-nav {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  padding: 0.5rem;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dashboard-nav > ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.dashboard-nav a {
+  color: var(--font);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+.dashboard-nav a svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.dashboard-nav a path {
+  fill: var(--font);
+}
+
+.dashboard-nav a:hover,
+.dashboard-nav a:focus {
+  text-decoration: underline;
+  color: var(--accent);
+}
+
+.dashboard-nav a:focus {
+  outline: 1.5px solid var(--accent);
+}
+
+.dashboard-nav a:hover path,
+.dashboard-nav a:focus path,
+.dashboard-nav a.active path {
+  fill: var(--accent);
+}
+
+.dashboard-nav a.active {
+  color: var(--accent);
+}

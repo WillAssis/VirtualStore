@@ -49,7 +49,7 @@ function Header({ user, logout }: Params) {
           </li>
           {user && user.isAdmin ? (
             <li>
-              <NavLink to="/dashboard">Admin</NavLink>
+              <NavLink to="/admin">Admin</NavLink>
             </li>
           ) : null}
         </ul>
