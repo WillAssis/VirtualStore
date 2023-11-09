@@ -48,10 +48,10 @@ function AdminProducts() {
     input.value = '';
   };
 
-  const deleteProduct = async (productID: number) => {
+  const deleteProduct = async (slug: string) => {
     setIsLoading(true);
 
-    const url = `http://localhost:3333/delete-product/${productID}`;
+    const url = `http://localhost:3333/produto/${slug}`;
     const response = await fetch(url, {
       credentials: 'include',
       method: 'DELETE',

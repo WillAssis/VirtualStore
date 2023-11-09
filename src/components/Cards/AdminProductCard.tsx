@@ -5,7 +5,7 @@ import './AdminProductCard.css';
 
 interface Params {
   product: Product;
-  deleteProduct: (productID: number) => void;
+  deleteProduct: (productID: string) => void;
 }
 
 function AdminProductCard({ product, deleteProduct }: Params) {
@@ -62,7 +62,7 @@ function AdminProductCard({ product, deleteProduct }: Params) {
             </svg>
           </Link>
           <button
-            onClick={() => deleteProduct(product.id)}
+            onClick={() => deleteProduct(product.slug)}
             aria-label="Deletar produto"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
