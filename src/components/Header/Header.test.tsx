@@ -64,7 +64,7 @@ test('Display correct navigation when user is admin', () => {
 
 test('Allows user to logout', () => {
   const user = { username: 'User555', isAdmin: false };
-  const logout = jest.fn(() => console.log('a'));
+  const logout = jest.fn();
 
   render(<Header user={user} logout={logout} />, {
     wrapper: MemoryRouter,
