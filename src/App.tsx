@@ -12,7 +12,6 @@ import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart/Cart';
 import loadPageTheme from './utils/loadPageTheme';
 import Order from './pages/Order/Order';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 loadPageTheme();

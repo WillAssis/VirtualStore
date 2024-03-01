@@ -25,7 +25,7 @@ export interface User {
 }
 
 export interface OrderPageTitle {
-  icon: string,
-  alt: string,
-  message: string,
+  icon: string;
+  alt: string;
+  message: string;
 }
