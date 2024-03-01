@@ -1,8 +1,14 @@
 import register from './register';
+import { Mock } from 'vitest';
+
+interface FetchResponse {
+  user: { username: string; isAdmin: boolean } | null;
+  errors: { usernameError: string; passwordError: string; emailError: string };
+}
 
 global.fetch = vi.fn();
 
-const createFetchResponse = (data, ok = true) => {
+const createFetchResponse = (data: FetchResponse, ok = true) => {
   return { ok, json: () => new Promise((resolve) => resolve(data)) };
 };
 
@@ -81,7 +87,7 @@ describe('Backend is reached', () => {
         emailError: '',
       },
     };
-    fetch.mockResolvedValue(createFetchResponse(fakeData));
+    (fetch as Mock).mockResolvedValue(createFetchResponse(fakeData));
 
     const registerAttempt = await register('NewUser11', 'abc@def.gh', '34567');
     const { success, user } = { ...registerAttempt };
@@ -103,7 +109,7 @@ describe('Backend is reached', () => {
         emailError: '',
       },
     };
-    fetch.mockResolvedValue(createFetchResponse(fakeData, false));
+    (fetch as Mock).mockResolvedValue(createFetchResponse(fakeData, false));
 
     const registerAttempt = await register('UsedName', 'abc@def.gh', '34567');
     const { success, user, errors } = { ...registerAttempt };

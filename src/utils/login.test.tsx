@@ -1,8 +1,14 @@
 import login from './login';
+import { Mock } from 'vitest';
+
+interface FetchResponse {
+  user: { username: string; isAdmin: boolean } | null;
+  errors: { usernameError: string; passwordError: string };
+}
 
 global.fetch = vi.fn();
 
-const createFetchResponse = (data) => {
+const createFetchResponse = (data: FetchResponse) => {
   return { ok: true, json: () => new Promise((resolve) => resolve(data)) };
 };
 
@@ -44,7 +50,7 @@ test('Successful login attempt', async () => {
     user: { username: 'FakeUser', isAdmin: true },
     errors: { usernameError: '', passwordError: '' },
   };
-  fetch.mockResolvedValue(createFetchResponse(fakeData));
+  (fetch as Mock).mockResolvedValue(createFetchResponse(fakeData));
 
   const loginAttempt = await login('FakeUser', '54321');
   const { success, user, errors } = { ...loginAttempt };
