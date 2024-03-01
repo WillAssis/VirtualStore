@@ -13,22 +13,16 @@ function ProductImages({ images, setImages }: Params) {
 
   function onInput(event: React.FormEvent<HTMLInputElement>) {
     const currentImages = images.slice();
-    const inputFile = event.currentTarget.files
-      ? event.currentTarget.files[0]
-      : null;
+    const inputFile = event.currentTarget.files ? event.currentTarget.files[0] : null;
 
-    currentImages[currentInput] = inputFile
-      ? URL.createObjectURL(inputFile)
-      : PLACEHOLDER_IMG_PATH;
+    currentImages[currentInput] = inputFile ? URL.createObjectURL(inputFile) : PLACEHOLDER_IMG_PATH;
 
     setImages(currentImages);
   }
 
   function clearCurrentInput() {
     const currentImages = images.slice();
-    const input = document.getElementById(
-      `image${currentInput}`
-    ) as HTMLInputElement;
+    const input = document.getElementById(`image${currentInput}`) as HTMLInputElement;
 
     currentImages[currentInput] = PLACEHOLDER_IMG_PATH;
     setImages(currentImages);
@@ -140,16 +134,8 @@ function ProductImages({ images, setImages }: Params) {
           </li>
         </ul>
       </nav>
-      <button
-        type="button"
-        onClick={clearCurrentInput}
-        aria-label="Deletar imagem"
-      >
-        <svg
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
+      <button type="button" onClick={clearCurrentInput} aria-label="Deletar imagem">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
         </svg>
       </button>

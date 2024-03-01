@@ -38,9 +38,7 @@ function Products() {
         }, 10000);
 
         if (failedFetchChecker) {
-          setError(
-            'Não foi possível carregar os produtos, verifique sua conexão'
-          );
+          setError('Não foi possível carregar os produtos, verifique sua conexão');
         }
       });
   }, [currentPage, searchTerm, failedFetchChecker]);

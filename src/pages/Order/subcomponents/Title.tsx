@@ -1,10 +1,10 @@
-import { OrderPageTitle } from "../../../types";
+import { OrderPageTitle } from '../../../types';
 
-function Title( props: OrderPageTitle ) {
+function Title(props: OrderPageTitle) {
   return (
     <h2>
-      <img src={ props.icon } alt={ props.alt } />
-      { props.message }
+      <img src={props.icon} alt={props.alt} />
+      {props.message}
     </h2>
   );
 }

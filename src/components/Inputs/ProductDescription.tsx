@@ -42,11 +42,7 @@ function ProductDescription({ value, setValue, error, setError }: Params) {
         aria-invalid={error !== ''}
         aria-required="true"
       />
-      <span
-        className="input-error"
-        aria-live="assertive"
-        id="description-error"
-      >
+      <span className="input-error" aria-live="assertive" id="description-error">
         {error}
       </span>
     </div>

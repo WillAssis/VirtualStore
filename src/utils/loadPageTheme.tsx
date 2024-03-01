@@ -5,9 +5,7 @@
 function loadPageTheme() {
   const root = document.documentElement;
   const savedTheme = localStorage.getItem('theme');
-  const isSystemThemeDark = window.matchMedia(
-    '(prefers-color-scheme: dark)'
-  ).matches;
+  const isSystemThemeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   if (savedTheme) {
     root.className = savedTheme === 'dark' ? 'dark' : 'light';

@@ -15,9 +15,7 @@ function Cart() {
   };
 
   useEffect(() => {
-    const storedCartItems: CartItem[] = JSON.parse(
-      localStorage.getItem('cartItems') || '[]'
-    );
+    const storedCartItems: CartItem[] = JSON.parse(localStorage.getItem('cartItems') || '[]');
     setCartItems(storedCartItems);
   }, []);
 
@@ -50,15 +48,8 @@ function Cart() {
       <Title />
       {cartItems.length > 0 ? (
         <>
-          <ProductList
-            products={cartItems}
-            updateQuantity={updateQuantity}
-            deleteProduct={deleteItem}
-          />
-          <Summary
-            totalPrice={getTotalCartPrice()}
-            clearCart={handleClearCart}
-          />
+          <ProductList products={cartItems} updateQuantity={updateQuantity} deleteProduct={deleteItem} />
+          <Summary totalPrice={getTotalCartPrice()} clearCart={handleClearCart} />
         </>
       ) : (
         <div className="empty-cart-container">

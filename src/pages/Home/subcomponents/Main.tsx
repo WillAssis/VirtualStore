@@ -17,21 +17,13 @@ function Main() {
       <nav aria-label="Selecione o seu destino">
         <ul>
           <li>
-            <LinkButton
-              path="/produtos"
-              text="Ver produtos"
-              image={productImage}
-            />
+            <LinkButton path="/produtos" text="Ver produtos" image={productImage} />
           </li>
           <li>
             <LinkButton path="/login" text="Fazer login" image={loginImage} />
           </li>
           <li>
-            <LinkButton
-              path="/cadastro"
-              text="Cadastrar-se"
-              image={registerImage}
-            />
+            <LinkButton path="/cadastro" text="Cadastrar-se" image={registerImage} />
           </li>
         </ul>
       </nav>

@@ -6,10 +6,7 @@ interface Params {
 
 function PageNumberButton({ jumpTo, page, active }: Params) {
   return (
-    <button
-      className={active ? 'pagination-button active' : 'pagination-button'}
-      onClick={() => jumpTo(page)}
-    >
+    <button className={active ? 'pagination-button active' : 'pagination-button'} onClick={() => jumpTo(page)}>
       {page}
     </button>
   );

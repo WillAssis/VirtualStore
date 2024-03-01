@@ -25,20 +25,10 @@ function Dropdown({ username, logout }: Params) {
   });
 
   return (
-    <div
-      ref={menu}
-      className={open ? 'settings-dropdown open' : 'settings-dropdown'}
-    >
-      <button
-        onClick={() => setOpen(!open)}
-        aria-label="Abrir configurações de usuário"
-      >
+    <div ref={menu} className={open ? 'settings-dropdown open' : 'settings-dropdown'}>
+      <button onClick={() => setOpen(!open)} aria-label="Abrir configurações de usuário">
         {username}
-        <svg
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M7,10L12,15L17,10H7Z" />
         </svg>
       </button>

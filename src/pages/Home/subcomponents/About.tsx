@@ -7,10 +7,7 @@ function About() {
       <h2>
         <span className="accent-text">Produtos</span> Personalizados
       </h2>
-      <p>
-        A SOLUS sabe como é bom ter algo sob medida para você. Por isso, te
-        damos a chance de personalizar
-      </p>
+      <p>A SOLUS sabe como é bom ter algo sob medida para você. Por isso, te damos a chance de personalizar</p>
       <img src={productImg} alt="Um mini calendário de mesa personalizado" />
     </section>
   );

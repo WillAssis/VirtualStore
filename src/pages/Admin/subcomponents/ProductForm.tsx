@@ -24,9 +24,7 @@ function ProductForm() {
   const [loadingMessage, setLoadingMessage] = useState('');
 
   // Guarda as urls das imagens para serem mostradas como preview no image input
-  const [images, setImages] = useState<string[]>(
-    Array(5).fill(PLACEHOLDER_IMG_PATH)
-  );
+  const [images, setImages] = useState<string[]>(Array(5).fill(PLACEHOLDER_IMG_PATH));
 
   useEffect(() => {
     // Carrega as informações do produto a ser editado, se houver
@@ -63,9 +61,7 @@ function ProductForm() {
 
     if (request.success) {
       setLoadingMessage(
-        `Produto ${
-          slug ? 'editado' : 'cadastrado'
-        } com sucesso. Redirecionando para a página dos produtos`
+        `Produto ${slug ? 'editado' : 'cadastrado'} com sucesso. Redirecionando para a página dos produtos`,
       );
       await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       goBack();
@@ -87,24 +83,14 @@ function ProductForm() {
           <form onSubmit={sendData} noValidate>
             <div className="form-content-wrapper">
               <div>
-                <ProductName
-                  value={name}
-                  setValue={setName}
-                  error={nameError}
-                  setError={setNameError}
-                />
+                <ProductName value={name} setValue={setName} error={nameError} setError={setNameError} />
                 <ProductDescription
                   value={description}
                   setValue={setDescription}
                   error={descriptionError}
                   setError={setDescriptionError}
                 />
-                <ProductPrice
-                  value={price}
-                  setValue={setPrice}
-                  error={priceError}
-                  setError={setPriceError}
-                />
+                <ProductPrice value={price} setValue={setPrice} error={priceError} setError={setPriceError} />
               </div>
               <div>
                 <ProductImages images={images} setImages={setImages} />

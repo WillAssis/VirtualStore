@@ -32,9 +32,7 @@ function Register({ setUser }: Params) {
 
     if (success) {
       setUser(user);
-      setLoadingMessage(
-        'Usuário cadastrado com sucesso. Redirecionando para a página inicial'
-      );
+      setLoadingMessage('Usuário cadastrado com sucesso. Redirecionando para a página inicial');
       await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       navigate('/');
     } else {
@@ -50,24 +48,9 @@ function Register({ setUser }: Params) {
       {loading ? <Loading error={loadingMessage} /> : null}
       <form className="register-form" noValidate onSubmit={registerUser}>
         <h2>Criar conta</h2>
-        <UsernameInput
-          value={username}
-          setValue={setUsername}
-          error={usernameError}
-          setError={setUsernameError}
-        />
-        <PasswordInput
-          value={password}
-          setValue={setPassword}
-          error={passwordError}
-          setError={setPasswordError}
-        />
-        <EmailInput
-          value={email}
-          setValue={setEmail}
-          error={emailError}
-          setError={setEmailError}
-        />
+        <UsernameInput value={username} setValue={setUsername} error={usernameError} setError={setUsernameError} />
+        <PasswordInput value={password} setValue={setPassword} error={passwordError} setError={setPasswordError} />
+        <EmailInput value={email} setValue={setEmail} error={emailError} setError={setEmailError} />
         <button>Cadastrar</button>
       </form>
     </main>

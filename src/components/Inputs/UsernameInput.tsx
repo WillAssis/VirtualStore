@@ -6,7 +6,7 @@ interface Params {
 }
 
 // TODO: incluir mais validações
-function validateUsernameValue(inputValue: string) {
+function validateUsernameValue(_inputValue: string) {
   return '';
 }
 
