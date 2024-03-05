@@ -12,6 +12,7 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "test": "vitest",
+    "test:once": "vitest run",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "husky install"
