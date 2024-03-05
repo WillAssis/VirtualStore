@@ -23,7 +23,8 @@ async function register(username: string, email: string, password: string) {
   const usernameError = validateUsernameValue(username);
   const emailError = validateEmailValue(email);
   const passwordError = validatePasswordValue(password);
-  const isInputValid = usernameError === '' && emailError === '' && passwordError === '';
+  const isInputValid =
+    usernameError === '' && emailError === '' && passwordError === '';
 
   if (isInputValid) {
     const response = await fetch('http://localhost:3333/cadastro', {

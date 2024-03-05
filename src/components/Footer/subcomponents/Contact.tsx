@@ -7,17 +7,26 @@ function Contact() {
       <nav aria-label="Redes sociais">
         <ul>
           <li>
-            <Link target="_blank" to="https://www.facebook.com/Solus2018/?locale=pt_BR">
+            <Link
+              target="_blank"
+              to="https://www.facebook.com/Solus2018/?locale=pt_BR"
+            >
               Facebook
             </Link>
           </li>
           <li>
-            <Link target="_blank" to="https://www.instagram.com/soluscasamentos/">
+            <Link
+              target="_blank"
+              to="https://www.instagram.com/soluscasamentos/"
+            >
               Instagram
             </Link>
           </li>
           <li>
-            <Link target="_blank" to="https://shopee.com.br/soluspersonalizados">
+            <Link
+              target="_blank"
+              to="https://shopee.com.br/soluspersonalizados"
+            >
               Shopee
             </Link>
           </li>

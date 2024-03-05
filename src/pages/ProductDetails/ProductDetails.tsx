@@ -37,7 +37,9 @@ function ProductDetails() {
         }, 10000);
 
         if (failedFetchChecker) {
-          setError('Não foi possível carregar o produto, verifique sua conexão');
+          setError(
+            'Não foi possível carregar o produto, verifique sua conexão',
+          );
         }
       });
   }, [failedFetchChecker, slug]);
@@ -65,10 +67,16 @@ function ProductDetails() {
                 <p>Preço: R$ {product.price.toFixed(2)}</p>
                 <label htmlFor="quantity">
                   Quantidade:
-                  <QuantityInput quantity={selectedQuantity} setQuantity={setSelectedQuantity} />
+                  <QuantityInput
+                    quantity={selectedQuantity}
+                    setQuantity={setSelectedQuantity}
+                  />
                 </label>
                 <p>
-                  Valor total: <span className="accent-text">R$ {(product.price * selectedQuantity).toFixed(2)}</span>
+                  Valor total:{' '}
+                  <span className="accent-text">
+                    R$ {(product.price * selectedQuantity).toFixed(2)}
+                  </span>
                 </p>
                 <button onClick={handleAddToCart}>Adicionar ao Carrinho</button>
               </div>

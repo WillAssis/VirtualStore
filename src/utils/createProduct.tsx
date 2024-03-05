@@ -31,7 +31,8 @@ async function createProduct(formData: FormData) {
   const nameError = validateNameValue(name);
   const priceError = validatePriceValue(price);
   const descriptionError = validateDescriptionValue(description);
-  const isInputValid = nameError === '' && priceError === '' && descriptionError === '';
+  const isInputValid =
+    nameError === '' && priceError === '' && descriptionError === '';
 
   if (isInputValid) {
     const response = await fetch('http://localhost:3333/novo-produto', {

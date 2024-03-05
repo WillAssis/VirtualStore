@@ -14,7 +14,11 @@ function ProductList({ products, updateQuantity, deleteProduct }: Params) {
       <ul className="cart-items-list">
         {products.map((product) => (
           <li key={product.id}>
-            <CartProductCard product={product} outerUpdateQuantity={updateQuantity} deleteProduct={deleteProduct} />
+            <CartProductCard
+              product={product}
+              outerUpdateQuantity={updateQuantity}
+              deleteProduct={deleteProduct}
+            />
           </li>
         ))}
       </ul>

@@ -80,8 +80,12 @@ describe('Page number buttons', () => {
   test('One page should have one active button', () => {
     render(<Pagination {...params} />);
 
-    const pageNumberButtons = screen.getAllByRole('button').slice(1, params.pages + 1) as HTMLButtonElement[];
-    const buttonsClassList = pageNumberButtons.map((button: HTMLButtonElement) => button.classList);
+    const pageNumberButtons = screen
+      .getAllByRole('button')
+      .slice(1, params.pages + 1) as HTMLButtonElement[];
+    const buttonsClassList = pageNumberButtons.map(
+      (button: HTMLButtonElement) => button.classList,
+    );
 
     expect(pageNumberButtons).toHaveLength(1);
     expect(buttonsClassList[0]).toContain('active');
@@ -92,8 +96,12 @@ describe('Page number buttons', () => {
     params.currentPage = 2;
     render(<Pagination {...params} />);
 
-    const pageNumberButtons = screen.getAllByRole('button').slice(1, params.pages + 1) as HTMLButtonElement[];
-    const buttonsClassList = pageNumberButtons.map((button: HTMLButtonElement) => button.classList);
+    const pageNumberButtons = screen
+      .getAllByRole('button')
+      .slice(1, params.pages + 1) as HTMLButtonElement[];
+    const buttonsClassList = pageNumberButtons.map(
+      (button: HTMLButtonElement) => button.classList,
+    );
 
     expect(pageNumberButtons).toHaveLength(6);
     expect(buttonsClassList[1]).toContain('active');
@@ -109,7 +117,9 @@ describe('Page number buttons', () => {
     render(<Pagination {...params} />);
 
     const user = userEvent.setup();
-    const pageNumberButtons = screen.getAllByRole('button').slice(1, params.pages + 1);
+    const pageNumberButtons = screen
+      .getAllByRole('button')
+      .slice(1, params.pages + 1);
 
     await user.click(pageNumberButtons[3]);
     expect(params.jumpToPage).toHaveBeenCalledWith(4);

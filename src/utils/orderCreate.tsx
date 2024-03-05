@@ -20,7 +20,9 @@ async function orderCreate(orderData: orderData) {
     }),
   };
   try {
-    result = await (await fetch('http://localhost:3333/pedido', orderOptions)).json();
+    result = await (
+      await fetch('http://localhost:3333/pedido', orderOptions)
+    ).json();
   } catch (e) {
     // just to avoid errors
   }

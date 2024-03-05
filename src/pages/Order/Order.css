@@ -29,5 +29,6 @@
 .order-page > h2 > img {
   width: 2.5rem;
   height: 2.5rem;
-  filter: invert(99%) sepia(82%) saturate(2%) hue-rotate(178deg) brightness(111%) contrast(101%);
+  filter: invert(99%) sepia(82%) saturate(2%) hue-rotate(178deg)
+    brightness(111%) contrast(101%);
 }

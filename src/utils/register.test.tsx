@@ -70,7 +70,9 @@ describe('Pattern mismatch inputs', () => {
     expect(fetch).not.toHaveBeenCalled();
     expect(success).toBe(false);
     expect(user).toBe(null);
-    expect(errors.emailError).toBe('Email inválido. exemplo de email válido: sujeito@gmail.com');
+    expect(errors.emailError).toBe(
+      'Email inválido. exemplo de email válido: sujeito@gmail.com',
+    );
   });
 });
 

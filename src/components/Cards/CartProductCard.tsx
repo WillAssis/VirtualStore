@@ -9,7 +9,11 @@ interface Params {
   deleteProduct: (itemId: number) => void;
 }
 
-function CartProductCard({ product, outerUpdateQuantity, deleteProduct }: Params) {
+function CartProductCard({
+  product,
+  outerUpdateQuantity,
+  deleteProduct,
+}: Params) {
   const { id, name, price, images } = { ...product };
   const [quantity, setQuantity] = useState<number>(product.quantity);
 
@@ -35,14 +39,20 @@ function CartProductCard({ product, outerUpdateQuantity, deleteProduct }: Params
         </p>
         <p>
           <span>Total: </span>
-          <span className="accent-text">R$ {(price * quantity).toFixed(2)}</span>
+          <span className="accent-text">
+            R$ {(price * quantity).toFixed(2)}
+          </span>
         </p>
         <div className="cart-product-controls">
           <label htmlFor="quantity" className="sr-only">
             Alterar quantidade:
           </label>
           <QuantityInput quantity={quantity} setQuantity={updateQuantity} />
-          <button className="delete-product-button" onClick={() => deleteProduct(id)} aria-label="Deletar produto">
+          <button
+            className="delete-product-button"
+            onClick={() => deleteProduct(id)}
+            aria-label="Deletar produto"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
             </svg>

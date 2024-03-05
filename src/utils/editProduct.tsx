@@ -31,7 +31,8 @@ async function editProduct(formData: FormData, slug: string | undefined) {
   const nameError = validateNameValue(name);
   const priceError = validatePriceValue(price);
   const descriptionError = validateDescriptionValue(description);
-  const isInputValid = nameError === '' && priceError === '' && descriptionError === '';
+  const isInputValid =
+    nameError === '' && priceError === '' && descriptionError === '';
 
   if (isInputValid) {
     const url = `http://localhost:3333/editar-produto/${slug}`;

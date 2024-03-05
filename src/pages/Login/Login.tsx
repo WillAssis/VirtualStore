@@ -29,7 +29,9 @@ function Login({ setUser }: Params) {
 
     if (success) {
       setUser(user);
-      setLoadingMessage('Logado com sucesso. Redirecionando para a página inicial');
+      setLoadingMessage(
+        'Logado com sucesso. Redirecionando para a página inicial',
+      );
       await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       navigate('/');
     } else {
@@ -45,8 +47,18 @@ function Login({ setUser }: Params) {
       <section aria-labelledby="login-page-title">
         <form className="login-form" noValidate onSubmit={authUser}>
           <h2 id="login-page-title">Fazer Login</h2>
-          <UsernameInput value={username} setValue={setUsername} error={usernameError} setError={setUsernameError} />
-          <PasswordInput value={password} setValue={setPassword} error={passwordError} setError={setPasswordError} />
+          <UsernameInput
+            value={username}
+            setValue={setUsername}
+            error={usernameError}
+            setError={setUsernameError}
+          />
+          <PasswordInput
+            value={password}
+            setValue={setPassword}
+            error={passwordError}
+            setError={setPasswordError}
+          />
           <button>Entrar</button>
         </form>
         <div className="login-page-links">

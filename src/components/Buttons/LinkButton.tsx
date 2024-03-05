@@ -9,7 +9,11 @@ interface Params {
 
 function LinkButton({ text, path, image }: Params) {
   return (
-    <Link to={path} className="link-button" style={{ backgroundImage: `url(${image})` }}>
+    <Link
+      to={path}
+      className="link-button"
+      style={{ backgroundImage: `url(${image})` }}
+    >
       <span>{text}</span>
     </Link>
   );

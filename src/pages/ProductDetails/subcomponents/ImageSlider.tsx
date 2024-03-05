@@ -7,7 +7,9 @@ interface Params {
 
 function ImageSlider({ images }: Params) {
   const [mainImageIndex, setMainImageIndex] = useState(0);
-  const [mainImageAlt, setMainImageAlt] = useState(`Imagem 1 de ${images.length}`);
+  const [mainImageAlt, setMainImageAlt] = useState(
+    `Imagem 1 de ${images.length}`,
+  );
 
   function changeImage(index: number) {
     setMainImageIndex(index);
@@ -24,7 +26,9 @@ function ImageSlider({ images }: Params) {
           {images.map((img, index) => (
             <li key={index}>
               <button
-                aria-label={`Selecionar imagem ${index + 1} de ${images.length}`}
+                aria-label={`Selecionar imagem ${index + 1} de ${
+                  images.length
+                }`}
                 style={{ backgroundImage: `url(${img})` }}
                 onClick={() => changeImage(index)}
                 className={mainImageIndex === index ? 'selected' : ''}

@@ -21,7 +21,8 @@ function defineTitleProps(orderResult: any) {
     headerMessage = 'Ops! Tivemos um problema com o pedido';
     headerIcon = sadFace;
     altIcon = 'Ícone de um rosto triste';
-    bodyDescription = 'Lamentamos, mas houve algum erro em nossos servidores e o pedido não foi concluído';
+    bodyDescription =
+      'Lamentamos, mas houve algum erro em nossos servidores e o pedido não foi concluído';
     orderDetail = 'Tente novamente mais tarde ou fale com a gente';
   }
 }

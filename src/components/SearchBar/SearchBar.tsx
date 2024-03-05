@@ -6,9 +6,18 @@ interface Params {
 
 function SearchBar({ search }: Params) {
   return (
-    <form className="search-bar" onSubmit={search} aria-label="Pesquisar produto">
+    <form
+      className="search-bar"
+      onSubmit={search}
+      aria-label="Pesquisar produto"
+    >
       <label htmlFor="search">Pesquisar: </label>
-      <input id="search" name="search" type="search" placeholder="Pesquisar produto"></input>
+      <input
+        id="search"
+        name="search"
+        type="search"
+        placeholder="Pesquisar produto"
+      ></input>
       <button>Buscar</button>
     </form>
   );

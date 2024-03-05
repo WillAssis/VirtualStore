@@ -11,18 +11,31 @@ interface Params {
   previousPage: () => void;
 }
 
-function Pagination({ currentPage, pages, jumpToPage, nextPage, previousPage }: Params) {
+function Pagination({
+  currentPage,
+  pages,
+  jumpToPage,
+  nextPage,
+  previousPage,
+}: Params) {
   return (
     <nav className="pagination" aria-label="Páginas">
       <ul>
         <li>
-          <PreviousPageButton previousPage={previousPage} disabled={currentPage <= 1} />
+          <PreviousPageButton
+            previousPage={previousPage}
+            disabled={currentPage <= 1}
+          />
         </li>
         {Array(pages)
           .fill(null)
           .map((_value, page) => (
             <li key={page + 1}>
-              <PageNumberButton jumpTo={jumpToPage} page={page + 1} active={currentPage === page + 1} />
+              <PageNumberButton
+                jumpTo={jumpToPage}
+                page={page + 1}
+                active={currentPage === page + 1}
+              />
             </li>
           ))}
         <li>

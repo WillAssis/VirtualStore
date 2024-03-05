@@ -14,7 +14,9 @@ function AdminProducts() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const searchParam = searchTerm ? '?search='.concat(searchTerm.toLowerCase()) : '';
+    const searchParam = searchTerm
+      ? '?search='.concat(searchTerm.toLowerCase())
+      : '';
     const url = `http://localhost:3333/produtos${searchParam}`;
 
     fetch(url, { credentials: 'include' })
@@ -31,7 +33,9 @@ function AdminProducts() {
 
         setTimeout(() => {
           setRerunFetchChecker(!rerunFetchChecker);
-          setError('Não foi possível carregar os produtos, verifique sua conexão');
+          setError(
+            'Não foi possível carregar os produtos, verifique sua conexão',
+          );
         }, 10000);
       });
   }, [searchTerm, rerunFetchChecker]);
@@ -76,7 +80,10 @@ function AdminProducts() {
             <ul className="product-list" aria-label="Lista de produtos">
               {products.map((product) => (
                 <li key={product.id}>
-                  <AdminProductCard product={product} deleteProduct={deleteProduct} />
+                  <AdminProductCard
+                    product={product}
+                    deleteProduct={deleteProduct}
+                  />
                 </li>
               ))}
             </ul>
