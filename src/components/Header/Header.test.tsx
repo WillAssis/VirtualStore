@@ -62,16 +62,17 @@ test('Display correct navigation when user is admin', () => {
   expect(accountSettings).toBeInTheDocument();
 });
 
-test('Allows user to logout', () => {
-  const user = { username: 'User555', isAdmin: false };
-  const logout = jest.fn();
+test('Allows user to logout', async () => {
+  const user = userEvent.setup();
+  const userInfo = { username: 'User555', isAdmin: false };
+  const logout = vi.fn();
 
-  render(<Header user={user} logout={logout} />, {
+  render(<Header user={userInfo} logout={logout} />, {
     wrapper: MemoryRouter,
   });
 
   const logoutButton = screen.getByRole('button', { name: 'Sair' });
-  userEvent.click(logoutButton);
+  await user.click(logoutButton);
 
   expect(logout).toHaveBeenCalled();
 });

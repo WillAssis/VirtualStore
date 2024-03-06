@@ -8,7 +8,7 @@ interface Params {
 function ImageSlider({ images }: Params) {
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [mainImageAlt, setMainImageAlt] = useState(
-    `Imagem 1 de ${images.length}`
+    `Imagem 1 de ${images.length}`,
   );
 
   function changeImage(index: number) {

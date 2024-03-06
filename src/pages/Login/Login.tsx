@@ -30,7 +30,7 @@ function Login({ setUser }: Params) {
     if (success) {
       setUser(user);
       setLoadingMessage(
-        'Logado com sucesso. Redirecionando para a página inicial'
+        'Logado com sucesso. Redirecionando para a página inicial',
       );
       await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       navigate('/');

@@ -38,7 +38,7 @@ function ProductDetails() {
 
         if (failedFetchChecker) {
           setError(
-            'Não foi possível carregar o produto, verifique sua conexão'
+            'Não foi possível carregar o produto, verifique sua conexão',
           );
         }
       });

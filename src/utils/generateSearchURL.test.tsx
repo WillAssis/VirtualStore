@@ -33,6 +33,6 @@ test('Search term param should be lowercase', () => {
   const search = 'totallyNotNull';
   const url = generateSearchURL(page, search);
   expect(url).toBe(
-    'http://localhost:3333/produtos?page=6&search=totallynotnull'
+    'http://localhost:3333/produtos?page=6&search=totallynotnull',
   );
 });

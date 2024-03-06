@@ -11,51 +11,55 @@ let params: {
 beforeEach(() => {
   params = {
     quantity: 3,
-    setQuantity: jest.fn(),
+    setQuantity: vi.fn(),
   };
 });
 
 describe('Custom buttons', () => {
-  test('Increase button calls function with correct value', () => {
+  test('Increase button calls function with correct value', async () => {
     render(<QuantityInput {...params} />);
 
+    const user = userEvent.setup();
     const button = screen.getByRole('button', { name: 'Aumentar' });
 
-    userEvent.click(button);
+    await user.click(button);
     expect(params.setQuantity).toHaveBeenCalledWith(4);
   });
 
-  test('Decrease button calls function with correct value', () => {
+  test('Decrease button calls function with correct value', async () => {
     render(<QuantityInput {...params} />);
 
+    const user = userEvent.setup();
     const button = screen.getByRole('button', { name: 'Diminuir' });
 
-    userEvent.click(button);
+    await user.click(button);
 
     expect(params.setQuantity).toHaveBeenCalledWith(2);
   });
 
-  test('Decrease button should not call function when quantity is 1', () => {
+  test('Decrease button should not call function when quantity is 1', async () => {
     params.quantity = 1;
     render(<QuantityInput {...params} />);
 
+    const user = userEvent.setup();
     const button = screen.getByRole('button', {
       name: 'Diminuir',
     }) as HTMLButtonElement;
 
     expect(button.disabled).toBe(true);
-    userEvent.click(button);
+    await user.click(button);
     expect(params.setQuantity).not.toHaveBeenCalled();
   });
 });
 
 describe('Input default functionality', () => {
-  test('Input changing should call function with correct value', () => {
+  test('Input changing should call function with correct value', async () => {
     render(<QuantityInput {...params} />);
 
+    const user = userEvent.setup();
     const input = screen.getByRole('spinbutton');
 
-    userEvent.type(input, '1');
+    await user.type(input, '1');
     expect(params.setQuantity).toHaveBeenCalledWith(31);
   });
 });

@@ -39,7 +39,7 @@ function Products() {
 
         if (failedFetchChecker) {
           setError(
-            'Não foi possível carregar os produtos, verifique sua conexão'
+            'Não foi possível carregar os produtos, verifique sua conexão',
           );
         }
       });

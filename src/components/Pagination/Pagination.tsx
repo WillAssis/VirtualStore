@@ -29,7 +29,7 @@ function Pagination({
         </li>
         {Array(pages)
           .fill(null)
-          .map((value, page) => (
+          .map((_value, page) => (
             <li key={page + 1}>
               <PageNumberButton
                 jumpTo={jumpToPage}

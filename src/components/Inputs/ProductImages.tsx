@@ -27,7 +27,7 @@ function ProductImages({ images, setImages }: Params) {
   function clearCurrentInput() {
     const currentImages = images.slice();
     const input = document.getElementById(
-      `image${currentInput}`
+      `image${currentInput}`,
     ) as HTMLInputElement;
 
     currentImages[currentInput] = PLACEHOLDER_IMG_PATH;

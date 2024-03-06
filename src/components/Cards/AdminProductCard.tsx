@@ -20,7 +20,7 @@ function AdminProductCard({ product, deleteProduct }: Params) {
           alt={`imagem ${currentImageIndex + 1} de ${product.images.length}`}
         />
         <ul className="image-selector">
-          {product.images.map((img, index) => (
+          {product.images.map((_img, index) => (
             <li key={product.id + index}>
               <button
                 className={

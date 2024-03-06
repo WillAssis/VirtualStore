@@ -34,7 +34,7 @@ function AdminProducts() {
         setTimeout(() => {
           setRerunFetchChecker(!rerunFetchChecker);
           setError(
-            'Não foi possível carregar os produtos, verifique sua conexão'
+            'Não foi possível carregar os produtos, verifique sua conexão',
           );
         }, 10000);
       });

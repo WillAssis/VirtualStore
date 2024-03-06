@@ -33,7 +33,7 @@ function Register({ setUser }: Params) {
     if (success) {
       setUser(user);
       setLoadingMessage(
-        'Usuário cadastrado com sucesso. Redirecionando para a página inicial'
+        'Usuário cadastrado com sucesso. Redirecionando para a página inicial',
       );
       await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       navigate('/');

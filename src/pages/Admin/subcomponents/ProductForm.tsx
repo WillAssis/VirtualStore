@@ -25,7 +25,7 @@ function ProductForm() {
 
   // Guarda as urls das imagens para serem mostradas como preview no image input
   const [images, setImages] = useState<string[]>(
-    Array(5).fill(PLACEHOLDER_IMG_PATH)
+    Array(5).fill(PLACEHOLDER_IMG_PATH),
   );
 
   useEffect(() => {
@@ -65,7 +65,7 @@ function ProductForm() {
       setLoadingMessage(
         `Produto ${
           slug ? 'editado' : 'cadastrado'
-        } com sucesso. Redirecionando para a página dos produtos`
+        } com sucesso. Redirecionando para a página dos produtos`,
       );
       await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       goBack();
