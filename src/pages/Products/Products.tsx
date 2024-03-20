@@ -1,92 +1,90 @@
 import { useState, useEffect } from 'react';
-import generateSearchURL from '../../utils/generateSearchURL';
+import { useSearchParams } from 'react-router-dom';
+import { HTTPProductsResponse } from '../../types';
+import { Product } from '../../types';
+import useFetch from '../../hooks/useFetch';
 import Pagination from '../../components/Pagination/Pagination';
 import Title from './subcomponents/Title';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import ProductList from './subcomponents/ProductList';
 import Loading from '../../components/Loading/Loading';
-import { Product } from '../../types';
 import './Products.css';
 
+const DATA_URL = 'http://localhost:3333/produtos';
+
 function Products() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [pages, setPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [failedFetchChecker, setFailedFetchChecker] = useState(false);
-  const [error, setError] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchURL, setSearchURL] = useState<string>(DATA_URL);
+  const { data, loading, error } = useFetch<HTTPProductsResponse>(searchURL);
 
-  // Em caso de falha, a requisição é feita novamente após 10 segundos
+  const products: Product[] = data?.products || [];
+  const totalPages: number = data?.pages || 1;
+  const currentPage: number = data?.currentPage || 1;
+
   useEffect(() => {
-    const url = generateSearchURL(currentPage, searchTerm);
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data.products);
-        setPages(data.pages);
-        // Tempo mínimo de 0.5s para carregar a página
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 500);
-      })
-      .catch((error) => {
-        console.log('Ocorreu um erro ao obter os produtos:', error);
-
-        setTimeout(() => {
-          setFailedFetchChecker(!failedFetchChecker);
-        }, 10000);
-
-        if (failedFetchChecker) {
-          setError(
-            'Não foi possível carregar os produtos, verifique sua conexão',
-          );
-        }
-      });
-  }, [currentPage, searchTerm, failedFetchChecker]);
+    const searchString = searchParams.toString();
+    const newURL = searchString ? `${DATA_URL}?${searchString}` : DATA_URL;
+    setSearchURL(newURL);
+  }, [searchParams]);
 
   const jumpToPage = (page: number) => {
-    if (page !== currentPage) {
-      setIsLoading(true);
-      setCurrentPage(page);
+    if (page > 0 && page <= totalPages) {
+      if (page === 1) {
+        searchParams.delete('page');
+      } else {
+        searchParams.set('page', page.toString());
+      }
+      setSearchParams(searchParams);
     }
   };
 
   const previousPage = () => {
-    if (currentPage > 1) {
-      setIsLoading(true);
-      setCurrentPage(currentPage - 1);
+    if (currentPage > 1 && currentPage <= totalPages) {
+      if (currentPage === 2) {
+        searchParams.delete('page');
+      } else {
+        searchParams.set('page', (currentPage - 1).toString());
+      }
+      setSearchParams(searchParams);
     }
   };
 
   const nextPage = () => {
-    if (currentPage < pages) {
-      setIsLoading(true);
-      setCurrentPage(currentPage + 1);
+    if (currentPage < totalPages) {
+      searchParams.set('page', (currentPage + 1).toString());
+      setSearchParams(searchParams);
     }
   };
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    setIsLoading(true);
     event.preventDefault();
-    const input = document.getElementById('search') as HTMLInputElement;
-    setSearchTerm(input.value);
-    setCurrentPage(1);
-    input.value = '';
+    const formData = new FormData(event.currentTarget);
+    const searchString = formData.get('search')?.toString();
+    if (searchString) {
+      searchParams.set('search', searchString);
+    } else {
+      searchParams.delete('search');
+    }
+    searchParams.delete('page');
+    setSearchParams(searchParams);
+    event.currentTarget.value = '';
   };
 
   return (
     <main className="product-page">
-      {isLoading ? (
+      {loading ? (
         <Loading error={error} />
       ) : (
         <>
           <Title />
           <SearchBar search={handleSearch} />
-          <ProductList products={products} searchTerm={searchTerm} />
+          <ProductList
+            products={products}
+            searchTerm={searchParams.get('search')}
+          />
           <Pagination
             currentPage={currentPage}
-            pages={pages}
+            pages={totalPages}
             jumpToPage={jumpToPage}
             nextPage={nextPage}
             previousPage={previousPage}
