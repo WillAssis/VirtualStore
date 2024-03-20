@@ -4,9 +4,9 @@ import { HTTPProductsResponse } from '../../types';
 import { Product } from '../../types';
 import useFetch from '../../hooks/useFetch';
 import Pagination from '../../components/Pagination/Pagination';
-import Title from './subcomponents/Title';
+import Title from './Title';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import ProductList from './subcomponents/ProductList';
+import ProductList from './ProductList';
 import Loading from '../../components/Loading/Loading';
 import './Products.css';
 

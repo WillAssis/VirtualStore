@@ -1,5 +1,5 @@
-import ProductCard from '../../../components/Cards/ProductCard';
-import { Product } from '../../../types';
+import ProductCard from '../../components/Cards/ProductCard';
+import { Product } from '../../types';
 import './ProductList.css';
 
 interface Params {
