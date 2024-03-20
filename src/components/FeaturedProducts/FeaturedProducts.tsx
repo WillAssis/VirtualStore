@@ -1,48 +1,27 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Product } from '../../types';
+import { HTTPProductsResponse } from '../../types';
+import useFetch from '../../hooks/useFetch';
 import Loading from '../Loading/Loading';
 import ProductCard from '../Cards/ProductCard';
-import { Product } from '../../types';
 import './FeaturedProducts.css';
-import { Link } from 'react-router-dom';
 
 interface Params {
   title: string;
   link?: string;
 }
 
+const DATA_URL = 'http://localhost:3333/destaques';
+
 function FeaturedProducts({ title, link }: Params) {
-  const [error, setError] = useState<string | null>(null);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [failedFetchChecker, setFailedFetchChecker] = useState(false);
+  const { data, loading, error } = useFetch<HTTPProductsResponse>(DATA_URL);
 
-  // Em caso de falha, a requisição é feita novamente após 10 segundos
-  useEffect(() => {
-    fetch('http://localhost:3333/destaques')
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data.products?.slice(0, 4) || []);
-        // Tempo mínimo de 0.5s para carregar
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 500);
-      })
-      .catch((error) => {
-        console.error('Error fetching products:', error);
-
-        setTimeout(() => {
-          setFailedFetchChecker(!failedFetchChecker);
-        }, 10000);
-
-        if (failedFetchChecker) {
-          setError('Erro: verifique sua conexão');
-        }
-      });
-  }, [failedFetchChecker]);
+  const products: Product[] = data?.products.slice(0, 4) || [];
 
   return (
     <section aria-labelledby="featured-products" className="featured-products">
-      {isLoading ? (
+      {loading ? (
         <Loading error={error} />
       ) : (
         <>
