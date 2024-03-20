@@ -2,12 +2,12 @@ import ProductCard from '../../components/Cards/ProductCard';
 import { Product } from '../../types';
 import './ProductList.css';
 
-interface Params {
+interface Props {
   products: Product[];
-  searchTerm: string | null;
+  searchTerm?: string;
 }
 
-function ProductList({ products, searchTerm }: Params) {
+function ProductList({ products, searchTerm }: Props) {
   return (
     <section className="products-container" aria-label="Produtos">
       {products.length > 0 ? (
