@@ -1,8 +1,8 @@
-import Logo from '../../../components/Logo/Logo';
-import LinkButton from '../../../components/Buttons/LinkButton';
-import productImage from '../../../assets/images/home-products-button-background.jpg';
-import loginImage from '../../../assets/images/home-login-button-background.jpg';
-import registerImage from '../../../assets/images/home-register-button-background.jpg';
+import Logo from '../../components/Logo/Logo';
+import LinkButton from '../../components/Buttons/LinkButton';
+import productImage from '../../assets/images/home-products-button-background.jpg';
+import loginImage from '../../assets/images/home-login-button-background.jpg';
+import registerImage from '../../assets/images/home-register-button-background.jpg';
 import './Main.css';
 
 function Main() {

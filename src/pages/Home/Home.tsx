@@ -1,5 +1,5 @@
-import Main from './subcomponents/Main';
-import About from './subcomponents/About';
+import Main from './Main';
+import About from './About';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 
 function Home() {
