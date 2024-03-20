@@ -1,12 +1,12 @@
 import Main from './Main';
-import About from './About';
+import Hero from './Hero';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 
 function Home() {
   return (
     <>
       <Main />
-      <About />
+      <Hero />
       <FeaturedProducts title="Produtos em destaque" link="/produtos" />
     </>
   );
