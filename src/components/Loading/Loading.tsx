@@ -1,16 +1,27 @@
-import './Loading.css';
+import styles from './Loading.module.scss';
 
-interface Params {
-  error: string | null;
+interface Props {
+  loading: boolean;
+  error: string;
+  children: string | JSX.Element | JSX.Element[];
 }
 
-function Loading({ error }: Params) {
-  return (
-    <div aria-label="Carregando dados" className="loading-screen">
-      <div className="spinner"></div>
-      <p>{error ?? 'Carregando...'}</p>
-    </div>
-  );
+function Loading({ loading, error, children }: Props) {
+  if (loading || error) {
+    return (
+      <section className={styles.loading}>
+        <div
+          className={styles.spinner}
+          role="alert"
+          aria-busy={loading}
+          aria-label="Loading"
+        ></div>
+        <p className={styles.error}>{error}</p>
+      </section>
+    );
+  }
+
+  return children;
 }
 
 export default Loading;
