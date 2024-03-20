@@ -1,5 +1,5 @@
 import Logo from '../../components/Logo/Logo';
-import LinkButton from '../../components/Buttons/LinkButton';
+import ImageButton from '../../components/Buttons/ImageButton';
 import productImage from '../../assets/images/home-products-button-background.jpg';
 import loginImage from '../../assets/images/home-login-button-background.jpg';
 import registerImage from '../../assets/images/home-register-button-background.jpg';
@@ -17,17 +17,17 @@ function Main() {
       <nav aria-label="Selecione o seu destino">
         <ul>
           <li>
-            <LinkButton
+            <ImageButton
               path="/produtos"
               text="Ver produtos"
               image={productImage}
             />
           </li>
           <li>
-            <LinkButton path="/login" text="Fazer login" image={loginImage} />
+            <ImageButton path="/login" text="Fazer login" image={loginImage} />
           </li>
           <li>
-            <LinkButton
+            <ImageButton
               path="/cadastro"
               text="Cadastrar-se"
               image={registerImage}
