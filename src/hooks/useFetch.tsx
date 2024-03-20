@@ -10,7 +10,10 @@ function useFetch<Data>(url: string) {
 
     fetch(url, { signal: abortController.signal })
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+        setError('');
+      })
       .catch((error) => setError(error.message))
       .finally(() => setLoading(false));
 
