@@ -29,3 +29,10 @@ export interface OrderPageTitle {
   alt: string;
   message: string;
 }
+
+export interface HTTPProductsResponse {
+  products: Product[];
+  results: number;
+  pages: number;
+  currentPage: number;
+}
