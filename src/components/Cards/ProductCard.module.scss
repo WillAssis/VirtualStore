@@ -1,0 +1,61 @@
+.card {
+  box-shadow: var(--shadow);
+  color: var(--font);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  text-align: start;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-3%);
+  }
+}
+
+.image {
+  aspect-ratio: 2 / 2;
+  max-width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.title {
+  font-size: 1.1rem;
+}
+
+.link {
+  color: var(--font);
+  text-decoration: none;
+
+  // Faz o link se estender ao card todo de forma invisível
+  &::before {
+    bottom: 0;
+    content: '';
+    left: 0;
+    outline-offset: 0.25rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  &:focus::before {
+    outline: 0.2rem solid var(--special);
+  }
+
+  &:active::before {
+    outline: none;
+  }
+}
