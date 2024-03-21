@@ -3,6 +3,7 @@
   --special: #e1c35d;
   --accent: #873143;
   --logo-color: #000;
+  --shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   --background-primary: #d9d9d9;
   --background-secondary: #fff;
   --background-opaque: rgba(217, 217, 217, 0.7);
@@ -16,6 +17,7 @@
   --special: #e1c35d;
   --accent: #77a5cd;
   --logo-color: #fff;
+  --shadow: none;
   --background-primary: #0a0b0d;
   --background-secondary: #242424;
   --background-opaque: rgba(10, 11, 13, 0.7);
