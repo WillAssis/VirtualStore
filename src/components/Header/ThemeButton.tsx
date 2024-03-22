@@ -1,4 +1,4 @@
-import changePageTheme from '../../../utils/changePageTheme';
+import changePageTheme from '../../utils/changePageTheme';
 import './ThemeButton.css';
 
 function ThemeButton() {
