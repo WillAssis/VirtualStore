@@ -25,7 +25,6 @@ function Register({ setUser }: Params) {
 
   async function registerUser(event: React.FormEvent<HTMLFormElement>) {
     setLoading(true);
-    setLoadingMessage('Aguarde');
     event.preventDefault();
     const registerAttempt = await register(username, email, password);
     const { success, user, errors } = { ...registerAttempt };
@@ -47,29 +46,30 @@ function Register({ setUser }: Params) {
 
   return (
     <main className="register-page">
-      {loading ? <Loading error={loadingMessage} /> : null}
-      <form className="register-form" noValidate onSubmit={registerUser}>
-        <h2>Criar conta</h2>
-        <UsernameInput
-          value={username}
-          setValue={setUsername}
-          error={usernameError}
-          setError={setUsernameError}
-        />
-        <PasswordInput
-          value={password}
-          setValue={setPassword}
-          error={passwordError}
-          setError={setPasswordError}
-        />
-        <EmailInput
-          value={email}
-          setValue={setEmail}
-          error={emailError}
-          setError={setEmailError}
-        />
-        <button>Cadastrar</button>
-      </form>
+      <Loading loading={loading} error={loadingMessage}>
+        <form className="register-form" noValidate onSubmit={registerUser}>
+          <h2>Criar conta</h2>
+          <UsernameInput
+            value={username}
+            setValue={setUsername}
+            error={usernameError}
+            setError={setUsernameError}
+          />
+          <PasswordInput
+            value={password}
+            setValue={setPassword}
+            error={passwordError}
+            setError={setPasswordError}
+          />
+          <EmailInput
+            value={email}
+            setValue={setEmail}
+            error={emailError}
+            setError={setEmailError}
+          />
+          <button>Cadastrar</button>
+        </form>
+      </Loading>
     </main>
   );
 }

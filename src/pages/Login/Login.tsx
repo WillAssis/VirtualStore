@@ -22,7 +22,6 @@ function Login({ setUser }: Params) {
 
   async function authUser(event: React.FormEvent<HTMLFormElement>) {
     setLoading(true);
-    setLoadingMessage('Aguarde');
     event.preventDefault();
     const loginAttempt = await login(username, password);
     const { success, user, errors } = { ...loginAttempt };
@@ -43,29 +42,30 @@ function Login({ setUser }: Params) {
 
   return (
     <main className="login-page">
-      {loading ? <Loading error={loadingMessage} /> : null}
-      <section aria-labelledby="login-page-title">
-        <form className="login-form" noValidate onSubmit={authUser}>
-          <h2 id="login-page-title">Fazer Login</h2>
-          <UsernameInput
-            value={username}
-            setValue={setUsername}
-            error={usernameError}
-            setError={setUsernameError}
-          />
-          <PasswordInput
-            value={password}
-            setValue={setPassword}
-            error={passwordError}
-            setError={setPasswordError}
-          />
-          <button>Entrar</button>
-        </form>
-        <div className="login-page-links">
-          <Link to="/cadastro">Não tenho conta</Link>
-          <Link to="/">Esqueci minha senha</Link>
-        </div>
-      </section>
+      <Loading loading={loading} error={loadingMessage}>
+        <section aria-labelledby="login-page-title">
+          <form className="login-form" noValidate onSubmit={authUser}>
+            <h2 id="login-page-title">Fazer Login</h2>
+            <UsernameInput
+              value={username}
+              setValue={setUsername}
+              error={usernameError}
+              setError={setUsernameError}
+            />
+            <PasswordInput
+              value={password}
+              setValue={setPassword}
+              error={passwordError}
+              setError={setPasswordError}
+            />
+            <button>Entrar</button>
+          </form>
+          <div className="login-page-links">
+            <Link to="/cadastro">Não tenho conta</Link>
+            <Link to="/">Esqueci minha senha</Link>
+          </div>
+        </section>
+      </Loading>
     </main>
   );
 }
