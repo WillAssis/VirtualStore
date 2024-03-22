@@ -1,6 +1,6 @@
-import NextPageButton from './subcomponents/NextPageButton';
-import PageNumberButton from './subcomponents/PageNumberButton';
-import PreviousPageButton from './subcomponents/PreviousPageButton';
+import NextPageButton from './NextPageButton';
+import PageNumberButton from './PageNumberButton';
+import PreviousPageButton from './PreviousPageButton';
 import './Pagination.css';
 
 interface Params {
