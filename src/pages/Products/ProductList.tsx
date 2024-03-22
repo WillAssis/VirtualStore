@@ -4,7 +4,7 @@ import './ProductList.css';
 
 interface Props {
   products: Product[];
-  searchTerm?: string;
+  searchTerm?: string | null;
 }
 
 function ProductList({ products, searchTerm }: Props) {

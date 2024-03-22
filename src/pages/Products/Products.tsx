@@ -72,25 +72,21 @@ function Products() {
 
   return (
     <main className="product-page">
-      {loading ? (
-        <Loading error={error} />
-      ) : (
-        <>
-          <Title />
-          <SearchBar search={handleSearch} />
-          <ProductList
-            products={products}
-            searchTerm={searchParams.get('search')}
-          />
-          <Pagination
-            currentPage={currentPage}
-            pages={totalPages}
-            jumpToPage={jumpToPage}
-            nextPage={nextPage}
-            previousPage={previousPage}
-          />
-        </>
-      )}
+      <Loading loading={loading} error={error}>
+        <Title />
+        <SearchBar search={handleSearch} />
+        <ProductList
+          products={products}
+          searchTerm={searchParams.get('search')}
+        />
+        <Pagination
+          currentPage={currentPage}
+          pages={totalPages}
+          jumpToPage={jumpToPage}
+          nextPage={nextPage}
+          previousPage={previousPage}
+        />
+      </Loading>
     </main>
   );
 }
