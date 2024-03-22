@@ -1,4 +1,5 @@
-import './SearchBar.css';
+import Button from '../Buttons/Button';
+import styles from './SearchBar.module.scss';
 
 interface Params {
   search: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -7,18 +8,29 @@ interface Params {
 function SearchBar({ search }: Params) {
   return (
     <form
-      className="search-bar"
+      className={styles.form}
       onSubmit={search}
       aria-label="Pesquisar produto"
+      role="search"
     >
-      <label htmlFor="search">Pesquisar: </label>
+      <label className={styles.label} htmlFor="search">
+        Pesquisar:
+      </label>
       <input
+        className={styles.input}
         id="search"
         name="search"
         type="search"
         placeholder="Pesquisar produto"
       ></input>
-      <button>Buscar</button>
+      <Button
+        text="Buscar"
+        style={{
+          borderRadius: '0 2rem 2rem 0',
+          outlineOffset: '0',
+          outlineColor: 'var(--accent)',
+        }}
+      />
     </form>
   );
 }
