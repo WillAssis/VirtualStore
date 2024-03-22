@@ -9,7 +9,15 @@ function useFetch<Data>(url: string) {
     const abortController = new AbortController();
 
     fetch(url, { signal: abortController.signal })
-      .then((response) => response.json())
+      .then((response) => {
+        // Para requisições em que o backend não retorna nada
+        // Sujeito a mudanças
+        if (response.status === 204) {
+          return {} as Data;
+        }
+
+        return response.json();
+      })
       .then((data) => {
         setData(data);
         setError('');
