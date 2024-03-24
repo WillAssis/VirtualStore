@@ -43,7 +43,7 @@ function ProductInfo({ product }: Props) {
           R$ {((price ?? 0) * selectedQuantity).toFixed(2)}
         </span>
       </p>
-      <Button text="Adicionar ao Carrinho" onClick={handleAddToCart} />
+      <Button onClick={handleAddToCart}>Adicionar ao Carrinho</Button>
     </div>
   );
 }

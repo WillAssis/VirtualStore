@@ -10,7 +10,7 @@ function Featured() {
         <div className={styles.contentWrapper}>
           <h2 className={styles.title}>Produtos em destaque</h2>
           <FeaturedProducts />
-          <Button text="Ver mais" path="/produtos" />
+          <Button path="/produtos">Ver mais</Button>
         </div>
       </Container>
     </section>

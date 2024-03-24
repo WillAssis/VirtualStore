@@ -24,13 +24,14 @@ function SearchBar({ search }: Params) {
         placeholder="Pesquisar produto"
       ></input>
       <Button
-        text="Buscar"
         style={{
           borderRadius: '0 2rem 2rem 0',
           outlineOffset: '0',
           outlineColor: 'var(--accent)',
         }}
-      />
+      >
+        Buscar
+      </Button>
     </form>
   );
 }
