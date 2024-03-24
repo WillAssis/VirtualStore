@@ -1,7 +1,10 @@
+import styles from './Title.module.scss';
+
 function Title() {
   return (
-    <h2>
+    <h2 className={styles.title}>
       <svg
+        className={styles.icon}
         aria-hidden="true"
         viewBox="0 0 57 66"
         xmlns="http://www.w3.org/2000/svg"
