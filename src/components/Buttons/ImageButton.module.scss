@@ -1,5 +1,3 @@
-$outline-color: var(--special);
-
 .button {
   aspect-ratio: 1 / 1;
   background-position: center;
@@ -23,7 +21,7 @@ $outline-color: var(--special);
   }
 
   &:focus {
-    outline: 0.2rem solid $outline-color;
+    outline: 0.2rem solid var(--accent);
   }
 }
 

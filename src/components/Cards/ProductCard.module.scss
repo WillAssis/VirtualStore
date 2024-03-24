@@ -53,7 +53,7 @@
   }
 
   &:focus::before {
-    outline: 0.2rem solid var(--special);
+    outline: 0.2rem solid var(--accent);
   }
 
   &:active::before {
