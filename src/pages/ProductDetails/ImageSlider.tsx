@@ -1,38 +1,44 @@
-import { useState } from 'react';
-import './ImageSlider.css';
+import { useState, useEffect } from 'react';
+import styles from './ImageSlider.module.scss';
 
 interface Params {
   images: string[];
 }
 
 function ImageSlider({ images }: Params) {
-  const [mainImageIndex, setMainImageIndex] = useState(0);
-  const [mainImageAlt, setMainImageAlt] = useState(
-    `Imagem 1 de ${images.length}`,
-  );
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  function changeImage(index: number) {
-    setMainImageIndex(index);
-    setMainImageAlt(`Imagem ${index + 1} de ${images.length}`);
-  }
+  // Reseta o slider quando o produto muda
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [images]);
+
+  const changeImage = (index: number) => setActiveIndex(index);
 
   return (
-    <section className="image-slider" aria-label="Imagens do produto">
-      <section className="image-slider-main" aria-label="Imagem selecionada">
-        <img alt={mainImageAlt} src={images[mainImageIndex]} />
-      </section>
-      <nav className="image-slider-controls" aria-label="Selecionar imagem">
-        <ul>
+    <section className={styles.slider} aria-label="Imagens do produto">
+      <div>
+        {images.map((img, index) => (
+          <img
+            className={`${styles.image} ${index === activeIndex ? styles.imageVisible : styles.imageHidden}`}
+            src={img}
+            alt={`Imagem 1 de ${index + 1}`}
+          />
+        ))}
+      </div>
+      <nav aria-label="Selecionar imagem">
+        <ul className={styles.buttonList}>
           {images.map((img, index) => (
             <li key={index}>
               <button
-                aria-label={`Selecionar imagem ${index + 1} de ${
-                  images.length
-                }`}
+                className={styles.button}
                 style={{ backgroundImage: `url(${img})` }}
                 onClick={() => changeImage(index)}
-                className={mainImageIndex === index ? 'selected' : ''}
-              ></button>
+              >
+                <span className="sr-only">
+                  Imagem ${index + 1} de ${images.length}
+                </span>
+              </button>
             </li>
           ))}
         </ul>

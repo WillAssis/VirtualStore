@@ -1,0 +1,49 @@
+$gap: 1rem;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+// Apenas a opacity é animada, o width: 0 faz a imagem anterior sumir instantaneamente
+.image {
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+}
+
+.imageVisible {
+  opacity: 1;
+}
+
+.imageHidden {
+  opacity: 0;
+  width: 0;
+}
+
+.buttonList {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.button {
+  aspect-ratio: 1 / 1;
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  outline-offset: 0.1rem;
+  width: 100%;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: 0.2rem solid var(--special);
+  }
+}
