@@ -1,5 +1,6 @@
 :root.light {
   --font: #121212;
+  --font-opaque: rgb(18, 18, 18, 0.7);
   --special: #e1c35d;
   --accent: #873143;
   --logo-color: #000;
@@ -13,7 +14,8 @@
 }
 
 :root.dark {
-  --font: #fff;
+  --font: #ffffff;
+  --font-opaque: rgba(255, 255, 255, 0.7);
   --special: #e1c35d;
   --accent: #77a5cd;
   --logo-color: #fff;
