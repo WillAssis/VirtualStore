@@ -1,0 +1,11 @@
+.main {
+  background-color: var(--background-secondary);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  padding: 2rem 0;
+}
