@@ -1,30 +1,26 @@
-import ProductCard from '../../components/Cards/ProductCard';
 import { Product } from '../../types';
-import './ProductList.css';
+import ProductCard from '../../components/Cards/ProductCard';
+import styles from './ProductList.module.scss';
 
 interface Props {
   products: Product[];
-  searchTerm?: string | null;
+  searchTerm: string | null;
 }
 
 function ProductList({ products, searchTerm }: Props) {
   return (
-    <section className="products-container" aria-label="Produtos">
-      {products.length > 0 ? (
-        <>
-          {searchTerm ? <p>Resultados para "{searchTerm}"</p> : null}
-          <ul aria-label="Lista dos produtos" className="product-list">
-            {products.map((product) => (
-              <li key={product.id}>
-                <ProductCard product={product} />
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <p>Nenhum produto encontrado</p>
+    <div className={styles.contentWrapper}>
+      {searchTerm && (
+        <p className={styles.paragraph}>Resultados para "{searchTerm}"</p>
       )}
-    </section>
+      <ul className={styles.list} aria-label="Produtos">
+        {products.map((product) => (
+          <li key={product.id}>
+            <ProductCard product={product} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
