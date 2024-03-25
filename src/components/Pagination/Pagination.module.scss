@@ -1,0 +1,44 @@
+.nav {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button {
+  background-color: var(--background-primary);
+  color: var(--font);
+  height: 1.5rem;
+  outline-offset: 0.15rem;
+  width: 1.5rem;
+
+  path {
+    fill: var(--font);
+  }
+
+  &:not(:disabled):hover {
+    background-color: var(--special);
+    color: black;
+  }
+
+  &:focus {
+    outline: 0.15rem solid var(--accent);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.buttonActive {
+  background-color: var(--special);
+  color: black;
+}

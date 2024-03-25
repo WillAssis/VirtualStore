@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { HTTPProductsResponse } from '../../types';
 import { Product } from '../../types';
 import useFetch from '../../hooks/useFetch';
+import Container from '../../components/Container/Container';
 import Pagination from '../../components/Pagination/Pagination';
 import Title from './Title';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -28,32 +29,12 @@ function Products() {
   }, [searchParams]);
 
   const jumpToPage = (page: number) => {
-    if (page > 0 && page <= totalPages) {
-      if (page === 1) {
-        searchParams.delete('page');
-      } else {
-        searchParams.set('page', page.toString());
-      }
-      setSearchParams(searchParams);
+    if (page === 1) {
+      searchParams.delete('page');
+    } else if (page <= totalPages) {
+      searchParams.set('page', page.toString());
     }
-  };
-
-  const previousPage = () => {
-    if (currentPage > 1 && currentPage <= totalPages) {
-      if (currentPage === 2) {
-        searchParams.delete('page');
-      } else {
-        searchParams.set('page', (currentPage - 1).toString());
-      }
-      setSearchParams(searchParams);
-    }
-  };
-
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      searchParams.set('page', (currentPage + 1).toString());
-      setSearchParams(searchParams);
-    }
+    setSearchParams(searchParams);
   };
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
@@ -73,19 +54,19 @@ function Products() {
   return (
     <main className="product-page">
       <Loading loading={loading} error={error}>
-        <Title />
-        <SearchBar search={handleSearch} />
-        <ProductList
-          products={products}
-          searchTerm={searchParams.get('search')}
-        />
-        <Pagination
-          currentPage={currentPage}
-          pages={totalPages}
-          jumpToPage={jumpToPage}
-          nextPage={nextPage}
-          previousPage={previousPage}
-        />
+        <Container>
+          <Title />
+          <SearchBar search={handleSearch} />
+          <ProductList
+            products={products}
+            searchTerm={searchParams.get('search')}
+          />
+          <Pagination
+            currentPage={currentPage}
+            pages={totalPages}
+            jump={jumpToPage}
+          />
+        </Container>
       </Loading>
     </main>
   );
