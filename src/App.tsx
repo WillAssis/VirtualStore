@@ -12,7 +12,7 @@ import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart/Cart';
 import loadPageTheme from './utils/loadPageTheme';
 import Order from './pages/Order/Order';
-import './App.css';
+import './App.scss';
 
 loadPageTheme();
 
