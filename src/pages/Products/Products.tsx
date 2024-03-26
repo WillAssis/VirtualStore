@@ -52,11 +52,13 @@ function Products() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const searchString = formData.get('search')?.toString();
+
     if (searchString) {
       searchParams.set('search', searchString);
     } else {
       searchParams.delete('search');
     }
+
     searchParams.delete('page');
     setSearchParams(searchParams);
     event.currentTarget.value = '';

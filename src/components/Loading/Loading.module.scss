@@ -5,6 +5,7 @@ $spinner-stroke: 0.4rem;
 .loading {
   align-items: center;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 1rem;
   height: 100%;
