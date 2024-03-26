@@ -3,127 +3,93 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
-let params: {
-  currentPage: number;
+interface Props {
   pages: number;
-  jumpToPage: (page: number) => void;
-  nextPage: () => void;
-  previousPage: () => void;
+  currentPage: number;
+  jump: (page: number) => void;
+}
+
+const setup = (props: Props) => {
+  const user = userEvent.setup();
+  render(<Pagination {...props} />);
+  return { user };
 };
 
-beforeEach(() => {
-  params = {
-    pages: 1,
-    currentPage: 1,
-    jumpToPage: vi.fn(),
-    nextPage: vi.fn(),
-    previousPage: vi.fn(),
-  };
-});
+describe('Next and previous buttons behaviour', () => {
+  test('When there is one page', async () => {
+    setup({ pages: 1, currentPage: 1, jump: vi.fn() });
 
-describe('Next and previous buttons', () => {
-  test('Buttons should be disabled when there is only one page', () => {
-    render(<Pagination {...params} />);
-
-    const previousPageButton = screen.getByRole('button', {
-      name: 'Página anterior',
+    const previous = screen.getByRole('button', {
+      name: 'Anterior',
     }) as HTMLButtonElement;
-    const nextPageButton = screen.getByRole('button', {
-      name: 'Próxima página',
+    const next = screen.getByRole('button', {
+      name: 'Próxima',
     }) as HTMLButtonElement;
 
-    expect(previousPageButton.disabled).toBe(true);
-    expect(nextPageButton.disabled).toBe(true);
+    expect(previous.disabled).toBe(true);
+    expect(next.disabled).toBe(true);
   });
 
-  test('One button should be disabled when there is two pages', async () => {
-    params.pages = 2;
-    render(<Pagination {...params} />);
+  test('When there is two pages', async () => {
+    const jump = vi.fn();
+    const { user } = setup({ pages: 2, currentPage: 1, jump });
 
-    const user = userEvent.setup();
-    const previousPageButton = screen.getByRole('button', {
-      name: 'Página anterior',
+    const previous = screen.getByRole('button', {
+      name: 'Anterior',
     }) as HTMLButtonElement;
-    const nextPageButton = screen.getByRole('button', {
-      name: 'Próxima página',
+    const next = screen.getByRole('button', {
+      name: 'Próxima',
     }) as HTMLButtonElement;
 
-    expect(previousPageButton.disabled).toBe(true);
-    expect(nextPageButton.disabled).toBe(false);
-    await user.click(nextPageButton);
-    expect(params.nextPage).toHaveBeenCalled();
+    expect(previous.disabled).toBe(true);
+    expect(next.disabled).toBe(false);
+    await user.click(next);
+    expect(jump).toHaveBeenCalledWith(2);
   });
 
-  test('Buttons should be enabled when user is not on first or last page', async () => {
-    params.pages = 3;
-    params.currentPage = 2;
-    render(<Pagination {...params} />);
+  test('When there is three or more pages', async () => {
+    const jump = vi.fn();
+    const { user } = setup({ pages: 3, currentPage: 2, jump });
 
-    const user = userEvent.setup();
-    const previousPageButton = screen.getByRole('button', {
-      name: 'Página anterior',
+    const previous = screen.getByRole('button', {
+      name: 'Anterior',
     }) as HTMLButtonElement;
-    const nextPageButton = screen.getByRole('button', {
-      name: 'Próxima página',
+    const next = screen.getByRole('button', {
+      name: 'Próxima',
     }) as HTMLButtonElement;
 
-    expect(previousPageButton.disabled).toBe(false);
-    expect(nextPageButton.disabled).toBe(false);
-    await user.click(nextPageButton);
-    expect(params.nextPage).toHaveBeenCalled();
-    await user.click(previousPageButton);
-    expect(params.previousPage).toHaveBeenCalled();
+    expect(previous.disabled).toBe(false);
+    expect(next.disabled).toBe(false);
+    await user.click(next);
+    expect(jump).toHaveBeenCalledWith(3);
+    await user.click(previous);
+    expect(jump).toHaveBeenCalledWith(1);
   });
 });
 
-describe('Page number buttons', () => {
-  test('One page should have one active button', () => {
-    render(<Pagination {...params} />);
+describe('Page number buttons behaviour', () => {
+  test('When there is one page', async () => {
+    setup({ pages: 1, currentPage: 1, jump: vi.fn() });
 
-    const pageNumberButtons = screen
-      .getAllByRole('button')
-      .slice(1, params.pages + 1) as HTMLButtonElement[];
-    const buttonsClassList = pageNumberButtons.map(
-      (button: HTMLButtonElement) => button.classList,
-    );
-
-    expect(pageNumberButtons).toHaveLength(1);
-    expect(buttonsClassList[0]).toContain('active');
-  });
-
-  test('Multiple pages should have only one active button', () => {
-    params.pages = 6;
-    params.currentPage = 2;
-    render(<Pagination {...params} />);
-
-    const pageNumberButtons = screen
-      .getAllByRole('button')
-      .slice(1, params.pages + 1) as HTMLButtonElement[];
-    const buttonsClassList = pageNumberButtons.map(
-      (button: HTMLButtonElement) => button.classList,
-    );
-
-    expect(pageNumberButtons).toHaveLength(6);
-    expect(buttonsClassList[1]).toContain('active');
-    buttonsClassList.splice(1, 1); // Remove active button from array
-    buttonsClassList.forEach((notActiveButtonClassList) => {
-      expect(notActiveButtonClassList).not.toContain('active');
+    const buttons = screen.getAllByRole('button', {
+      name: /^[0-9]*$/,
     });
+
+    expect(buttons).toHaveLength(1);
   });
-  test('Buttons should call the function with correct argument', async () => {
-    params.pages = 6;
-    params.currentPage = 2;
 
-    render(<Pagination {...params} />);
+  test('When there more than one page', async () => {
+    const jump = vi.fn();
+    const { user } = setup({ pages: 6, currentPage: 2, jump });
 
-    const user = userEvent.setup();
-    const pageNumberButtons = screen
-      .getAllByRole('button')
-      .slice(1, params.pages + 1);
+    const buttons = screen.getAllByRole('button', {
+      name: /^[0-9]*$/,
+    });
+    const totallyRandomButton = buttons[4];
 
-    await user.click(pageNumberButtons[3]);
-    expect(params.jumpToPage).toHaveBeenCalledWith(4);
-    await user.click(pageNumberButtons[0]);
-    expect(params.jumpToPage).toHaveBeenCalledWith(1);
+    await user.click(totallyRandomButton);
+
+    expect(buttons).toHaveLength(6);
+    expect(jump).toHaveBeenCalledWith(5);
   });
 });

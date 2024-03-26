@@ -1,0 +1,16 @@
+// Ocupa todo o espaço restante
+.contentWrapper {
+  flex: 1;
+}
+
+.paragraph {
+  color: var(--font-opaque);
+  margin: 1rem 0;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(10rem + 5vw), 1fr));
+  gap: 2rem;
+  padding: 0;
+}

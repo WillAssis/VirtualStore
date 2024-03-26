@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../types';
-import './ProductCard.css';
+import styles from './ProductCard.module.scss';
 
-interface ProductCardProps {
+interface Props {
   product: Product;
 }
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product }: Props) {
+  const { name, price, images, slug } = product;
+
   return (
-    <article className="product-card">
-      <img className="card-image" src={product.images[0]} alt={product.name} />
-      <div className="card-content">
-        <h3>
-          <Link to={`/produtos/${product.slug}`}>{product.name}</Link>
+    <article className={styles.card}>
+      <img className={styles.image} src={images[0]} alt={name} />
+      <div className={styles.content}>
+        <h3 className={styles.title}>
+          <Link className={styles.link} to={`/produtos/${slug}`}>
+            {name}
+          </Link>
         </h3>
         <p>
           Preço:
-          <span className="accent-text"> R$ {product.price.toFixed(2)}</span>
+          <span className={styles.accent}> R$ {price.toFixed(2)}</span>
         </p>
       </div>
     </article>

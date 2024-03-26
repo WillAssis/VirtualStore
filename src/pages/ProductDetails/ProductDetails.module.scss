@@ -1,0 +1,33 @@
+// Define cores
+.main {
+  background-color: var(--background-secondary);
+  color: var(--font);
+}
+
+// Posiciona conteúdo
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.productSection {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+
+  > * {
+    flex: 1;
+  }
+}
+
+.featuredTitle {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .productSection {
+    flex-direction: column-reverse;
+  }
+}

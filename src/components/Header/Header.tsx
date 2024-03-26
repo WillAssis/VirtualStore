@@ -1,8 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import { User } from '../../types';
 import Logo from '../Logo/Logo';
-import Dropdown from './subcomponents/Dropdown';
-import ThemeButton from './subcomponents/ThemeButton';
+import Dropdown from './Dropdown';
+import ThemeButton from './ThemeButton';
 import './Header.css';
 
 interface Params {
