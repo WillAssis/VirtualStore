@@ -36,3 +36,22 @@ export interface HTTPProductsResponse {
   pages: number;
   currentPage: number;
 }
+
+export interface HTTPLoginResponse {
+  success: boolean;
+  user: User | null;
+  errors: {
+    usernameError: string;
+    passwordError: string;
+  };
+}
+
+export interface HTTPRegisterResponse {
+  success: boolean;
+  user: User | null;
+  errors: {
+    usernameError: string;
+    emailError: string;
+    passwordError: string;
+  };
+}
