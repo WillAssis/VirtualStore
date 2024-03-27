@@ -1,7 +1,7 @@
-import About from './subcomponents/About';
-import Contact from './subcomponents/Contact';
-import Content from './subcomponents/Content';
-import LegalInformations from './subcomponents/LegalInformations';
+import About from './About';
+import Contact from './Contact';
+import Content from './Content';
+import LegalInformations from './LegalInformations';
 import './Footer.css';
 
 function Footer() {
