@@ -2,8 +2,8 @@ import styles from './Loading.module.scss';
 
 interface Props {
   loading: boolean;
-  error: string;
-  children: string | JSX.Element | JSX.Element[];
+  error?: string;
+  children?: string | JSX.Element | JSX.Element[];
 }
 
 function Loading({ loading, error, children }: Props) {
@@ -16,7 +16,7 @@ function Loading({ loading, error, children }: Props) {
           aria-busy={loading}
           aria-label="Loading"
         ></div>
-        <p className={styles.error}>{error}</p>
+        <p className={styles.error}>{error ?? ''}</p>
       </section>
     );
   }
