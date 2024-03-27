@@ -1,17 +1,15 @@
+import { useContext } from 'react';
 import { useNavigate, Routes, Route } from 'react-router-dom';
+import { authContext } from '../../contexts/authContext';
 import Navigation from './subcomponents/Navigation';
 import AdminHome from './subcomponents/AdminHome';
 import AdminProducts from './subcomponents/AdminProducts';
 import ProductForm from './subcomponents/ProductForm';
-import { User } from '../../types';
 import './Admin.css';
 
-interface Params {
-  user: User | null;
-}
-
-function Admin({ user }: Params) {
+function Admin() {
   const navigate = useNavigate();
+  const { user } = useContext(authContext);
 
   if (!user || !user.isAdmin) {
     navigate('/');

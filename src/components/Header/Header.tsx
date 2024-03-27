@@ -1,16 +1,14 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { User } from '../../types';
+import { authContext } from '../../contexts/authContext';
 import Logo from '../Logo/Logo';
 import Dropdown from './Dropdown';
 import ThemeButton from './ThemeButton';
 import './Header.css';
 
-interface Params {
-  user: User | null;
-  logout: () => void;
-}
+function Header() {
+  const { user, logout } = useContext(authContext);
 
-function Header({ user, logout }: Params) {
   return (
     <header>
       <div>
