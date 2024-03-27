@@ -55,3 +55,15 @@ export interface HTTPRegisterResponse {
     passwordError: string;
   };
 }
+
+export interface AuthContextType {
+  user: User | null;
+  status: 'idle' | 'fetching' | 'saving';
+  login: (username: string, password: string) => Promise<HTTPLoginResponse>;
+  logout: () => void;
+  register: (
+    username: string,
+    email: string,
+    password: string,
+  ) => Promise<HTTPRegisterResponse>;
+}
