@@ -1,18 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UsernameInput from '../../components/Inputs/UsernameInput';
-import PasswordInput from '../../components/Inputs/PasswordInput';
-import EmailInput from '../../components/Inputs/EmailInput';
+import { authContext } from '../../contexts/authContext';
+import validateUsername from '../../utils/validateUsername';
+import validateEmail from '../../utils/validateEmail';
+import validatePassword from '../../utils/validatePassword';
+import TextInput from '../../components/Inputs/TextInput';
+import Container from '../../components/Container/Container';
 import Loading from '../../components/Loading/Loading';
-import register from '../../utils/register';
-import { User } from '../../types';
-import './Register.css';
+import Button from '../../components/Buttons/Button';
+import styles from './Register.module.scss';
 
-interface Params {
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
-}
-
-function Register({ setUser }: Params) {
+function Register() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,56 +18,68 @@ function Register({ setUser }: Params) {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState('');
+
+  const { status, register } = useContext(authContext);
+  const loading = status === 'fetching';
 
   async function registerUser(event: React.FormEvent<HTMLFormElement>) {
-    setLoading(true);
     event.preventDefault();
-    const registerAttempt = await register(username, email, password);
-    const { success, user, errors } = { ...registerAttempt };
+    const { success, errors } = await register(username, email, password);
 
     if (success) {
-      setUser(user);
-      setLoadingMessage(
-        'Usuário cadastrado com sucesso. Redirecionando para a página inicial',
-      );
-      await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       navigate('/');
     } else {
       setUsernameError(errors.usernameError);
       setPasswordError(errors.passwordError);
       setEmailError(errors.emailError);
-      setLoading(false);
     }
   }
 
   return (
-    <main className="register-page">
-      <Loading loading={loading} error={loadingMessage}>
-        <form className="register-form" noValidate onSubmit={registerUser}>
-          <h2>Criar conta</h2>
-          <UsernameInput
-            value={username}
-            setValue={setUsername}
-            error={usernameError}
-            setError={setUsernameError}
-          />
-          <PasswordInput
-            value={password}
-            setValue={setPassword}
-            error={passwordError}
-            setError={setPasswordError}
-          />
-          <EmailInput
-            value={email}
-            setValue={setEmail}
-            error={emailError}
-            setError={setEmailError}
-          />
-          <button>Cadastrar</button>
-        </form>
-      </Loading>
+    <main className={styles.main}>
+      <div
+        className={
+          loading
+            ? `${styles.loadingContainer} ${styles.loadingContainerVisible}`
+            : `${styles.loadingContainer} ${styles.loadingContainerHidden}`
+        }
+      >
+        <Loading loading={loading} />
+      </div>
+      <Container>
+        <div className={styles.contentWrapper}>
+          <form className={styles.form} noValidate onSubmit={registerUser}>
+            <h2>Criar conta</h2>
+            <TextInput
+              name="username"
+              value={username}
+              setValue={setUsername}
+              error={usernameError}
+              setError={setUsernameError}
+              validateInput={validateUsername}
+            />
+            <TextInput
+              name="password"
+              value={password}
+              setValue={setPassword}
+              error={passwordError}
+              setError={setPasswordError}
+              validateInput={validatePassword}
+              type="password"
+            />
+            <TextInput
+              name="email"
+              value={email}
+              setValue={setEmail}
+              error={emailError}
+              setError={setEmailError}
+              validateInput={validateEmail}
+              type="email"
+            />
+            <Button>Cadastrar</Button>
+          </form>
+        </div>
+      </Container>
     </main>
   );
 }

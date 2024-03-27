@@ -1,0 +1,40 @@
+$form-max-width: 800px;
+
+.main {
+  background-image: var(--dashboard-image);
+  background-size: cover;
+  color: var(--font);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.loadingContainer {
+  background-color: var(--background-opaque);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.loadingContainerVisible {
+  display: block;
+}
+
+.loadingContainerHidden {
+  display: none;
+}
+
+.contentWrapper {
+  background-color: var(--background-opaque);
+  margin: 5rem auto;
+  max-width: $form-max-width;
+  padding: 2.5rem;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
