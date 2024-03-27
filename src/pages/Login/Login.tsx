@@ -1,71 +1,80 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import UsernameInput from '../../components/Inputs/UsernameInput';
-import PasswordInput from '../../components/Inputs/PasswordInput';
+import { authContext } from '../../contexts/authContext';
+import validateUsername from '../../utils/validateUsername';
+import validatePassword from '../../utils/validatePassword';
+import TextInput from '../../components/Inputs/TextInput';
 import Loading from '../../components/Loading/Loading';
-import login from '../../utils/login';
-import { User } from '../../types';
-import './Login.css';
+import Container from '../../components/Container/Container';
+import Button from '../../components/Buttons/Button';
+import styles from './Login.module.scss';
 
-interface Params {
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
-}
-
-function Login({ setUser }: Params) {
+function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState('');
+
+  const { status, login } = useContext(authContext);
+  const loading = status === 'fetching';
 
   async function authUser(event: React.FormEvent<HTMLFormElement>) {
-    setLoading(true);
     event.preventDefault();
-    const loginAttempt = await login(username, password);
-    const { success, user, errors } = { ...loginAttempt };
+    const { success, errors } = await login(username, password);
 
     if (success) {
-      setUser(user);
-      setLoadingMessage(
-        'Logado com sucesso. Redirecionando para a página inicial',
-      );
-      await new Promise((resolve) => setTimeout(resolve, 2500)); // delay
       navigate('/');
     } else {
       setUsernameError(errors.usernameError);
       setPasswordError(errors.passwordError);
-      setLoading(false);
     }
   }
 
   return (
-    <main className="login-page">
-      <Loading loading={loading} error={loadingMessage}>
-        <section aria-labelledby="login-page-title">
-          <form className="login-form" noValidate onSubmit={authUser}>
-            <h2 id="login-page-title">Fazer Login</h2>
-            <UsernameInput
+    <main className={styles.main}>
+      <div
+        className={
+          loading
+            ? `${styles.loadingContainer} ${styles.loadingContainerVisible}`
+            : `${styles.loadingContainer} ${styles.loadingContainerHidden}`
+        }
+      >
+        <Loading loading={loading} />
+      </div>
+      <Container>
+        <div className={styles.contentWrapper}>
+          <form className={styles.form} noValidate onSubmit={authUser}>
+            <h2>Fazer Login</h2>
+            <TextInput
+              name="username"
               value={username}
               setValue={setUsername}
               error={usernameError}
               setError={setUsernameError}
+              validateInput={validateUsername}
             />
-            <PasswordInput
+            <TextInput
+              name="password"
               value={password}
               setValue={setPassword}
               error={passwordError}
               setError={setPasswordError}
+              validateInput={validatePassword}
+              type="password"
             />
-            <button>Entrar</button>
+            <Button>Entrar</Button>
           </form>
-          <div className="login-page-links">
-            <Link to="/cadastro">Não tenho conta</Link>
-            <Link to="/">Esqueci minha senha</Link>
-          </div>
-        </section>
-      </Loading>
+          <aside className={styles.linksWrapper} aria-label="Links">
+            <Link className={styles.link} to="/cadastro">
+              Não tenho conta
+            </Link>
+            <Link className={styles.link} to="/">
+              Esqueci minha senha
+            </Link>
+          </aside>
+        </div>
+      </Container>
     </main>
   );
 }

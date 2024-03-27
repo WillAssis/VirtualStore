@@ -1,0 +1,65 @@
+$form-max-width: 600px;
+
+.main {
+  background-image: var(--dashboard-image);
+  background-size: cover;
+  color: var(--font);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.loadingContainer {
+  background-color: var(--background-opaque);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.loadingContainerVisible {
+  display: block;
+}
+
+.loadingContainerHidden {
+  display: none;
+}
+
+.contentWrapper {
+  background-color: var(--background-opaque);
+  margin: 5rem auto;
+  max-width: $form-max-width;
+  padding: 2.5rem;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.linksWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.link {
+  color: var(--font);
+  font-size: 0.9rem;
+  padding: 0.5em 1em;
+  text-decoration: underline;
+  width: max-content;
+
+  &:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0.15em solid var(--accent);
+  }
+}
