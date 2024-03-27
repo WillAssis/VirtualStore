@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { User } from './types';
+import { AuthProvider } from './contexts/authContext';
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 import Login from './pages/Login/Login';
@@ -39,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <AuthProvider>
       <Header user={user} logout={logout} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -52,7 +53,7 @@ function App() {
         <Route path="/admin/*" element={<Admin user={user} />} />
       </Routes>
       <Footer />
-    </>
+    </AuthProvider>
   );
 }
 
