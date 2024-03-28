@@ -6,7 +6,7 @@ import validateEmail from '../../utils/validateEmail';
 import validatePassword from '../../utils/validatePassword';
 import TextInput from '../../components/Inputs/TextInput';
 import Container from '../../components/Container/Container';
-import Loading from '../../components/Loading/Loading';
+import OverlayLoading from '../../components/Loading/OverlayLoading';
 import Button from '../../components/Buttons/Button';
 import styles from './Register.module.scss';
 
@@ -37,15 +37,7 @@ function Register() {
 
   return (
     <main className={styles.main}>
-      <div
-        className={
-          loading
-            ? `${styles.loadingContainer} ${styles.loadingContainerVisible}`
-            : `${styles.loadingContainer} ${styles.loadingContainerHidden}`
-        }
-      >
-        <Loading loading={loading} />
-      </div>
+      <OverlayLoading loading={loading} />
       <Container>
         <div className={styles.contentWrapper}>
           <form className={styles.form} noValidate onSubmit={registerUser}>

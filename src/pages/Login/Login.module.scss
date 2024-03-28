@@ -10,21 +10,6 @@ $form-max-width: 600px;
   position: relative;
 }
 
-.loadingContainer {
-  background-color: var(--background-opaque);
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-.loadingContainerVisible {
-  display: block;
-}
-
-.loadingContainerHidden {
-  display: none;
-}
-
 .contentWrapper {
   background-color: var(--background-opaque);
   margin: 5rem auto;
