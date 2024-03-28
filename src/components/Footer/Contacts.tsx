@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
+import styles from './Footer.module.scss';
 
-function Contact() {
+function Contacts() {
   return (
-    <div>
-      <h3>Contatos</h3>
-      <nav aria-label="Redes sociais">
-        <ul>
+    <div className={styles.links}>
+      <h3 className={styles.title}>Contatos</h3>
+      <nav>
+        <ul className={styles.linksList}>
           <li>
             <Link
+              className={styles.link}
               target="_blank"
               to="https://www.facebook.com/Solus2018/?locale=pt_BR"
             >
@@ -16,6 +18,7 @@ function Contact() {
           </li>
           <li>
             <Link
+              className={styles.link}
               target="_blank"
               to="https://www.instagram.com/soluscasamentos/"
             >
@@ -24,6 +27,7 @@ function Contact() {
           </li>
           <li>
             <Link
+              className={styles.link}
               target="_blank"
               to="https://shopee.com.br/soluspersonalizados"
             >
@@ -36,4 +40,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default Contacts;

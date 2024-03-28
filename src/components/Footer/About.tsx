@@ -1,9 +1,13 @@
+import styles from './Footer.module.scss';
+
 function About() {
   return (
-    <div className="about">
-      <h3>Sobre nós</h3>
-      <p>Oferecemos artigos personalizados para bodas e casamentos</p>
-    </div>
+    <>
+      <h3 className={styles.title}>Sobre nós</h3>
+      <p className={styles.paragraph}>
+        Oferecemos artigos personalizados para bodas e casamentos
+      </p>
+    </>
   );
 }
 

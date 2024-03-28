@@ -1,0 +1,79 @@
+@use 'sass:math';
+
+$gap: 1rem;
+
+.footer {
+  background-color: var(--background-primary);
+  color: var(--font);
+}
+
+// Textos
+.title {
+  margin-bottom: math.div($gap, 2);
+}
+
+.paragraph {
+  color: var(--font-opaque);
+}
+
+.link {
+  color: var(--font-opaque);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--font);
+  }
+
+  &:focus {
+    color: var(--accent);
+  }
+}
+
+// Footer layout
+.topContentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+  margin: 2rem 0 $gap;
+}
+
+.bottomContentWrapper {
+  border-top: 1px solid var(--font-opaque);
+  display: flex;
+  flex-wrap: wrap;
+  gap: math.div($gap, 2);
+  justify-content: center;
+  padding: math.div($gap, 2) 0;
+}
+
+.aboutWrapper {
+  flex: 1 0 calc(50% - math.div($gap, 2));
+  flex-wrap: wrap;
+}
+
+.linksWrapper {
+  display: flex;
+  flex: 1 0 calc(50% - math.div($gap, 2));
+  gap: $gap;
+  justify-content: space-around;
+}
+
+// About e Content layout
+.links {
+  flex: 1 0 calc(50% - math.div($gap, 2));
+  text-align: center;
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: math.div($gap, 2);
+  padding: 0;
+}
+
+// LegalInformations layout
+.bottomParagraph {
+  flex-basis: max-content;
+  font-size: 0.75rem;
+  margin: auto;
+}

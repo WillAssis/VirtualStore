@@ -1,19 +1,26 @@
 import { Link } from 'react-router-dom';
+import styles from './Footer.module.scss';
 
 function Content() {
   return (
-    <div>
-      <h3>Conteúdo</h3>
-      <nav aria-label="Conteúdo">
-        <ul>
+    <div className={styles.links}>
+      <h3 className={styles.title}>Conteúdo</h3>
+      <nav>
+        <ul className={styles.linksList}>
           <li>
-            <Link to="/">Início</Link>
+            <Link className={styles.link} to="/">
+              Início
+            </Link>
           </li>
           <li>
-            <Link to="/produtos">Produtos</Link>
+            <Link className={styles.link} to="/produtos">
+              Produtos
+            </Link>
           </li>
           <li>
-            <Link to="/cadastro">Cadastro</Link>
+            <Link className={styles.link} to="/cadastro">
+              Cadastro
+            </Link>
           </li>
         </ul>
       </nav>
