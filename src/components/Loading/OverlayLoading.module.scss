@@ -1,0 +1,14 @@
+.wrapper {
+  background-color: var(--background-opaque);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.wrapperVisible {
+  display: block;
+}
+
+.wrapperHidden {
+  display: none;
+}
