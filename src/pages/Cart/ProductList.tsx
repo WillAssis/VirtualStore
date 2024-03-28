@@ -1,5 +1,5 @@
-import CartProductCard from '../../../components/Cards/CartProductCard';
-import { CartItem } from '../../../types';
+import CartProductCard from '../../components/Cards/CartProductCard';
+import { CartItem } from '../../types';
 import './ProductList.css';
 
 interface Params {

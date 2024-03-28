@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Title from './subcomponents/Title';
-import ProductList from './subcomponents/ProductList';
-import Summary from './subcomponents/Summary';
+import Title from './Title';
+import ProductList from './ProductList';
+import Summary from './Summary';
 import { CartItem } from '../../types';
 import './Cart.css';
 

@@ -1,4 +1,4 @@
-import orderCreate from '../../../utils/orderCreate';
+import orderCreate from '../../utils/orderCreate';
 import './Summary.css';
 import { useNavigate } from 'react-router-dom';
 
