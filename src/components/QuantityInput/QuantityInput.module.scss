@@ -1,3 +1,4 @@
+// O tamanho se adapta à font-size do parent element
 $border: 0.1em solid var(--font-opaque);
 $size: 1.5em; // 150% da font-size do parent
 
@@ -31,14 +32,6 @@ $size: 1.5em; // 150% da font-size do parent
   fill: var(--font);
   font-size: $size;
 
-  &:first-child {
-    border-right: $border;
-  }
-
-  &:last-child {
-    border-left: $border;
-  }
-
   &:not(:disabled) {
     cursor: pointer;
   }
@@ -52,6 +45,14 @@ $size: 1.5em; // 150% da font-size do parent
   &:disabled {
     opacity: 0.5;
   }
+}
+
+.leftButton {
+  border-right: $border;
+}
+
+.rightButton {
+  border-left: $border;
 }
 
 .input {

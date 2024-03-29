@@ -29,13 +29,12 @@ function ProductInfo({ product }: Props) {
       <p className={styles.description}>{description ?? 'Sem descrição'}</p>
       <div className={styles.row}>
         <p className={styles.price}>Preço: R$ {(price ?? 0).toFixed(2)}</p>
-        <label className={styles.label} htmlFor="quantity">
-          <span className="sr-only">Selecionar quantidade</span>
+        <div className={styles.quantity}>
           <QuantityInput
             quantity={selectedQuantity}
             setQuantity={setSelectedQuantity}
           />
-        </label>
+        </div>
       </div>
       <p>
         Valor total:{' '}
