@@ -1,7 +1,7 @@
 import { Product, CartItem } from '../types';
 
 function updateProductToCart(product: Product, quantity: number) {
-  const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
   const existingItem = cartItems.find(
     (item: CartItem) => item.id === product.id,
   );
@@ -12,7 +12,7 @@ function updateProductToCart(product: Product, quantity: number) {
     cartItems.push({ ...product, quantity });
   }
 
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  localStorage.setItem('cart', JSON.stringify(cartItems));
 }
 
 export default updateProductToCart;

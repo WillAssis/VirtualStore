@@ -36,18 +36,18 @@ beforeEach(() => {
       quantity: 8,
     },
   ];
-  localStorage.setItem('cartItems', JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 });
 
 afterEach(() => {
-  localStorage.removeItem('cartItems');
+  localStorage.removeItem('cart');
 });
 
 test('Cart is empty', () => {
-  localStorage.removeItem('cartItems');
+  localStorage.removeItem('cart');
   updateProductToCart(fakeProduct, 3);
 
-  const updatedCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const updatedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
   expect(updatedCart).toHaveLength(1);
   expect(updatedCart[0]).toEqual({
@@ -59,7 +59,7 @@ test('Cart is empty', () => {
 test('Cart is not empty', () => {
   updateProductToCart(fakeProduct, 6);
 
-  const updatedCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const updatedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
   expect(updatedCart).toHaveLength(3);
   expect(updatedCart[2]).toEqual({
@@ -70,10 +70,10 @@ test('Cart is not empty', () => {
 
 test('Cart has the product', () => {
   cart.push({ ...fakeProduct, quantity: 7 });
-  localStorage.setItem('cartItems', JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
   updateProductToCart(fakeProduct, 2);
 
-  const updatedCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const updatedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
   expect(updatedCart).toHaveLength(3);
   expect(updatedCart[2]).toEqual({
