@@ -1,9 +1,10 @@
-import orderCreate from '../../utils/orderCreate';
-import './Summary.css';
 import { useNavigate } from 'react-router-dom';
+import orderCreate from '../../utils/orderCreate';
+import Button from '../../components/Buttons/Button';
+import styles from './Summary.module.scss';
 
 interface Params {
-  totalPrice: string;
+  totalPrice?: string;
   clearCart: () => void;
 }
 
@@ -21,13 +22,24 @@ function Summary({ totalPrice, clearCart }: Params) {
   };
 
   return (
-    <section aria-label="Sumário" className="cart-page-summary">
-      <p className="cart-total-price">
-        Total a pagar: <span className="accent-text">R$ {totalPrice}</span>
+    <section className={styles.summary}>
+      <h3 className={styles.title}>Sumário</h3>
+      <p className={styles.paragraph}>Frete: R$ 0.00</p>
+      <p className={styles.paragraph}>
+        Total a pagar:{' '}
+        <span className={styles.totalPrice}>R$ {totalPrice}</span>
       </p>
-      <div className="cart-controls">
-        <button onClick={clearCart}>Limpar Carrinho</button>
-        <button onClick={finishOrder}>Finalizar compra</button>
+      <div className={styles.buttons}>
+        <Button onClick={finishOrder}>Finalizar compra</Button>
+        <Button
+          onClick={clearCart}
+          style={{
+            backgroundColor: 'var(--background-primary)',
+            color: 'var(--font)',
+          }}
+        >
+          Limpar Carrinho
+        </Button>
       </div>
     </section>
   );
