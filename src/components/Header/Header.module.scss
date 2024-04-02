@@ -1,0 +1,28 @@
+.header {
+  background-color: var(--background-primary);
+  color: var(--font);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  width: 10rem;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
+
+.buttonsWrapper {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
