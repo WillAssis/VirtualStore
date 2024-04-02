@@ -67,3 +67,8 @@ export interface AuthContextType {
     password: string,
   ) => Promise<HTTPRegisterResponse>;
 }
+
+export interface ThemeContextType {
+  theme: 'light' | 'dark';
+  changeTheme: () => void;
+}
