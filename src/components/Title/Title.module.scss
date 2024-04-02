@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $font-size: 2rem;
 
 .title {
@@ -5,7 +7,7 @@ $font-size: 2rem;
   color: var(--font);
   display: flex;
   font-size: $font-size;
-  gap: $font-size / 4;
+  gap: math.div($font-size, 4);
 
   svg,
   img {
