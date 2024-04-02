@@ -1,0 +1,84 @@
+// MenuButton
+.button {
+  background: transparent;
+  cursor: pointer;
+  display: none; // Hidden by default
+  width: 2rem;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus .icon {
+    fill: var(--accent);
+  }
+}
+
+.icon {
+  fill: var(--font);
+}
+
+.icon > path {
+  fill: inherit;
+}
+
+// Navbar
+.nav {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  justify-content: right;
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+
+  &:first-child {
+    margin: 0 auto;
+  }
+}
+
+.link {
+  color: var(--font);
+  outline-offset: 0.2em;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &.active,
+  &:focus {
+    color: var(--accent);
+  }
+}
+
+// Mobile
+@media (max-width: 900px) {
+  .button {
+    display: block; // MenuButton visible
+  }
+
+  .nav {
+    background-color: var(--background-primary);
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 100%;
+  }
+
+  .navHidden {
+    display: none;
+  }
+
+  .navVisible {
+    display: block;
+  }
+
+  .list {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+}
