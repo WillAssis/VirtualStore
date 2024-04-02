@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { User } from './types';
 import { AuthProvider } from './contexts/authContext';
+import { ThemeProvider } from './contexts/themeContext';
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 import Login from './pages/Login/Login';
@@ -14,8 +15,6 @@ import Cart from './pages/Cart/Cart';
 import loadPageTheme from './utils/loadPageTheme';
 import Order from './pages/Order/Order';
 import './App.scss';
-
-loadPageTheme();
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -40,20 +39,22 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <Header user={user} logout={logout} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/produtos" element={<Products />} />
-        <Route path="/produtos/:slug" element={<ProductDetails />} />
-        <Route path="/carrinho" element={<Cart />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/cadastro" element={<Register setUser={setUser} />} />
-        <Route path="/pedido" element={<Order />} />
-        <Route path="/admin/*" element={<Admin user={user} />} />
-      </Routes>
-      <Footer />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Header user={user} logout={logout} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/produtos" element={<Products />} />
+          <Route path="/produtos/:slug" element={<ProductDetails />} />
+          <Route path="/carrinho" element={<Cart />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/cadastro" element={<Register setUser={setUser} />} />
+          <Route path="/pedido" element={<Order />} />
+          <Route path="/admin/*" element={<Admin user={user} />} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
