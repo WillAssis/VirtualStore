@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, MenuButton } from './Navbar';
 import Logo from '../Logo/Logo';
 import Container from '../Container/Container';
-import ThemeButton from './ThemeButton';
+import ThemeButton from '../Buttons/ThemeButton';
 import AccountMenu from './AccountMenu';
 import styles from './Header.module.scss';
 
