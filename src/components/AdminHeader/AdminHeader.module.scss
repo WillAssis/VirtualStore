@@ -1,0 +1,17 @@
+.header {
+  background-color: var(--background-opaque);
+  position: sticky;
+  top: 0;
+}
+
+.contentWrapper {
+  align-items: center;
+  display: flex;
+  padding: 1rem 0;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
