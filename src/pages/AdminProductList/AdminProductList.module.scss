@@ -1,0 +1,33 @@
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.paragraph {
+  color: var(--font);
+  text-align: center;
+}
+
+.noResult {
+  background-color: var(--background-opaque);
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 2rem auto 0;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+}
+
+.list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  padding: 0;
+}
