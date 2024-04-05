@@ -13,7 +13,7 @@ function SearchBar({ search }: Params) {
       aria-label="Pesquisar produto"
       role="search"
     >
-      <label className={styles.label} htmlFor="search">
+      <label className="sr-only" htmlFor="search">
         Pesquisar:
       </label>
       <input
