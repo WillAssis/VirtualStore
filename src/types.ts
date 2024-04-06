@@ -56,6 +56,15 @@ export interface HTTPRegisterResponse {
   };
 }
 
+export interface HTTPUpdateProductResponse {
+  success: boolean;
+  errors: {
+    nameError: string;
+    descriptionError: string;
+    priceError: string;
+  };
+}
+
 export interface AuthContextType {
   user: User | null;
   status: 'idle' | 'fetching' | 'saving';
