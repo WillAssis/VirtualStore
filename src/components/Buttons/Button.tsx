@@ -8,6 +8,7 @@ interface Props {
   path?: string; // Se for passado o botão será um link
   style?: React.CSSProperties; // Quando for necessário modificar algum estilo
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 // Botão normal com texto ou icone
@@ -18,6 +19,7 @@ function Button({
   path,
   style,
   onClick,
+  type,
 }: Props) {
   return path ? (
     <Link
@@ -34,6 +36,7 @@ function Button({
       className={styles.button}
       disabled={disabled}
       onClick={onClick}
+      type={type}
       style={style}
     >
       {children}
