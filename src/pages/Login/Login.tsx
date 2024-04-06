@@ -39,6 +39,7 @@ function Login() {
           <form className={styles.form} noValidate onSubmit={authUser}>
             <h2>Fazer Login</h2>
             <TextInput
+              label="Usuário"
               name="username"
               value={username}
               setValue={setUsername}
@@ -47,6 +48,7 @@ function Login() {
               validateInput={validateUsername}
             />
             <TextInput
+              label="Senha"
               name="password"
               value={password}
               setValue={setPassword}

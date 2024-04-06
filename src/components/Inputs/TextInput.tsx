@@ -1,6 +1,7 @@
 import styles from './TextInput.module.scss';
 
 interface Props {
+  label: string;
   name: string;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 function TextInput({
+  label,
   name,
   value,
   setValue,
@@ -41,7 +43,7 @@ function TextInput({
   return (
     <div className={styles.inputWrapper}>
       <label htmlFor={name} className={styles.label}>
-        {name.slice(0, 1).toUpperCase() + name.slice(1)}
+        {label}
       </label>
       <input
         className={styles.input}

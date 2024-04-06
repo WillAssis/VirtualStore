@@ -43,6 +43,7 @@ function Register() {
           <form className={styles.form} noValidate onSubmit={registerUser}>
             <h2>Criar conta</h2>
             <TextInput
+              label="Usuário"
               name="username"
               value={username}
               setValue={setUsername}
@@ -51,6 +52,7 @@ function Register() {
               validateInput={validateUsername}
             />
             <TextInput
+              label="Senha"
               name="password"
               value={password}
               setValue={setPassword}
@@ -60,6 +62,7 @@ function Register() {
               type="password"
             />
             <TextInput
+              label="Email"
               name="email"
               value={email}
               setValue={setEmail}
