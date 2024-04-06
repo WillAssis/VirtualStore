@@ -1,0 +1,29 @@
+$content-gap: 2rem;
+
+.contentWrapper {
+  padding: $content-gap 0;
+}
+
+.form {
+  background-color: var(--background-opaque);
+  margin: $content-gap auto;
+  padding: $content-gap;
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $content-gap;
+}
+
+.inputsColumn {
+  flex: 1;
+  min-width: min(350px, 100%);
+}
+
+.controlsWrapper {
+  display: flex;
+  gap: $content-gap;
+  justify-content: center;
+  margin-top: $content-gap;
+}
