@@ -8,6 +8,7 @@ import ProductDetails from '../pages/ProductDetails/ProductDetails';
 import Cart from '../pages/Cart/Cart';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
+import Order from '../pages/Order/Order';
 import AdminHome from '../pages/AdminHome/AdminHome';
 import AdminProducts from '../pages/AdminProducts/AdminProducts';
 import AdminProductList from '../pages/AdminProductList/AdminProductList';
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: 'carrinho', element: <Cart /> },
       { path: 'login', element: <Login /> },
       { path: 'cadastro', element: <Register /> },
+      { path: 'pedido', element: <Order /> },
     ],
   },
   {
