@@ -55,8 +55,6 @@ function AdminProductEditor() {
 
   const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('hello');
-    return;
     const formData = new FormData(event.currentTarget);
     const { success, errors } = await updateProduct(formData);
 
