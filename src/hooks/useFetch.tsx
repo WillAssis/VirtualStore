@@ -22,7 +22,12 @@ function useFetch<Data>(url: string) {
         setData(data);
         setError('');
       })
-      .catch((error) => setError(error.message))
+      .catch((error) => {
+        if (error.name !== 'AbortError') {
+          console.error(error);
+          setError(error.message);
+        }
+      })
       .finally(() => setLoading(false));
 
     // Cancela a requisição caso uma próxima seja feita para prevenir race condition
