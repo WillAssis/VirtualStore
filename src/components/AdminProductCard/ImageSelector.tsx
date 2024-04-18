@@ -9,8 +9,10 @@ interface Props {
 
 // Seletor do image carrousel
 function ImageSelector({ product, activeIndex, setActiveIndex }: Props) {
-  const images = product.images;
   const imagesCount = product.images.length;
+  const images = product.images.map(
+    (img) => `http://localhost:3333/images/${img}`,
+  );
 
   return (
     <ul className={styles.list}>

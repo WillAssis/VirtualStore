@@ -7,14 +7,17 @@ interface Props {
 }
 
 function ProductCard({ product }: Props) {
-  const { name, price, images, slug } = product;
+  const { _id, name, price, images } = product;
+  const imageSrc = `http://localhost:3333/images/${images[0]}`;
+
+  console.log(product);
 
   return (
     <article className={styles.card}>
-      <img className={styles.image} src={images[0]} alt={name} />
+      <img className={styles.image} src={imageSrc} alt={name} />
       <div className={styles.content}>
         <h3 className={styles.title}>
-          <Link className={styles.link} to={`/produtos/${slug}`}>
+          <Link className={styles.link} to={`/produtos/${_id}`}>
             {name}
           </Link>
         </h3>

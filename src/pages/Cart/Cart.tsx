@@ -30,10 +30,10 @@ function Cart() {
 
   const handleClearCart = removeItem;
 
-  const handleUpdateQuantity = (id: number, newQuantity: number) => {
+  const handleUpdateQuantity = (id: string, newQuantity: number) => {
     if (item) {
       const newCart = item.map((product: CartItem) => {
-        if (product.id === id) {
+        if (product._id === id) {
           return { ...product, quantity: newQuantity };
         }
         return product;
@@ -42,9 +42,9 @@ function Cart() {
     }
   };
 
-  const handleDeleteProduct = (id: number) => {
+  const handleDeleteProduct = (id: string) => {
     if (item) {
-      const newCart = item.filter((product: CartItem) => product.id !== id);
+      const newCart = item.filter((product: CartItem) => product._id !== id);
       updateItem(newCart);
     }
   };

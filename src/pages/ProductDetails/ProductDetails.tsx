@@ -22,8 +22,11 @@ const icon = (
 );
 
 function ProductDetails() {
-  const { slug } = useParams<{ slug: string }>();
-  const { data, loading, error } = useFetch<Product>(`${DATA_URL}/${slug}`);
+  const { id } = useParams<{ id: string }>();
+  const { data, loading, error } = useFetch<Product>(`${DATA_URL}/${id}`);
+
+  const images =
+    data?.images.map((img) => `http://localhost:3333/images/${img}`) ?? [];
 
   return (
     <main className={styles.main}>
@@ -32,7 +35,7 @@ function ProductDetails() {
           <div className={styles.contentWrapper}>
             <Title icon={icon} text={'Comprar Produto'} />
             <section className={styles.productSection}>
-              <ImageSlider images={data?.images ?? []} />
+              <ImageSlider images={images} />
               <ProductInfo product={data} />
             </section>
             <section>

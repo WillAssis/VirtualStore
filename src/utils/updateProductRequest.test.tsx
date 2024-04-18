@@ -3,24 +3,24 @@ import { HTTPUpdateProductResponse } from '../types';
 import updateProductRequest from './updateProductRequest';
 
 interface MakeRequestProps {
+  id?: string;
   name?: string;
   description?: string;
   price?: string;
-  slug?: string;
 }
 
 // Usa valores válidos como default
 const makeRequest = async ({
+  id,
   name,
   description,
   price,
-  slug,
 }: MakeRequestProps): Promise<HTTPUpdateProductResponse> => {
   const formData = new FormData();
   formData.append('name', name ?? 'New Product');
   formData.append('description', description ?? 'lorem ipsum dolor sit amet');
   formData.append('price', price ?? '12.34');
-  const requestAttempt = await updateProductRequest(formData, slug || '');
+  const requestAttempt = await updateProductRequest(formData, id || '');
   return requestAttempt;
 };
 
@@ -165,9 +165,9 @@ describe('Successfull attempts', () => {
 });
 
 describe('Fetch behaviour when', () => {
-  describe('slug is not given', () => {
-    test('should be called with creation URL', async () => {
-      const creationURL = 'http://localhost:3333/novo-produto';
+  describe('id is not given', () => {
+    test('should be called with clean URL', async () => {
+      const creationURL = 'http://localhost:3333/produto';
 
       (fetch as Mock).mockResolvedValue(createFetchResponse({}));
       await makeRequest({});
@@ -185,14 +185,14 @@ describe('Fetch behaviour when', () => {
     });
   });
 
-  describe('slug is given', () => {
-    test('should be called with edition URL', async () => {
-      const slug = 'product-123';
-      const editionURL = 'http://localhost:3333/editar-produto';
-      const finalURL = `${editionURL}/${slug}`;
+  describe('id is given', () => {
+    test('should be called with URL having id', async () => {
+      const id = 'asdfghjk';
+      const editionURL = 'http://localhost:3333/produto';
+      const finalURL = `${editionURL}/${id}`;
 
       (fetch as Mock).mockResolvedValue(createFetchResponse({}));
-      await makeRequest({ slug: slug });
+      await makeRequest({ id });
 
       const firstArg = (fetch as Mock).mock.calls[0][0];
       expect(firstArg).toBe(finalURL);
@@ -200,7 +200,7 @@ describe('Fetch behaviour when', () => {
 
     test('should be called with method PUT', async () => {
       (fetch as Mock).mockResolvedValue(createFetchResponse({}));
-      await makeRequest({ slug: 'hello-world' });
+      await makeRequest({ id: '123456789' });
 
       const secondArg = (fetch as Mock).mock.calls[0][1];
       expect(secondArg.method).toBe('PUT');

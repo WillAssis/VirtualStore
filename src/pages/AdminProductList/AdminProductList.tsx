@@ -58,8 +58,8 @@ function AdminProductList() {
     event.currentTarget.value = '';
   };
 
-  const deleteProduct = async (slug: string) => {
-    const url = `${DATA_URL}/${slug}`;
+  const deleteProduct = async (id: string) => {
+    const url = `${DATA_URL}/${id}`;
     await fetch(url, {
       credentials: 'include',
       method: 'DELETE',
@@ -82,7 +82,7 @@ function AdminProductList() {
             <>
               <ul className={styles.list} aria-label="Lista de produtos">
                 {products.map((product) => (
-                  <li key={product.id}>
+                  <li key={product._id}>
                     <AdminProductCard
                       product={product}
                       deleteProduct={deleteProduct}

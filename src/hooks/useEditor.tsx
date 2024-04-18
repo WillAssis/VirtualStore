@@ -5,7 +5,7 @@ import updateProductRequest from '../utils/updateProductRequest';
 const DATA_URL = 'http://localhost:3333/produto';
 
 // Retorna o produto, se existir, e a função para criá-lo/editá-lo
-function useEditor(slug: string | '') {
+function useEditor(id: string | '') {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
@@ -14,7 +14,7 @@ function useEditor(slug: string | '') {
     formData: FormData,
   ): Promise<HTTPUpdateProductResponse> => {
     setLoading(true);
-    const response = await updateProductRequest(formData, slug);
+    const response = await updateProductRequest(formData, id);
     const { success } = response;
 
     if (!success) {
@@ -24,12 +24,12 @@ function useEditor(slug: string | '') {
     return response;
   };
 
-  // Faz o fetch do produto quando slug é passado
+  // Faz o fetch do produto quando id é passado
   useEffect(() => {
     const abortController = new AbortController();
 
-    if (slug) {
-      fetch(`${DATA_URL}/${slug}`, {
+    if (id) {
+      fetch(`${DATA_URL}/${id}`, {
         credentials: 'include',
         signal: abortController.signal,
       })
@@ -45,7 +45,7 @@ function useEditor(slug: string | '') {
     }
 
     return () => abortController.abort();
-  }, [slug]);
+  }, [id]);
 
   return { product, loading, error, updateProduct };
 }

@@ -9,7 +9,7 @@ interface Props {
 
 // Botões de deletar e editar
 function Controls({ product, deleteProduct }: Props) {
-  const editProductPath = `/admin/produtos/editor/${product.slug}`;
+  const editProductPath = `/admin/produtos/editor/${product._id}`;
 
   return (
     <div className={styles.controls}>

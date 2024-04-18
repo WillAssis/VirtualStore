@@ -5,8 +5,8 @@ import styles from './CartProductCard.module.scss';
 
 interface Props {
   product: CartItem;
-  outerUpdateQuantity: (id: number, newQuantity: number) => void;
-  deleteProduct: (id: number) => void;
+  outerUpdateQuantity: (id: string, newQuantity: number) => void;
+  deleteProduct: (id: string) => void;
 }
 
 function CartProductCard({
@@ -14,19 +14,20 @@ function CartProductCard({
   outerUpdateQuantity,
   deleteProduct,
 }: Props) {
-  const { id, name, price, images } = product;
+  const { _id, name, price, images } = product;
   const [quantity, setQuantity] = useState<number>(product.quantity);
+  const imageSrc = `http://localhost:3333/images/${images[0]}`;
 
   const handleUpdateQuantity = (newQuantity: number) => {
     if (newQuantity > 0) {
-      outerUpdateQuantity(id, newQuantity);
+      outerUpdateQuantity(_id, newQuantity);
       setQuantity(newQuantity);
     }
   };
 
   return (
     <article className={styles.card}>
-      <img className={styles.image} src={images[0]} alt={name} />
+      <img className={styles.image} src={imageSrc} alt={name} />
       <div className={styles.contentWrapper}>
         <h3 className={styles.title}>{name}</h3>
         <p className={styles.paragraph}>Preço: R$ {price.toFixed(2)}</p>
@@ -43,7 +44,7 @@ function CartProductCard({
           <button
             className={styles.button}
             aria-label="Deletar"
-            onClick={() => deleteProduct(id)}
+            onClick={() => deleteProduct(_id)}
           >
             <svg
               className={styles.icon}

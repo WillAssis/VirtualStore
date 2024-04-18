@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'produtos', element: <Products /> },
-      { path: 'produtos/:slug', element: <ProductDetails /> },
+      { path: 'produtos/:id', element: <ProductDetails /> },
       { path: 'carrinho', element: <Cart /> },
       { path: 'login', element: <Login /> },
       { path: 'cadastro', element: <Register /> },
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <AdminProductList /> },
           { path: 'editor', element: <AdminProductEditor /> },
-          { path: 'editor/:slug', element: <AdminProductEditor /> },
+          { path: 'editor/:id', element: <AdminProductEditor /> },
         ],
       },
     ],

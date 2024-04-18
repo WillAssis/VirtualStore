@@ -1,7 +1,6 @@
 export interface Product {
-  id: number;
+  _id: string;
   name: string;
-  slug: string;
   description: string;
   price: number;
   images: string[];
@@ -9,9 +8,8 @@ export interface Product {
 }
 
 export interface CartItem {
-  id: number;
+  _id: string;
   name: string;
-  slug: string;
   description: string;
   price: number;
   images: string[];
@@ -32,9 +30,9 @@ export interface OrderPageTitle {
 
 export interface HTTPProductsResponse {
   products: Product[];
-  results: number;
-  pages: number;
-  currentPage: number;
+  results?: number;
+  pages?: number;
+  currentPage?: number;
 }
 
 export interface HTTPLoginResponse {

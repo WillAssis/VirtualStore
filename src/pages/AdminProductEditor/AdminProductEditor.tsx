@@ -26,8 +26,8 @@ const icon = (
 
 function AdminProductEditor() {
   const navigate = useNavigate();
-  const { slug } = useParams<{ slug: string }>();
-  const { product, loading, updateProduct } = useEditor(slug ?? '');
+  const { id } = useParams<{ id: string }>();
+  const { product, loading, updateProduct } = useEditor(id ?? '');
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -43,7 +43,10 @@ function AdminProductEditor() {
 
   useEffect(() => {
     if (product) {
-      const newImages = [...product.images, ...images].slice(0, 5);
+      const imagesSrc = product.images.map(
+        (img) => `http://localhost:3333/images/${img}`,
+      );
+      const newImages = [...imagesSrc, ...images].slice(0, 5);
       setName(product.name);
       setDescription(product.description);
       setPrice(`${product.price.toFixed(2)}`);
@@ -72,7 +75,7 @@ function AdminProductEditor() {
       <OverlayLoading loading={loading} />
       <Container>
         <div className={styles.contentWrapper}>
-          <Title icon={icon} text={slug ? 'Editar produto' : 'Criar produto'} />
+          <Title icon={icon} text={id ? 'Editar produto' : 'Criar produto'} />
           <form className={styles.form} onSubmit={sendData} noValidate>
             <div className={styles.inputsWrapper}>
               <div className={styles.inputsColumn}>

@@ -8,8 +8,10 @@ interface Props {
 
 // Image carrousel
 function Images({ product, activeIndex }: Props) {
-  const images = product.images;
   const imagesCount = product.images.length;
+  const images = product.images.map(
+    (img) => `http://localhost:3333/images/${img}`,
+  );
 
   return (
     <div>

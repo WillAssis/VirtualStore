@@ -4,9 +4,8 @@ import { CartItem } from '../types';
 let cart: CartItem[];
 
 const fakeProduct = {
-  id: 123,
+  _id: '123456',
   name: 'Fake Product',
-  slug: 'fake-product',
   description: 'not a real product',
   price: 321,
   images: ['img1', 'img2'],
@@ -16,9 +15,8 @@ const fakeProduct = {
 beforeEach(() => {
   cart = [
     {
-      id: 34,
+      _id: '123',
       name: 'product1',
-      slug: 'product-1',
       description: 'product one',
       price: 65,
       images: ['img12', 'img26'],
@@ -26,9 +24,8 @@ beforeEach(() => {
       quantity: 5,
     },
     {
-      id: 89,
+      _id: '456',
       name: 'product2',
-      slug: 'product-2',
       description: 'product two',
       price: 21,
       images: ['img5'],

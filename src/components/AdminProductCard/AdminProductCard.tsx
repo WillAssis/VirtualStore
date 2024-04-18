@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Product } from '../../types';
-import Button from '../Buttons/Button';
 import Images from './Images';
 import ImageSelector from './ImageSelector';
 import Texts from './Texts';
@@ -32,7 +30,7 @@ function AdminProductCard({ product, deleteProduct }: Params) {
       <div className={styles.controlsWrapper}>
         <Controls
           product={product}
-          deleteProduct={() => deleteProduct(product.slug)}
+          deleteProduct={() => deleteProduct(product._id)}
         />
       </div>
     </article>
