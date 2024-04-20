@@ -27,6 +27,7 @@ function useEditor(id: string | '') {
   // Faz o fetch do produto quando id é passado
   useEffect(() => {
     const abortController = new AbortController();
+    setLoading(false);
 
     if (id) {
       fetch(`${DATA_URL}/${id}`, {
@@ -39,7 +40,7 @@ function useEditor(id: string | '') {
           setError('');
         })
         .catch((error) => setError(error.message))
-        .finally(() => setLoading(false));
+        .finally(() => setTimeout(() => setLoading(false), 100));
     } else {
       setLoading(false);
     }

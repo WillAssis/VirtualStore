@@ -7,6 +7,7 @@ function useFetch<Data>(url: string) {
 
   useEffect(() => {
     const abortController = new AbortController();
+    setLoading(true);
 
     fetch(url, { signal: abortController.signal })
       .then((response) => {
@@ -28,7 +29,7 @@ function useFetch<Data>(url: string) {
           setError(error.message);
         }
       })
-      .finally(() => setLoading(false));
+      .finally(() => setTimeout(() => setLoading(false), 100));
 
     // Cancela a requisição caso uma próxima seja feita para prevenir race condition
     return () => abortController.abort();
