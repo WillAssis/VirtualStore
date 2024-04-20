@@ -12,6 +12,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import styles from './AdminProductList.module.scss';
 
 const DATA_URL = 'http://localhost:3333/produtos';
+const DELETE_URL = 'http://localhost:3333/produto';
 
 const icon = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -59,11 +60,18 @@ function AdminProductList() {
   };
 
   const deleteProduct = async (id: string) => {
-    const url = `${DATA_URL}/${id}`;
-    await fetch(url, {
+    const url = `${DELETE_URL}/${id}`;
+    const response = await fetch(url, {
       credentials: 'include',
       method: 'DELETE',
     });
+
+    // Volta para a página 1 sem search
+    if (response.ok) {
+      searchParams.delete('search');
+      searchParams.delete('page');
+      setSearchParams(searchParams);
+    }
   };
 
   return (
