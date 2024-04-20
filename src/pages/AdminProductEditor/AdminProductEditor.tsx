@@ -16,7 +16,7 @@ import PriceInput from '../../components/Inputs/PriceInput';
 import ProductImages from '../../components/Inputs/ProductImages';
 import styles from './AdminProductEditor.module.scss';
 
-const PLACEHOLDER_IMG_PATH = '/images/placeholder.png';
+const IMG_BASE_SRC = 'http://localhost:3333/images';
 
 const icon = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -37,15 +37,11 @@ function AdminProductEditor() {
   const [priceError, setPriceError] = useState('');
 
   // Guarda as urls das imagens para serem mostradas como preview no image input
-  const [images, setImages] = useState<string[]>(
-    Array(5).fill(PLACEHOLDER_IMG_PATH),
-  );
+  const [images, setImages] = useState<string[]>(Array(5).fill(''));
 
   useEffect(() => {
     if (product) {
-      const imagesSrc = product.images.map(
-        (img) => `http://localhost:3333/images/${img}`,
-      );
+      const imagesSrc = product.images.map((img) => `${IMG_BASE_SRC}/${img}`);
       const newImages = [...imagesSrc, ...images].slice(0, 5);
       setName(product.name);
       setDescription(product.description);
@@ -108,7 +104,11 @@ function AdminProductEditor() {
                 />
               </div>
               <div className={styles.inputsColumn}>
-                <ProductImages images={images} setImages={setImages} />
+                <ProductImages
+                  images={images}
+                  setImages={setImages}
+                  product={product}
+                />
               </div>
             </div>
             <div className={styles.controlsWrapper}>
