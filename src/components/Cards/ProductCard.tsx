@@ -8,7 +8,9 @@ interface Props {
 
 function ProductCard({ product }: Props) {
   const { _id, name, price, images } = product;
-  const imageSrc = `http://localhost:3333/images/${images[0]}`;
+  const imageSrc = images[0]
+    ? `http://localhost:3333/images/${images[0]}`
+    : '/images/placeholder.png';
 
   return (
     <article className={styles.card}>

@@ -3,6 +3,8 @@ import { CartItem } from '../../types';
 import QuantityInput from '../QuantityInput/QuantityInput';
 import styles from './CartProductCard.module.scss';
 
+const PLACEHOLDER_IMG = '/images/placeholder.png';
+
 interface Props {
   product: CartItem;
   outerUpdateQuantity: (id: string, newQuantity: number) => void;
@@ -16,7 +18,9 @@ function CartProductCard({
 }: Props) {
   const { _id, name, price, images } = product;
   const [quantity, setQuantity] = useState<number>(product.quantity);
-  const imageSrc = `http://localhost:3333/images/${images[0]}`;
+  const imageSrc = images[0]
+    ? `http://localhost:3333/images/${images[0]}`
+    : '/images/placeholder.png';
 
   const handleUpdateQuantity = (newQuantity: number) => {
     if (newQuantity > 0) {

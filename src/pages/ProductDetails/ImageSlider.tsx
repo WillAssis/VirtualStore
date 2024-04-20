@@ -7,6 +7,8 @@ interface Params {
 
 function ImageSlider({ images }: Params) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const imagesToDisplay =
+    images.length > 0 ? images : ['/images/placeholder.png'];
 
   // Reseta o slider quando o produto muda
   useEffect(() => {
@@ -18,7 +20,7 @@ function ImageSlider({ images }: Params) {
   return (
     <section className={styles.slider} aria-label="Imagens do produto">
       <div>
-        {images.map((img, index) => (
+        {imagesToDisplay.map((img, index) => (
           <img
             className={`${styles.image} ${index === activeIndex ? styles.imageVisible : styles.imageHidden}`}
             src={img}

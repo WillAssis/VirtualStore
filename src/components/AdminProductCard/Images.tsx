@@ -9,9 +9,10 @@ interface Props {
 // Image carrousel
 function Images({ product, activeIndex }: Props) {
   const imagesCount = product.images.length;
-  const images = product.images.map(
-    (img) => `http://localhost:3333/images/${img}`,
-  );
+  const images =
+    imagesCount > 0
+      ? product.images.map((img) => `http://localhost:3333/images/${img}`)
+      : ['/images/placeholder.png'];
 
   return (
     <div>

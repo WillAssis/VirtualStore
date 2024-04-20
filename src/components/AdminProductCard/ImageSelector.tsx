@@ -10,9 +10,10 @@ interface Props {
 // Seletor do image carrousel
 function ImageSelector({ product, activeIndex, setActiveIndex }: Props) {
   const imagesCount = product.images.length;
-  const images = product.images.map(
-    (img) => `http://localhost:3333/images/${img}`,
-  );
+  const images =
+    imagesCount > 0
+      ? product.images.map((img) => `http://localhost:3333/images/${img}`)
+      : ['/images/placeholder.png'];
 
   return (
     <ul className={styles.list}>
