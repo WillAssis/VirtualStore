@@ -19,6 +19,7 @@ function Images({ product, activeIndex }: Props) {
       <div>
         {images.map((image, index) => (
           <img
+            key={index}
             className={
               index === activeIndex
                 ? `${styles.image} ${styles.visible}`

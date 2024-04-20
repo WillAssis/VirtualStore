@@ -16,7 +16,7 @@ function FeaturedProducts() {
     <Loading loading={loading} error={error}>
       <ul className={styles.list}>
         {products.map((product) => (
-          <li key={product.id}>
+          <li key={product._id}>
             <ProductCard product={product} />
           </li>
         ))}

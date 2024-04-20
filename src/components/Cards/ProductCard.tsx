@@ -10,8 +10,6 @@ function ProductCard({ product }: Props) {
   const { _id, name, price, images } = product;
   const imageSrc = `http://localhost:3333/images/${images[0]}`;
 
-  console.log(product);
-
   return (
     <article className={styles.card}>
       <img className={styles.image} src={imageSrc} alt={name} />
