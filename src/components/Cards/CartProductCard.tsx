@@ -3,8 +3,6 @@ import { CartItem } from '../../types';
 import QuantityInput from '../QuantityInput/QuantityInput';
 import styles from './CartProductCard.module.scss';
 
-const PLACEHOLDER_IMG = '/images/placeholder.png';
-
 interface Props {
   product: CartItem;
   outerUpdateQuantity: (id: string, newQuantity: number) => void;

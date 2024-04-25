@@ -40,12 +40,9 @@ function ProductImages({ images, setImages, product }: Params) {
 
   useEffect(() => {
     // Cada imagem do produto tem ação default 'keep'
-    const productActions: Action[] = product?.images.map(() => 'keep') ?? [];
+    const productActions = product?.images.map(() => 'keep') ?? [];
     // Cada slot vazio a ação é null até size = 5
-    const newActions: Action[] = [
-      ...productActions,
-      ...Array(5).fill(null),
-    ].slice(0, 5);
+    const newActions = [...productActions, ...Array(5).fill(null)].slice(0, 5);
 
     setInitialImages(product?.images || []);
     setActiveIndex(0);
