@@ -22,6 +22,16 @@ export interface User {
   isAdmin: boolean;
 }
 
+export interface Order {
+  _id: string;
+  orderedBy: string;
+  total: number;
+  products: [{ _id: string; product: Product; quantity: number }];
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface OrderPageTitle {
   icon: string;
   alt: string;
@@ -61,6 +71,12 @@ export interface HTTPUpdateProductResponse {
     descriptionError: string;
     priceError: string;
   };
+}
+
+export interface HTTPCreateOrderResponse {
+  success: boolean;
+  error: string;
+  order: Order | null;
 }
 
 export interface AuthContextType {
