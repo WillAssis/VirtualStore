@@ -32,12 +32,6 @@ export interface Order {
   updatedAt: string;
 }
 
-export interface OrderPageTitle {
-  icon: string;
-  alt: string;
-  message: string;
-}
-
 export interface HTTPProductsResponse {
   products: Product[];
   results?: number;
