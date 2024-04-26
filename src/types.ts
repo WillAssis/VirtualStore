@@ -25,7 +25,6 @@ export interface User {
 export interface Order {
   _id: string;
   orderedBy: string;
-  total: number;
   products: [{ _id: string; product: Product; quantity: number }];
   status: string;
   createdAt: string;
