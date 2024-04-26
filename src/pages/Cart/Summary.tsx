@@ -1,5 +1,7 @@
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import orderCreate from '../../utils/orderCreate';
+import { authContext } from '../../contexts/authContext';
+import createOrder from '../../utils/createOrder';
 import Button from '../../components/Buttons/Button';
 import styles from './Summary.module.scss';
 
@@ -10,15 +12,20 @@ interface Params {
 
 function Summary({ totalPrice, clearCart }: Params) {
   const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const { user } = useContext(authContext);
 
   const finishOrder = async () => {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    const orderResult = await orderCreate({ cartItems, clientId: '1' }); // @TODO: remove mocked clientId and retrieve it after login
-    sessionStorage.setItem('orderResult', JSON.stringify(orderResult));
-    if (orderResult) {
-      localStorage.removeItem('cartItems');
+    const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    const { success, error, order } = await createOrder(cartItems);
+
+    if (success) {
+      sessionStorage.setItem('lastOrder', JSON.stringify(order));
+      localStorage.removeItem('cart');
+      navigate('/pedido');
+    } else {
+      setError(error);
     }
-    navigate('/pedido');
   };
 
   return (
@@ -30,7 +37,11 @@ function Summary({ totalPrice, clearCart }: Params) {
         <span className={styles.totalPrice}>R$ {totalPrice}</span>
       </p>
       <div className={styles.buttons}>
-        <Button onClick={finishOrder}>Finalizar compra</Button>
+        {user ? (
+          <Button onClick={finishOrder}>Finalizar compra</Button>
+        ) : (
+          <Button path="/login">Fazer login</Button>
+        )}
         <Button
           onClick={clearCart}
           style={{
@@ -41,6 +52,9 @@ function Summary({ totalPrice, clearCart }: Params) {
           Limpar Carrinho
         </Button>
       </div>
+      <p className={styles.error} aria-live="assertive">
+        {error}
+      </p>
     </section>
   );
 }

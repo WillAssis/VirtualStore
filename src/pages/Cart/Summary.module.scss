@@ -24,7 +24,14 @@
   flex-wrap: wrap;
   gap: 1rem;
 
-  > button {
+  > button,
+  a {
     flex-grow: 1;
   }
+}
+
+.error {
+  color: var(--invalid);
+  font-size: 0.8rem;
+  margin-top: 0.5em;
 }
