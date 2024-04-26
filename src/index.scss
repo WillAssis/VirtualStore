@@ -10,7 +10,7 @@
   --background-opaque: rgba(217, 217, 217, 0.7);
   --home-image: url('./assets/images/home-background-light.jpg');
   --dashboard-image: url('./assets/images/dashboard-background-light.jpg');
-  --invalid-input: #8b0404;
+  --invalid: #8b0404;
 }
 
 :root.dark {
@@ -25,7 +25,7 @@
   --background-opaque: rgba(10, 11, 13, 0.7);
   --home-image: url('./assets/images/home-background-dark.jpg');
   --dashboard-image: url('./assets/images/dashboard-background-dark.jpg');
-  --invalid-input: #ff6b6b;
+  --invalid: #ff6b6b;
 }
 
 * {

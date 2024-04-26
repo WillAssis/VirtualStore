@@ -19,12 +19,12 @@
   }
 
   &:not(:focus)[aria-invalid='true'] {
-    outline: 0.15em solid var(--invalid-input);
+    outline: 0.15em solid var(--invalid);
   }
 }
 
 .error {
-  color: var(--invalid-input);
+  color: var(--invalid);
   font-size: 0.8rem;
   margin-top: 0.25em;
   min-height: 1rem;
