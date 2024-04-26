@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useFetch<Data>(url: string) {
+function useFetch<Data>(url: string, opts: RequestInit = {}) {
   const [data, setData] = useState<Data | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
@@ -9,7 +9,7 @@ function useFetch<Data>(url: string) {
     const abortController = new AbortController();
     setLoading(true);
 
-    fetch(url, { signal: abortController.signal })
+    fetch(url, { ...opts, signal: abortController.signal })
       .then((response) => {
         // Para requisições em que o backend não retorna nada
         // Sujeito a mudanças
