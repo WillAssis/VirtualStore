@@ -15,7 +15,7 @@ function ProductList({ products, searchTerm }: Props) {
       )}
       <ul className={styles.list} aria-label="Produtos">
         {products.map((product) => (
-          <li key={product.id}>
+          <li key={product._id}>
             <ProductCard product={product} />
           </li>
         ))}

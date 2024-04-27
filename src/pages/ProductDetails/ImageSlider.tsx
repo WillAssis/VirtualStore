@@ -22,6 +22,7 @@ function ImageSlider({ images }: Params) {
       <div>
         {imagesToDisplay.map((img, index) => (
           <img
+            key={index}
             className={`${styles.image} ${index === activeIndex ? styles.imageVisible : styles.imageHidden}`}
             src={img}
             alt={`Imagem 1 de ${index + 1}`}
