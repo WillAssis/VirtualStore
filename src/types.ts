@@ -72,6 +72,10 @@ export interface HTTPCreateOrderResponse {
   order: Order | null;
 }
 
+export interface HTTPOrdersResponse {
+  orders: Order[] | null;
+}
+
 export interface AuthContextType {
   user: User | null;
   status: 'idle' | 'fetching' | 'saving';
