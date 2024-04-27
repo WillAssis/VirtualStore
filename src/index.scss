@@ -1,7 +1,7 @@
 :root.light {
   --font: #121212;
   --font-opaque: rgb(18, 18, 18, 0.7);
-  --special: #e1c35d;
+  --special: #be9714;
   --accent: #873143;
   --logo-color: #000;
   --shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -10,7 +10,8 @@
   --background-opaque: rgba(217, 217, 217, 0.7);
   --home-image: url('./assets/images/home-background-light.jpg');
   --dashboard-image: url('./assets/images/dashboard-background-light.jpg');
-  --invalid: #8b0404;
+  --invalid: #ad0f0f;
+  --valid: #0c6110;
 }
 
 :root.dark {
@@ -26,6 +27,7 @@
   --home-image: url('./assets/images/home-background-dark.jpg');
   --dashboard-image: url('./assets/images/dashboard-background-dark.jpg');
   --invalid: #ff6b6b;
+  --valid: #25992a;
 }
 
 * {
