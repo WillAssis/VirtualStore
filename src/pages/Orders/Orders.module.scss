@@ -1,0 +1,40 @@
+$content-gap: 2rem;
+
+.main {
+  background-image: var(--dashboard-image);
+  background-size: cover;
+  color: var(--font);
+  flex: 1;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $content-gap;
+  padding: $content-gap 0;
+}
+
+.ordersWrapper {
+  background-color: var(--background-secondary);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.table {
+  border-spacing: 0.5rem;
+  text-align: center;
+  width: 100%;
+
+  td {
+    vertical-align: top;
+  }
+}
+
+.noOrders {
+  align-items: center;
+  color: var(--font-opaque);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
