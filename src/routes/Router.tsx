@@ -9,10 +9,12 @@ import Cart from '../pages/Cart/Cart';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Order from '../pages/Order/Order';
+import Orders from '../pages/Orders/Orders';
 import AdminHome from '../pages/AdminHome/AdminHome';
 import AdminProducts from '../pages/AdminProducts/AdminProducts';
 import AdminProductList from '../pages/AdminProductList/AdminProductList';
 import AdminProductEditor from '../pages/AdminProductEditor/AdminProductEditor';
+import AdminOrders from '../pages/AdminOrders/AdminOrders';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'cadastro', element: <Register /> },
       { path: 'pedido', element: <Order /> },
+      { path: 'pedidos', element: <Orders /> },
     ],
   },
   {
@@ -44,6 +47,7 @@ const router = createBrowserRouter([
           { path: 'editor/:id', element: <AdminProductEditor /> },
         ],
       },
+      { path: 'pedidos', element: <AdminOrders /> },
     ],
   },
 ]);
