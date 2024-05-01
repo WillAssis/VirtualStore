@@ -1,0 +1,41 @@
+.list {
+  display: flex;
+}
+
+.button {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  cursor: pointer;
+  outline: none;
+  padding: 0.25rem 0.5rem;
+
+  &.buttonActive {
+    background-color: var(--background-primary);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--font);
+    color: var(--background-primary);
+  }
+}
+
+.tab {
+  animation: fadeIn 0.2s ease-in-out;
+  display: none;
+  opacity: 0;
+
+  &.tabActive {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
