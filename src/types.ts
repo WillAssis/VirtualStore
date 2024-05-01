@@ -18,13 +18,15 @@ export interface CartItem {
 }
 
 export interface User {
+  _id: string;
   username: string;
   isAdmin: boolean;
+  email: string;
 }
 
 export interface Order {
   _id: string;
-  orderedBy: string;
+  orderedBy: string | User;
   products: [{ _id: string; product: Product; quantity: number }];
   status: string;
   createdAt: string;
