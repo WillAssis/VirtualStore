@@ -44,12 +44,14 @@ function AdminOrders() {
     detailsPopupRef.current?.showModal();
   };
 
-  const deleteSelectedOrder = () => {
-    deleteOrder(selectedOrder._id);
+  const deleteSelectedOrder = async () => {
+    await deleteOrder(selectedOrder._id);
+    setSelectedOrderIndex(0);
   };
 
-  const updateSelectedOrder = () => {
-    updateOrder(selectedOrder._id, statusValue);
+  const updateSelectedOrder = async () => {
+    await updateOrder(selectedOrder._id, statusValue);
+    setSelectedOrderIndex(0);
   };
 
   return (
