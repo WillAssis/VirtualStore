@@ -1,6 +1,8 @@
+import { Order } from '../../types';
 import Title from '../../components/Title/Title';
 import Container from '../../components/Container/Container';
-import styles from './Order.module.scss';
+import Button from '../../components/Buttons/Button';
+import styles from './FinishOrder.module.scss';
 
 const deliveryTruck = (
   <svg
@@ -22,40 +24,37 @@ const sadFace = (
   </svg>
 );
 
-let headerMessage: string;
-let headerIcon: JSX.Element;
-let bodyDescription: string;
-let orderDetail: string;
+function getContent(order: Order | null) {
+  const icon = order ? deliveryTruck : sadFace;
+  const title = order
+    ? 'Pedido Finalizado com Sucesso'
+    : 'Ops! Tivemos um problema com o pedido';
+  const description = order
+    ? 'Seu pedido foi concluído e logo será entregue.'
+    : 'Lamentamos, mas houve algum erro em nossos servidores e o pedido não foi concluído';
+  const details = order
+    ? `Id do pedido: #${order._id}`
+    : 'Tente novamente mais tarde ou fale com a gente';
+  const button = order && <Button path="/pedidos">Acompanhar pedido</Button>;
 
-function defineTitleProps(orderResult: any) {
-  if (orderResult?._id) {
-    const { _id } = orderResult;
-    headerMessage = 'Pedido Finalizado com Sucesso';
-    headerIcon = deliveryTruck;
-    bodyDescription = 'Seu pedido foi concluído e logo será entregue.';
-    orderDetail = `Id do pedido: #${_id}`;
-  } else {
-    headerMessage = 'Ops! Tivemos um problema com o pedido';
-    headerIcon = sadFace;
-    bodyDescription =
-      'Lamentamos, mas houve algum erro em nossos servidores e o pedido não foi concluído';
-    orderDetail = 'Tente novamente mais tarde ou fale com a gente';
-  }
+  return { icon, title, description, details, button };
 }
 
-function Order() {
+function FinishOrder() {
   const lastOrder = JSON.parse(sessionStorage.getItem('lastOrder') || '{}');
-  defineTitleProps(lastOrder);
+  const { icon, title, description, details, button } = getContent(lastOrder);
 
   return (
     <main className={styles.main}>
       <Container>
         <div className={styles.content}>
-          <Title icon={headerIcon} text={headerMessage} />
+          <Title icon={icon} text={title} />
           <div className={styles.description}>
-            <p>{bodyDescription}</p>
+            <p>{description}</p>
             <br />
-            <p>{orderDetail}</p>
+            <p>{details}</p>
+            <br />
+            {button}
           </div>
         </div>
       </Container>
@@ -63,4 +62,4 @@ function Order() {
   );
 }
 
-export default Order;
+export default FinishOrder;
