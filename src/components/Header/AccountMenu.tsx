@@ -1,9 +1,10 @@
 import { useEffect, useContext, useRef } from 'react';
 import { authContext } from '../../contexts/authContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './AccountMenu.module.scss';
 
 function AccountMenu() {
+  const navigate = useNavigate();
   const { user, logout } = useContext(authContext);
   const menu = useRef<HTMLDetailsElement | null>(null);
 
@@ -17,6 +18,11 @@ function AccountMenu() {
     if (menuElement && !menuElement.contains(target)) {
       menuElement.open = false;
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   };
 
   useEffect(() => {
@@ -46,7 +52,7 @@ function AccountMenu() {
         <Link className={styles.button} to="/pedidos">
           Pedidos
         </Link>
-        <button className={styles.button} onClick={logout}>
+        <button className={styles.button} onClick={handleLogout}>
           Sair
         </button>
       </nav>
