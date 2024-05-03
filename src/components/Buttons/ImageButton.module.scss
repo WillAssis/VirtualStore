@@ -1,7 +1,7 @@
 .button {
   aspect-ratio: 1 / 1;
   background-position: center;
-  background-size: 100% 100%;
+  background-size: cover;
   border-radius: 1rem;
   box-shadow: var(--shadow);
   color: var(--font);
@@ -9,11 +9,14 @@
   display: flex;
   align-items: center;
   outline-offset: 0.25rem;
+  overflow: hidden;
+  position: relative;
   text-decoration: none;
-  transition: background-size 0.5s ease-out;
 
   &:hover {
-    background-size: 115% 115%;
+    .image {
+      transform: scale(1.1);
+    }
 
     .text {
       background-color: var(--background-primary);
@@ -31,5 +34,15 @@
   padding: 1rem;
   text-align: center;
   transition: background-color 0.25s ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+.image {
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  transition: transform 0.5s;
   width: 100%;
 }

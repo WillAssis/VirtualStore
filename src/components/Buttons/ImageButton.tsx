@@ -10,12 +10,12 @@ interface Props {
 // Um botão com uma imagem de fundo
 function ImageButton({ text, path, image }: Props) {
   return (
-    <Link
-      to={path}
-      className={styles.button}
-      style={{ backgroundImage: `url(${image})` }}
-    >
+    <Link to={path} className={styles.button}>
       <span className={styles.text}>{text}</span>
+      <div
+        className={styles.image}
+        style={{ backgroundImage: `url(${image})` }}
+      ></div>
     </Link>
   );
 }
