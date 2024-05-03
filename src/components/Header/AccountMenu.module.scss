@@ -51,7 +51,6 @@
 .button {
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--font-opaque);
   color: var(--font);
   cursor: pointer;
   font-size: 1rem;
@@ -63,5 +62,9 @@
   &:hover,
   &:focus {
     color: var(--accent);
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--font-opaque);
   }
 }
