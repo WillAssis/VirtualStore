@@ -20,7 +20,9 @@ function SelectInput({ name, label, values, labels, setValue }: Props) {
       </label>
       <select className={styles.select} name={name} id={name} onInput={onInput}>
         {values.map((value, index) => (
-          <option value={value}>{labels[index]}</option>
+          <option key={index} value={value}>
+            {labels[index]}
+          </option>
         ))}
       </select>
     </div>

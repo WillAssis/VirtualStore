@@ -14,7 +14,7 @@ function Tabs({ labels, elements }: Props) {
       <nav>
         <ul className={styles.list}>
           {labels.map((label, index) => (
-            <li>
+            <li key={index}>
               <button
                 onClick={() => setActiveIndex(index)}
                 className={
@@ -32,6 +32,7 @@ function Tabs({ labels, elements }: Props) {
       <div>
         {elements.map((element, index) => (
           <div
+            key={index}
             className={
               activeIndex === index
                 ? `${styles.tab} ${styles.tabActive}`
