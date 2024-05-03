@@ -28,6 +28,11 @@ function ProductDetails() {
   const images =
     data?.images.map((img) => `http://localhost:3333/images/${img}`) ?? [];
 
+  // Redireciona para ErrorElement quando o produto não é encontrado
+  if (!data && !loading) {
+    throw new Response('Not found');
+  }
+
   return (
     <main className={styles.main}>
       <Loading loading={loading} error={error}>
@@ -36,7 +41,7 @@ function ProductDetails() {
             <Title icon={icon} text={'Comprar Produto'} />
             <section className={styles.productSection}>
               <ImageSlider images={images} />
-              <ProductInfo product={data} />
+              <ProductInfo product={data as Product} />
             </section>
             <section>
               <h3 className={styles.featuredTitle}>Leve também</h3>

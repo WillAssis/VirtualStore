@@ -7,7 +7,7 @@ import Button from '../../components/Buttons/Button';
 import styles from './ProductInfo.module.scss';
 
 interface Props {
-  product: Product | null;
+  product: Product;
 }
 
 function ProductInfo({ product }: Props) {
