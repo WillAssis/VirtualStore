@@ -1,0 +1,16 @@
+.image {
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &.hidden {
+    opacity: 0;
+    width: 0;
+  }
+}

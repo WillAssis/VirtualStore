@@ -1,0 +1,57 @@
+// Define background
+.main {
+  background-image: var(--home-image);
+  background-size: cover;
+  color: var(--font);
+}
+
+// Posiciona conteúdo
+.contentWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+// Conteúdo
+.title {
+  width: clamp(15rem, 70vw, 50rem);
+}
+
+.textTop {
+  font-size: 1.4rem;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.textBottom {
+  font-size: 1rem;
+}
+
+.nav {
+  width: 100%;
+}
+
+.navList {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+
+  > li {
+    max-width: 15rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .navList {
+    align-items: center;
+    flex-direction: column;
+  }
+}

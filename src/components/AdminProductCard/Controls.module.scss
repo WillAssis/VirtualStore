@@ -1,0 +1,29 @@
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+}
+
+.button {
+  background: transparent;
+  cursor: pointer;
+
+  &:hover .icon,
+  &:focus .icon {
+    fill: var(--font);
+  }
+
+  &:focus {
+    outline: 0.15em solid var(--accent);
+  }
+}
+
+.icon {
+  display: block;
+  fill: var(--font-opaque);
+  width: 1.5rem;
+
+  > path {
+    fill: inherit;
+  }
+}

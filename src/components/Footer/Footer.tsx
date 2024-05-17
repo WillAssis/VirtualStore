@@ -1,20 +1,27 @@
-import About from './subcomponents/About';
-import Contact from './subcomponents/Contact';
-import Content from './subcomponents/Content';
-import LegalInformations from './subcomponents/LegalInformations';
-import './Footer.css';
+import About from './About';
+import Contacts from './Contacts';
+import Content from './Content';
+import LegalInformations from './LegalInformations';
+import Container from '../Container/Container';
+import styles from './Footer.module.scss';
 
 function Footer() {
   return (
-    <footer>
-      <div className="informations">
-        <About />
-        <div className="links">
-          <Content />
-          <Contact />
+    <footer className={styles.footer}>
+      <Container>
+        <div className={styles.topContentWrapper}>
+          <div className={styles.aboutWrapper}>
+            <About />
+          </div>
+          <div className={styles.linksWrapper}>
+            <Content />
+            <Contacts />
+          </div>
         </div>
-      </div>
-      <LegalInformations />
+        <div className={styles.bottomContentWrapper}>
+          <LegalInformations />
+        </div>
+      </Container>
     </footer>
   );
 }

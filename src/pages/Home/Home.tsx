@@ -1,13 +1,13 @@
-import Main from './subcomponents/Main';
-import About from './subcomponents/About';
-import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
+import Main from './Main';
+import Hero from './Hero';
+import Featured from './Featured';
 
 function Home() {
   return (
     <>
       <Main />
-      <About />
-      <FeaturedProducts title="Produtos em destaque" link="/produtos" />
+      <Hero />
+      <Featured />
     </>
   );
 }

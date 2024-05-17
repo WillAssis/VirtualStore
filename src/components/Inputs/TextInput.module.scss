@@ -1,0 +1,30 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 0.5em;
+}
+
+.input {
+  background-color: var(--background-secondary);
+  color: var(--font);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+
+  &:focus {
+    outline: 0.15em solid var(--accent);
+  }
+
+  &:not(:focus)[aria-invalid='true'] {
+    outline: 0.15em solid var(--invalid);
+  }
+}
+
+.error {
+  color: var(--invalid);
+  font-size: 0.8rem;
+  margin-top: 0.25em;
+  min-height: 1rem;
+}

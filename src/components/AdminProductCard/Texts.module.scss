@@ -1,0 +1,10 @@
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.paragraph {
+  color: var(--font-opaque);
+}

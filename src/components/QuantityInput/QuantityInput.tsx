@@ -1,21 +1,32 @@
-import React from 'react';
-import './QuantityInput.css';
+import styles from './QuantityInput.module.scss';
 
-interface Params {
+interface Props {
   quantity: number;
   setQuantity: (quantity: number) => void;
+  label?: string;
 }
 
-// quantity e setQuantity são hooks externos
-function QuantityInput({ quantity, setQuantity }: Params) {
+function QuantityInput({ quantity, setQuantity, label }: Props) {
+  const downButtonDisabled = quantity <= 1;
+
+  const decrease = () => setQuantity(quantity - 1);
+  const increase = () => setQuantity(quantity + 1);
+  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const newValue = event.currentTarget.value;
+    setQuantity(Number(newValue));
+  };
+
   return (
-    <div className="quantity-input">
+    <label className={styles.quantity} htmlFor="quantity">
+      <span className="sr-only">{label ?? 'Quantidade'}</span>
       <button
+        className={`${styles.button} ${styles.leftButton}`}
         aria-label="Diminuir"
-        onClick={() => setQuantity(quantity - 1)}
-        disabled={quantity <= 1}
+        onClick={decrease}
+        disabled={downButtonDisabled}
       >
         <svg
+          className={styles.icon}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -24,16 +35,20 @@ function QuantityInput({ quantity, setQuantity }: Params) {
         </svg>
       </button>
       <input
-        onChange={(event: React.FormEvent<HTMLInputElement>) =>
-          setQuantity(Number(event.currentTarget.value))
-        }
+        className={styles.input}
+        onChange={onChange}
         type="number"
         name="quantidade"
-        id="quantity"
         value={quantity}
-      ></input>
-      <button aria-label="Aumentar" onClick={() => setQuantity(quantity + 1)}>
+        id="quantity"
+      />
+      <button
+        className={`${styles.button} ${styles.rightButton}`}
+        aria-label="Aumentar"
+        onClick={increase}
+      >
         <svg
+          className={styles.icon}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -41,7 +56,7 @@ function QuantityInput({ quantity, setQuantity }: Params) {
           <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
         </svg>
       </button>
-    </div>
+    </label>
   );
 }
 

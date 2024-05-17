@@ -1,0 +1,25 @@
+$form-max-width: 800px;
+
+.main {
+  background-image: var(--dashboard-image);
+  background-size: cover;
+  color: var(--font);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.contentWrapper {
+  background-color: var(--background-opaque);
+  margin: 5rem auto;
+  max-width: $form-max-width;
+  padding: 2.5rem;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

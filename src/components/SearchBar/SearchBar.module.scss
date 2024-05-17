@@ -1,0 +1,19 @@
+.form {
+  align-items: center;
+  color: var(--font);
+  display: flex;
+  flex: 1;
+}
+
+.input {
+  background-color: var(--background-primary);
+  border-radius: 2rem 0 0 2rem;
+  box-shadow: var(--shadow);
+  color: var(--font);
+  flex: 1;
+  padding: 0.5rem 1rem;
+
+  &:focus {
+    outline: 0.15rem solid var(--accent);
+  }
+}

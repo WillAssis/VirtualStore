@@ -1,0 +1,90 @@
+.menuButton {
+  background: transparent;
+  cursor: pointer;
+  display: none; // Hidden by default
+  width: 2rem;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus .buttonIcon {
+    fill: var(--accent);
+  }
+}
+
+.menuButtonIcon {
+  fill: var(--font);
+
+  > path {
+    fill: inherit;
+  }
+}
+
+.nav {
+  flex: 1;
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.link {
+  align-items: center;
+  color: var(--font);
+  display: flex;
+  gap: 0.25rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  &.active {
+    color: var(--accent);
+
+    > .icon {
+      fill: var(--accent);
+    }
+  }
+}
+
+.icon {
+  fill: var(--font);
+  width: 1.5rem;
+
+  > path {
+    fill: inherit;
+  }
+}
+
+@media (max-width: 900px) {
+  .menuButton {
+    display: block; // MenuButton visible
+  }
+
+  .nav {
+    background-color: var(--background-opaque);
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 100%;
+  }
+
+  .navHidden {
+    display: none;
+  }
+
+  .navVisible {
+    display: block;
+  }
+
+  .list {
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+}

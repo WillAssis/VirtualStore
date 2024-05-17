@@ -1,0 +1,60 @@
+:root.light {
+  --font: #121212;
+  --font-opaque: rgb(18, 18, 18, 0.7);
+  --special: #be9714;
+  --accent: #873143;
+  --logo-color: #000;
+  --shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  --background-primary: #d9d9d9;
+  --background-secondary: #fff;
+  --background-opaque: rgba(217, 217, 217, 0.7);
+  --home-image: url('./assets/images/home-background-light.jpg');
+  --dashboard-image: url('./assets/images/dashboard-background-light.jpg');
+  --invalid: #ad0f0f;
+  --valid: #0c6110;
+}
+
+:root.dark {
+  --font: #ffffff;
+  --font-opaque: rgba(255, 255, 255, 0.7);
+  --special: #e1c35d;
+  --accent: #77a5cd;
+  --logo-color: #fff;
+  --shadow: none;
+  --background-primary: #0a0b0d;
+  --background-secondary: #242424;
+  --background-opaque: rgba(10, 11, 13, 0.7);
+  --home-image: url('./assets/images/home-background-dark.jpg');
+  --dashboard-image: url('./assets/images/dashboard-background-dark.jpg');
+  --invalid: #ff6b6b;
+  --valid: #25992a;
+}
+
+* {
+  border: none;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1920px;
+  min-height: 100vh;
+}
+
+body {
+  background-color: var(--background-primary);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  left: -9999px;
+}

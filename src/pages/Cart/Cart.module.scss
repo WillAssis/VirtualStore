@@ -1,0 +1,27 @@
+$content-gap: 2rem;
+
+// Define cores
+.main {
+  background-color: var(--background-secondary);
+  color: var(--font);
+}
+
+// Posiciona conteúdo
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $content-gap;
+  padding: $content-gap 0;
+}
+
+.cart {
+  display: flex;
+  flex-direction: row-reverse; // Summary na direita
+  gap: $content-gap;
+}
+
+@media (max-width: 900px) {
+  .cart {
+    flex-direction: column; // Summary no topo
+  }
+}

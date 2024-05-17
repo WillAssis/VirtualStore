@@ -1,0 +1,28 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.button {
+  background-color: var(--font);
+  border: none;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  height: 1rem;
+  width: 100%;
+
+  &:not(.active) {
+    opacity: 0.7;
+  }
+
+  &.active {
+    background-color: var(--accent);
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}

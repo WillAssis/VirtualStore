@@ -1,8 +1,0 @@
-.admin-page {
-  display: flex;
-  flex-direction: column;
-}
-
-.admin-page > main {
-  flex: 1;
-}

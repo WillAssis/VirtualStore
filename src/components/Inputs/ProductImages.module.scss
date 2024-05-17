@@ -1,0 +1,98 @@
+$gap: 1rem;
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+.legend {
+  display: contents; // Permite que o gap funcione nesse elemento
+}
+
+.inputsWrapper {
+  width: 100%;
+}
+
+.label {
+  aspect-ratio: 1 / 1;
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: block;
+  outline-offset: 0.1rem;
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+
+  &:has(input:focus) {
+    outline: 0.2rem solid var(--special);
+  }
+}
+
+.labelVisible {
+  opacity: 1;
+}
+
+.labelHidden {
+  opacity: 0;
+  width: 0;
+
+  // Bloqueia focus nos inputs
+  > * {
+    display: none;
+  }
+}
+
+.buttonList {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.buttonWithImage {
+  aspect-ratio: 1 / 1;
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  outline-offset: 0.1rem;
+  width: 100%;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: 0.2rem solid var(--special);
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: end;
+}
+
+.button {
+  background: transparent;
+  cursor: pointer;
+
+  &:hover .icon,
+  &:focus .icon {
+    fill: var(--font);
+  }
+
+  &:focus {
+    outline: 0.15em solid var(--accent);
+  }
+}
+
+.icon {
+  display: block;
+  fill: var(--font-opaque);
+  width: 2.5rem;
+
+  > path {
+    fill: inherit;
+  }
+}

@@ -1,0 +1,14 @@
+.contentWrapper {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.paragraph {
+  color: var(--font-opaque);
+  font-size: 1.2rem;
+}

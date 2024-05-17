@@ -1,0 +1,15 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 0.5em;
+}
+
+.select {
+  background-color: var(--background-primary);
+  box-shadow: var(--shadow);
+  color: var(--font);
+  padding: 0.5rem 1rem;
+}

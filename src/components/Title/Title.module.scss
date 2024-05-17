@@ -1,0 +1,21 @@
+@use 'sass:math';
+
+$font-size: 2rem;
+
+.title {
+  align-items: center;
+  color: var(--font);
+  display: flex;
+  font-size: $font-size;
+  gap: math.div($font-size, 4);
+
+  svg,
+  img {
+    height: $font-size;
+    width: $font-size;
+  }
+
+  path {
+    fill: var(--font);
+  }
+}

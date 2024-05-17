@@ -1,0 +1,23 @@
+.button {
+  background-color: var(--special);
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+  color: black;
+  outline-offset: 0.25rem;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: 0.15rem solid var(--accent);
+  }
+}

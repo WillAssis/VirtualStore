@@ -1,0 +1,29 @@
+.main {
+  align-items: center;
+  background-image: var(--dashboard-image);
+  background-origin: center;
+  background-size: cover;
+  color: var(--font);
+  display: flex;
+  flex: 1;
+  padding: 3rem 0;
+}
+
+.content {
+  align-items: center;
+  background-color: var(--background-opaque);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.description {
+  align-items: center;
+  color: var(--font-opaque);
+  font-size: 18px;
+  justify-content: center;
+  text-align: center;
+}

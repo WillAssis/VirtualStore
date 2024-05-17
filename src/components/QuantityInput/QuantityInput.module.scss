@@ -1,0 +1,75 @@
+// O tamanho se adapta à font-size do parent element
+$border: 0.1em solid var(--font-opaque);
+$size: 1.5em; // 150% da font-size do parent
+
+.quantity {
+  align-items: stretch;
+  border: $border;
+  box-shadow: var(--shadow);
+  display: flex;
+  font-size: inherit;
+  width: fit-content;
+
+  &:has(.input:focus, .button:focus) {
+    background-color: var(--background-primary);
+  }
+}
+
+.icon {
+  display: block;
+  fill: inherit;
+  height: 1em;
+  margin: auto;
+  width: 1em;
+
+  > path {
+    fill: inherit;
+  }
+}
+
+.button {
+  background: transparent;
+  fill: var(--font);
+  font-size: $size;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):hover,
+  &:focus {
+    background-color: var(--accent);
+    fill: var(--background-primary);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.leftButton {
+  border-right: $border;
+}
+
+.rightButton {
+  border-left: $border;
+}
+
+.input {
+  background-color: transparent;
+  color: var(--font);
+  font-size: 1em;
+  text-align: center;
+  width: $size * 1.5;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}

@@ -1,0 +1,37 @@
+.summary {
+  background-color: transparent;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5em;
+}
+
+.paragraph {
+  color: var(--font-opaque);
+  margin-bottom: 0.5em;
+}
+
+.totalPrice {
+  color: var(--font);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  > button,
+  a {
+    flex-grow: 1;
+  }
+}
+
+.error {
+  color: var(--invalid);
+  font-size: 0.8rem;
+  margin-top: 0.5em;
+}

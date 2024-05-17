@@ -1,0 +1,57 @@
+.table {
+  border-collapse: collapse;
+  min-width: 700px;
+  table-layout: fixed;
+  text-align: left;
+  width: 100%;
+}
+
+.row:nth-child(even),
+.header {
+  background-color: var(--background-primary);
+}
+
+.row > td,
+.row > th,
+.header > td,
+.header > th {
+  padding: 0.25rem 1rem;
+  vertical-align: top;
+}
+
+.buttonList {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  outline-offset: 0.2rem;
+  padding: 0.25rem 0.5rem;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: 2px solid var(--accent);
+  }
+}
+
+.detailsButton {
+  background-color: var(--special);
+  color: black;
+}
+
+.statusButton {
+  background-color: var(--accent);
+  color: var(--background-primary);
+}
+
+.deleteButton {
+  background-color: var(--invalid);
+  color: var(--background-primary);
+}

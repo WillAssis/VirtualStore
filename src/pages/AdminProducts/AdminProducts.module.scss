@@ -1,0 +1,7 @@
+.main {
+  color: var(--font);
+  background-image: var(--dashboard-image);
+  background-size: cover;
+  flex: 1;
+  position: relative; // For OverlayLoading component
+}
